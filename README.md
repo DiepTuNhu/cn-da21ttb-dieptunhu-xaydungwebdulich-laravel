@@ -1,6 +1,6 @@
 # cn-da21ttb-dieptunhu-xaydungwebdulich-laravel
 
-Đề tài “Tìm hiểu Laravel framework và xây dựng website tra cứu thông tin du lịch trên địa bàn Đồng bằng sông Cửu Long” là một đồ án sử dụng Laravel framework để xây dựng nên một website tra cứu thông tin du lịch được thực hiện nhằm giúp khách du lịch dễ dàng tìm hiểu vè tra cứu thông tin mà còn góp phần quảng bá hình ảnh du lịch Đồng bằng sông Cửu Long đến với nhiều du khách hơn.
+Đề tài “Tìm hiểu Laravel framework và xây dựng website tra cứu thông tin du lịch trên địa bàn Đồng bằng sông Cửu Long” là một đồ án sử dụng Laravel framework để xây dựng nên một website tra cứu thông tin du lịch được thực hiện nhằm giúp khách du lịch dễ dàng tìm hiểu về tra cứu thông tin mà còn góp phần quảng bá hình ảnh du lịch Đồng bằng sông Cửu Long đến với nhiều du khách hơn.
 
 ## Người thực hiện
 
