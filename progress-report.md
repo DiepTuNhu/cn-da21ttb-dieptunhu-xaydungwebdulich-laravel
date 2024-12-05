@@ -20,3 +20,25 @@ Phân tích thiết kế hệ thống
 
 - Phân tích yêu cầu hệ thống
 - Thu thập các dữ liệu mẫu theo các đối tượng, thông tin cần quản lý liên quan đến chủ đề cần quản lý.
+
+## Tuần 2: Từ ngày 25/11/2024 đến ngày 01/12/2024
+
+Phân tích thiết kế hệ thống
+
+- Thiết kế kiến trúc hệ thống
+- Thiết kế cơ sở dữ liệu
+
+Phân tích thiết kế hệ thống
+
+- Thiết kế xử lý
+- Thiết kế giao diện
+
+## Tuần 3: Từ ngày 09/12/2024 đến ngày 15/12/2024
+
+Cài đặt thực nghiệm
+
+- Cài đặt chức năng CRUD cho back-end và bổ sung dữ liệu thử nghiệm tương ứng vào hệ thống
+
+Cài đặt thực nghiệm
+
+- Cài đặt front-end: Trang chủ người dùng, chức năng tìm kiếm
