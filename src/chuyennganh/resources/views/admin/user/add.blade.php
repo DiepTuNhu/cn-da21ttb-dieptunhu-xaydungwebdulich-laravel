@@ -1,9 +1,9 @@
 @extends('admin.index')
 @section('title_name')
-    Thêm nguyên liệu 
+    Thêm người dùng 
 @endsection
 @section('path')
-    Thêm nguyên liệu
+    Thêm người dùng
 @endsection
 
 @section('content')
@@ -19,16 +19,12 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form id="quickForm" action="" method = "post">
+            <form id="quickForm" action="{{ route('users.store') }}" method = "post" enctype="multipart/form-data">
                 @csrf
               <div class="card-body">
                 <div class="form-group">
-                    <label for="">Tên</label>
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Nhập tên ">
-                </div>
-                <div class="form-group">
-                  <label for="password">Mật khẩu</label>
-                  <input type="text" name="password" class="form-control" id="password" placeholder="Nhập mật khẩu">
+                    <label for="">Tên người dùng</label>
+                    <input type="text" name="username" class="form-control" id="username" placeholder="Nhập tên ">
                 </div>
                 <div class="form-group">
                   <label for="email">Email</label>
@@ -38,6 +34,29 @@
                   <label for="address">Địa chỉ</label>
                   <input type="text" name="address" class="form-control" id="address" placeholder="Nhập địa chỉ">
                 </div>
+                <div class="form-group">
+                  <label for="password">Mật khẩu</label>
+                  <input type="password" name="password" class="form-control" id="password" placeholder="Nhập mật khẩu">
+                </div>                
+                <div class="form-group">
+                  <label for="image" class="form-label">Hình ảnh</label>
+                  <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="image" name="image" accept="image/*" required>
+                      <label class="custom-file-label" for="image">Chọn tệp...</label>
+                  </div>
+                  <small class="form-text text-muted mt-2" id="file-name">
+                      Chưa có tệp nào được chọn.
+                  </small>
+              </div>
+              
+              <script>
+                  document.getElementById('image').addEventListener('change', function (e) {
+                      const fileName = e.target.files[0]?.name || 'Chưa có tệp nào được chọn.';
+                      document.querySelector('.custom-file-label').textContent = fileName;
+                      document.getElementById('file-name').textContent = `Tệp được chọn: ${fileName}`;
+                  });
+              </script>
+                                            
               </div>
               <!-- /.card-body -->
               <div class="card-footer">

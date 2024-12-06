@@ -17,10 +17,13 @@
                 <tr>
                     <th>Id</th>
                     <th>Tên đăng nhập</th>
-                    <th>Mật khẩu</th>
                     <th>Email</th>
                     <th>Địa chỉ</th>
-                    <th width="105px"></th>
+                    <th>Mật khẩu</th>
+                    <th>Hình ảnh</th>
+                    <th>Phân quyền</th>
+                    <th>Trạng thái</th>
+                    <th width="105px">Thao tác</th>
                 </tr>
                 </thead>
                 <a href = "{{route('users.create')}}" class="btn btn-primary mb-3">Thêm mới</a><br>
@@ -28,13 +31,28 @@
                     @foreach ($users as $user)
                     <tr>   
                         <td>{{$user->id}}</td>
-                        <td>{{$user->fullname}}</td>
-                        <td>{{$user->password}}</td>
+                        <td>{{$user->username}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->address}}</td>
+                        <td>{{$user->password}}</td>
+                        <td>    
+                          @if($user->image)
+                            <img src="{{ asset('storage/images/' . $user->image) }}" alt="User Image" width="100">
+                          @else
+                              <span>Chưa có ảnh</span>
+                          @endif
+                        </td>
+                        <td>{{ $user->role->role }}</td>
                         <td>
-                            <a class = "btn btn-primary" href = "">Sửa</a>
-                            <a onclick = "return confirm('Bạn có thật sự muốn xóa không?')" class = "btn btn-danger" href = "">Xóa</a>
+                          @if($user->status == 0)
+                              <span class="text-success">Visible</span>
+                          @else
+                              <span class="text-danger">Hidden</span>
+                          @endif
+                        </td>
+                        <td>
+                            <a class = "btn btn-primary" href = "{{route('users.edit',['id'=>$user->id])}}">Sửa</a>
+                            <a onclick = "return confirm('Bạn có thật sự muốn xóa không?')" class = "btn btn-danger" href = "{{route('users.destroy',['id'=>$user->id])}}">Xóa</a>
                         </td>
                     </tr>
                   @endforeach
@@ -43,10 +61,13 @@
                 <tr>
                     <th>Id</th>
                     <th>Tên đăng nhập</th>
-                    <th>Mật khẩu</th>
                     <th>Email</th>
                     <th>Địa chỉ</th>
-                    <th width="105px"></th>                 
+                    <th>Mật khẩu</th>
+                    <th>Hình ảnh</th>
+                    <th>Phân quyền</th>
+                    <th>Trạng thái</th>
+                    <th width="105px">Thao tác</th>               
                 </tr>
                 </tfoot>
               </table>
