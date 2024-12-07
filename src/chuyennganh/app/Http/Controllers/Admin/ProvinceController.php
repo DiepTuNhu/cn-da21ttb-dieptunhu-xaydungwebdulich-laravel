@@ -30,11 +30,11 @@ class ProvinceController extends Controller
     {
         $this->validate($request,
         [
-            'provinceName'=>'required|max:50|min:3|unique:types,name'
+            'provinceName'=>'required|max:50|min:3|unique:provinces,name'
         ],
         [
-            'provinceName.required'=>'Bạn chưa nhập tên loại hình',
-            'provinceName.unique'=>'Tên loại hình đã tồn tại',
+            'provinceName.required'=>'Bạn chưa nhập tên tỉnh/thành phố',
+            'provinceName.unique'=>'Tên tỉnh/thành phố đã tồn tại',
             'provinceName.max'=>'Nhập tối đa 50 ký tự',
             'provinceName.min'=>'Nhập tối thiểu 3 ký tự'
         ]);

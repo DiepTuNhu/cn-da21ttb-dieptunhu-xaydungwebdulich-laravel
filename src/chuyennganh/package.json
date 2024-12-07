@@ -11,6 +11,9 @@
         "vite": "^5.0.0"
     },
     "dependencies": {
+        "@ckeditor/ckeditor5-build-classic": "^44.0.0",
+        "ckeditor5": "^44.0.0",
+        "ckeditor5-premium-features": "^44.0.0",
         "datatables.net-bs4": "^2.1.8",
         "jquery": "^3.7.1"
     }

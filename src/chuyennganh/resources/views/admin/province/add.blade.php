@@ -1,9 +1,9 @@
 @extends('admin.index')
 @section('title_name')
-    Thêm loại hình du lịch
+    Thêm tỉnh/thành phố
 @endsection
 @section('path')
-    Thêm loại hình du lịch
+    Thêm tỉnh/thành phố
 @endsection
 
 @section('content')
@@ -23,8 +23,8 @@
                 @csrf
               <div class="card-body">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Tên loại hình du lịch</label>
-                  <input type="text" name="provinceName" class="form-control" id="provinceName" placeholder="Nhập tên danh mục">
+                  <label for="exampleInputEmail1">Tên tỉnh/thành phố</label>
+                  <input type="text" name="provinceName" class="form-control" id="provinceName" placeholder="Nhập tên tỉnh/thành phố">
                 </div>
               </div>
               <!-- /.card-body -->

@@ -28,10 +28,10 @@ class Location extends Model
     }
 
     public function types(){
-        return $this->hasMany(Type::class,'id_type','id');
+        return $this->belongsTo(Type::class,'id_type','id');
     }
 
     public function provinces(){
-        return $this->hasMany(Province::class,'id_province','id');
+        return $this->belongsTo(Province::class,'id_province','id');
     }
 }

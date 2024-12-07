@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('typeofutilities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('image');
             $table->unsignedInteger('status');
             $table->timestamps();
         });

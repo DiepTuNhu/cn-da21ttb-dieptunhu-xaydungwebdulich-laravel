@@ -31,11 +31,11 @@ class RoleController extends Controller
     {
         $this->validate($request,
         [
-            'roleName'=>'required|max:50|min:3|unique:types,name'
+            'roleName'=>'required|max:50|min:3|unique:roles,name'
         ],
         [
-            'roleName.required'=>'Bạn chưa nhập tên loại hình',
-            'roleName.unique'=>'Tên loại hình đã tồn tại',
+            'roleName.required'=>'Bạn chưa nhập tên phân quyền',
+            'roleName.unique'=>'Tên phân quyền đã tồn tại',
             'roleName.max'=>'Nhập tối đa 50 ký tự',
             'roleName.min'=>'Nhập tối thiểu 3 ký tự'
         ]);

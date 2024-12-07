@@ -48,8 +48,7 @@ class UserController extends Controller
             'image.max' => 'Hình ảnh phải nhỏ hơn 2MB.',
         ]);
 
-        // Lưu trữ hình ảnh
-        $imagePath = $request->file('image')->store('uploads', 'public');
+        
 
         // Tạo một người dùng mới
         $user = new User();
@@ -62,15 +61,15 @@ class UserController extends Controller
 
         // Xử lý ảnh người dùng (nếu có)
         if ($request->hasFile('image')) {
-            // Lưu ảnh và lấy tên ảnh
+            // Tạo tên ảnh duy nhất dựa trên thời gian
             $imageName = time() . '.' . $request->image->extension();  
-            $request->image->storeAs('public/images', $imageName);  // Lưu vào thư mục public/images
-            $user->image = $imageName;  // Lưu tên ảnh vào cơ sở dữ liệu
-        } else {
             
-        // Nếu không có ảnh, sử dụng ảnh mặc định
-        $user->image = 'default.jpg';
-    }
+            // Lưu ảnh vào thư mục public/images/users
+            $request->image->storeAs('public/images', $imageName);
+        
+            // Cập nhật đường dẫn ảnh vào cơ sở dữ liệu (lưu tên ảnh)
+            $user->image = $imageName;  
+        }
         // Lưu vào cơ sở dữ liệu
         $user->save();
 
@@ -100,27 +99,38 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        // Tìm người dùng theo ID
         $user = User::find($id);
 
-            // Kiểm tra nếu người dùng đã có ảnh cũ
-        if ($user->image) {
-            // Xóa ảnh cũ nếu có
+        // Kiểm tra nếu người dùng tồn tại
+        if (!$user) {
+            return redirect()->route('users.index')->with('error', 'User not found');
+        }
+
+        // Kiểm tra và xóa ảnh cũ nếu có
+        if ($user->image && $request->hasFile('image')) {
+            // Xóa ảnh cũ nếu có và có ảnh mới được tải lên
             Storage::delete('public/images/' . $user->image);
         }
 
+        // Cập nhật thông tin người dùng
         $user->username = $request->userName;
         $user->email = $request->email;
         $user->address = $request->address;
         $user->status = $request->status;
-        if ($request->password) {
-            $user->password = bcrypt($request->password);
-        }
+
+
+        // Xử lý tải lên hình ảnh mới
         if ($request->hasFile('image')) {
             $imageName = time() . '.' . $request->image->extension();  
             $request->image->storeAs('public/images', $imageName);
             $user->image = $imageName;
         }
-        $user->update();
+
+        // Lưu thông tin người dùng
+        $user->save(); 
+
+        // Quay lại trang danh sách người dùng
         return redirect()->route('users.index');
     }
 

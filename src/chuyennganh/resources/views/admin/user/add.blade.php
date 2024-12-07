@@ -24,7 +24,7 @@
               <div class="card-body">
                 <div class="form-group">
                     <label for="">Tên người dùng</label>
-                    <input type="text" name="username" class="form-control" id="username" placeholder="Nhập tên ">
+                    <input type="text" name="username" class="form-control" id="username" placeholder="Nhập tên người dùng">
                 </div>
                 <div class="form-group">
                   <label for="email">Email</label>

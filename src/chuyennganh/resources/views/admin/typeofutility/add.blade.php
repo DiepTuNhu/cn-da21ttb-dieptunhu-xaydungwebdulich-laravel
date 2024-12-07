@@ -1,9 +1,9 @@
 @extends('admin.index')
 @section('title_name')
-    Thêm phân quyền
+    Thêm loại tiện ích
 @endsection
 @section('path')
-    Thêm phân quyền
+    Thêm loại tiện ích
 @endsection
 
 @section('content')
@@ -19,12 +19,12 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form id="quickForm" action="{{route('roles.store')}}" method = "post">
+            <form id="quickForm" action="{{route('typeofutilities.store')}}" method = "post">
                 @csrf
               <div class="card-body">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Phân quyền</label>
-                  <input type="text" name="roleName" class="form-control" id="roleName" placeholder="Nhập tên phân quyền">
+                  <label for="exampleInputEmail1">Tên loại tiện ích</label>
+                  <input type="text" name="typeofutilityName" class="form-control" id="typeofutilityName" placeholder="Nhập tên loại tiện ích">
                 </div>
               </div>
               <!-- /.card-body -->

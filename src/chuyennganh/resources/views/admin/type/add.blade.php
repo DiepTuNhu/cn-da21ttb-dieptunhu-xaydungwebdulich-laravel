@@ -24,7 +24,7 @@
               <div class="card-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Tên loại hình du lịch</label>
-                  <input type="text" name="typeName" class="form-control" id="typeName" placeholder="Nhập tên danh mục">
+                  <input type="text" name="typeName" class="form-control" id="typeName" placeholder="Nhập tên loại hình du lịch">
                 </div>
               </div>
               <!-- /.card-body -->

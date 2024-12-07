@@ -8,6 +8,10 @@ use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProvinceController;
+use App\Http\Controllers\Admin\TypeOfUtilityController;
+use App\Http\Controllers\Admin\LocationController;
+use App\Http\Controllers\Admin\PhotoController;
+use App\Http\Controllers\CKEditorController ;
 use Illuminate\Support\Facades\Route;
 
 
@@ -33,6 +37,7 @@ Route::post('/page/logout', [AuthController::class, 'logout'])->name('page.logou
 
 // ADMIN=========================================================================================================
 
+Route::post('/ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
 //TYPE LOCATION
 Route::get('/types',[TypeController::class,'index'])->name('types.index');
 Route::get('/types/create',[TypeController::class,'create'])->name('types.create');
@@ -64,3 +69,27 @@ Route::post('/provinces',[ProvinceController::class,'store'])->name('provinces.s
 Route::get('/provinces/{id}/edit',[ProvinceController::class,'edit'])->name('provinces.edit');
 Route::post('/provincesv/{id}',[ProvinceController::class,'update'])->name('provinces.update');
 Route::get('/provinces/{id}',[ProvinceController::class,'destroy'])->name('provinces.destroy');
+
+//TYPE OF UTILITY
+Route::get('/typeofutilities',[TypeOfUtilityController::class,'index'])->name('typeofutilities.index');
+Route::get('/typeofutilities/create',[TypeOfUtilityController::class,'create'])->name('typeofutilities.create');
+Route::post('/typeofutilities',[TypeOfUtilityController::class,'store'])->name('typeofutilities.store');
+Route::get('/typeofutilities/{id}/edit',[TypeOfUtilityController::class,'edit'])->name('typeofutilities.edit');
+Route::post('/typeofutilities/{id}',[TypeOfUtilityController::class,'update'])->name('typeofutilities.update');
+Route::get('/typeofutilities/{id}',[TypeOfUtilityController::class,'destroy'])->name('typeofutilities.destroy');
+
+//LOCATION
+Route::get('/locations',[LocationController::class,'index'])->name('locations.index');
+Route::get('/locations/create',[LocationController::class,'create'])->name('locations.create');
+Route::post('/locations',[LocationController::class,'store'])->name('locations.store');
+Route::get('/locations/{id}/edit',[LocationController::class,'edit'])->name('locations.edit');
+Route::post('/locations/{id}',[LocationController::class,'update'])->name('locations.update');
+Route::get('/locations/{id}',[LocationController::class,'destroy'])->name('locations.destroy');
+
+//PHOTO
+Route::get('/photos',[PhotoController::class,'index'])->name('photos.index');
+Route::get('/photos/create',[PhotoController::class,'create'])->name('photos.create');
+Route::post('/photos',[PhotoController::class,'store'])->name('photos.store');
+Route::get('/photos/{id}/edit',[PhotoController::class,'edit'])->name('photos.edit');
+Route::post('/photos/{id}',[PhotoController::class,'update'])->name('photos.update');
+Route::get('/photos/{id}',[PhotoController::class,'destroy'])->name('photos.destroy');
