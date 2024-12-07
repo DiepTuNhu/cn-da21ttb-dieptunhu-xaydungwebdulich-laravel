@@ -224,5 +224,97 @@
             console.error(error);
         });
 </script>
+
+<script>
+  // Chức năng xem trước ảnh cho khung 1 (1 ảnh)
+  function previewImage(khung) {
+      const input = document.getElementById('image' + khung);
+      const files = input.files;
+      const previewContainer = document.getElementById('imagePreview' + khung);
+      const label = input.nextElementSibling;
+      
+      // Clear any previous previews
+      previewContainer.innerHTML = '';
+
+      if (files.length > 0) {
+          label.textContent = `${files.length} tệp được chọn`;
+          const reader = new FileReader();
+          reader.onload = function(e) {
+              const img = document.createElement('img');
+              img.src = e.target.result;
+              img.style.maxWidth = '100px'; // Chỉnh sửa kích thước ảnh nhỏ
+              img.style.maxHeight = '100px'; // Giới hạn chiều cao ảnh
+              previewContainer.appendChild(img);
+          }
+          reader.readAsDataURL(files[0]); // Chỉ lấy 1 ảnh cho khung 1
+      } else {
+          label.textContent = 'Chọn tệp...';
+      }
+  }
+
+  // Chức năng xem trước ảnh cho khung 2 (tối đa 4 ảnh)
+  function previewImages(khung) {
+      const input = document.getElementById('image' + khung);
+      const files = input.files;
+      const previewContainer = document.getElementById('imagePreview' + khung);
+      const label = input.nextElementSibling;
+
+      // Clear any previous previews
+      previewContainer.innerHTML = '';
+
+      if (files.length > 0) {
+          if (files.length > 4) {
+              alert('Bạn chỉ có thể chọn tối đa 4 ảnh.');
+              input.value = ''; // Reset input field nếu chọn quá 4 ảnh
+              return;
+          }
+
+          label.textContent = `${files.length} tệp được chọn`;
+
+          Array.from(files).forEach(file => {
+              const reader = new FileReader();
+              reader.onload = function(e) {
+                  const img = document.createElement('img');
+                  img.src = e.target.result;
+                  img.style.maxWidth = '100px'; // Chỉnh sửa kích thước ảnh nhỏ
+                  img.style.maxHeight = '100px'; // Giới hạn chiều cao ảnh
+                  previewContainer.appendChild(img);
+              }
+              reader.readAsDataURL(file);
+          });
+      } else {
+          label.textContent = 'Chọn tệp...';
+      }
+  }
+
+//   function fetchLocations() {
+//     const provinceId = document.getElementById('province').value; // Lấy ID tỉnh đã chọn
+
+//     if (!provinceId) {
+//         // Xóa các tùy chọn nếu không có tỉnh được chọn
+//         document.getElementById('location').innerHTML = '<option value="">Chọn địa điểm</option>';
+//         return;
+//     }
+
+//     // Gửi yêu cầu AJAX để lấy danh sách địa điểm
+//     fetch(`/locations/${provinceId}`)
+//         .then(response => response.json())
+//         .then(data => {
+//             const locationSelect = document.getElementById('location');
+//             locationSelect.innerHTML = '<option value="">Chọn địa điểm</option>'; // Reset
+
+//             // Cập nhật các địa điểm mới
+//             data.forEach(location => {
+//                 const option = document.createElement('option');
+//                 option.value = location.id;
+//                 option.textContent = location.name;
+//                 locationSelect.appendChild(option);
+//             });
+//         })
+//         .catch(error => console.error('Error fetching locations:', error));
+// }
+
+
+</script>
 </body>
 </html>

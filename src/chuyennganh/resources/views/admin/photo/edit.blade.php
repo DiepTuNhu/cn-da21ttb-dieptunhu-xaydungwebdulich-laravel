@@ -1,9 +1,9 @@
 @extends('admin.index')
 @section('title_name')
-    Sửa người dùng
+    Sửa hình ảnh
 @endsection
 @section('path')
-    Sửa người dùng
+    Sửa hình ảnh
 @endsection
 
 @section('content')
@@ -19,55 +19,92 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form id="quickForm" action="{{route('locations.update',['id'=>$location->id])}}" method="post" enctype="multipart/form-data">
+            <form id="quickForm" action="{{route('photos.update',['id'=>$photo->id])}}" method="post" enctype="multipart/form-data">
                 @csrf
               <div class="card-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Id</label>
-                  <input type="text" name="name" class="form-control" value="{{$location->id}}"id="name" readonly>
-                </div>
-                <div class="form-group">
-                  <label for="">Tên địa điểm</label>
-                  <input type="text" name="name" class="form-control" id="name" value="{{$location->name}}">
-                </div>
-                <div class="form-group">
-                  <label for="address">Địa chỉ</label>
-                  <input type="text" name="address" class="form-control" id="address" value="{{$location->address}}">
-                </div>
-                <div class="form-group">
-                  <label for="description">Mô tả</label>
-                  <textarea name="description" id="description" class="form-control">{{ old('description', $location->description)}}</textarea>
+                  <input type="text" name="name" class="form-control" value="{{$photo->id}}"id="name" readonly>
                 </div>
 
                 <div class="form-group">
-                  <label for="type">Loại hình</label>
-                  <select name="id_type" class="form-control" id="type">
-                    <option value="">Chọn loại hình</option>
-                    @foreach($types as $type)
-                        <option value="{{ $type->id }}" {{ $location->id_type == $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
+                  <label for="image1" class="form-label">Chọn ảnh (Ảnh chính)</label>
+                  <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="image1" name="image1" accept="image/*" onchange="previewImage(1)">
+                      <label class="custom-file-label" for="image1">Chọn tệp...</label>
+                  </div>
+              </div>
+              
+              <!-- Hiển thị ảnh hiện tại -->
+              <div class="form-group">
+                  <label for="currentImage">Ảnh hiện tại:</label>
+                  @if($photo->url)
+                      <div id="currentImage" style="margin-top: 10px;">
+                          <img src="{{ asset('storage/location_image/' . $photo->name) }}" alt="Ảnh hiện tại" width="150">
+                      </div>
+                  @else
+                      <p>Không có ảnh hiện tại.</p>
+                  @endif
+              </div>
+              
+              <!-- Hiển thị ảnh xem trước -->
+              <div class="form-group">
+                  <label for="imagePreview1">Ảnh xem trước:</label>
+                  <div id="imagePreview1" style="margin-top: 10px;"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="caption">Caption</label>
+                <input type="text" name="caption" class="form-control" id="caption" placeholder="Nhập chú thích" value="{{ $photo->caption }}">
+              </div>
+                <!-- Hiển thị URL -->
+              <div class="form-group">
+                <label for="url">URL</label>
+                <input type="text" name="url" class="form-control" id="url" placeholder="Nhập URL" value="{{ $photo->url }}">
+              </div>
+
+
+
+              {{-- <div class="form-group">
+                <label for="province">Chọn Tỉnh</label>
+                <select id="province" name="province" class="form-control">
+                    <option value="">Chọn tỉnh</option>
+                    @foreach($provinces as $province)
+                        <option value="{{ $province->id }}">{{ $province->name }}</option>
                     @endforeach
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="location">Chọn Địa điểm</label>
+                <select id="location" name="location" class="form-control" disabled>
+                    <option value="">Chọn địa điểm</option>
+                </select>
+            </div> --}}
+            
+
+              <!-- Hiển thị Địa điểm -->
+              <div class="form-group">
+                  <label for="location">Địa điểm</label>
+                  <select name="id_location" class="form-control" id="location">
+                      <option value="">Chọn địa điểm</option>
+                      @foreach($locations as $location)
+                          <option value="{{ $location->id }}" {{ $photo->id_location == $location->id ? 'selected' : '' }}>
+                              {{ $location->name }}
+                          </option>
+                      @endforeach
                   </select>
-                </div>
+              </div>
 
-                
-
-                <div class="form-group">
-                <label for="province">Tỉnh/thành phố</label>
-                <select name="id_province" class="form-control" id="province">
-                  <option value="">Chọn tỉnh/thành phố</option>
-                  @foreach($provinces as $province)
-                      <option value="{{ $province->id }}" {{ $location->id_province == $province->id ? 'selected' : '' }}>{{ $province->name }}</option>
-                  @endforeach
-              </select>
-                
-                </div>  
-                <div class="form-group">
+              <!-- Hiển thị Trạng thái -->
+              <div class="form-group">
                   <label for="status">Trạng thái</label>
                   <select name="status" class="form-control" id="status">
-                      <option value="0" {{ $location->status == 0 ? 'selected' : '' }}>Visible</option>
-                      <option value="1" {{ $location->status == 1 ? 'selected' : '' }}>Hidden</option>
+                      <option value="0" {{ $photo->status == 0 ? 'selected' : '' }}>Extra</option>
+                      <option value="1" {{ $photo->status == 1 ? 'selected' : '' }}>Hidden</option>
+                      <option value="2" {{ $photo->status == 2 ? 'selected' : '' }}>Main</option>
                   </select>
-                </div>
+              </div>
                 
               </div>
               <!-- /.card-body -->

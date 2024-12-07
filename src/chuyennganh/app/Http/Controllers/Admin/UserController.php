@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -20,7 +21,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.user.add');
+        $roles = Role::all();
+        return view('admin.user.add', compact('roles'));
     }
 
     /**
@@ -56,7 +58,8 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->address = $request->address;
-        $user->id_role = 2;
+        // $user->id_role = 2;
+        $user->id_role = $request->id_role;
         $user->status = 0;
 
         // Xử lý ảnh người dùng (nếu có)
@@ -91,7 +94,8 @@ class UserController extends Controller
     public function edit(string $id)
     {
         $user = User::find($id);
-        return view('admin.user.edit',compact('user'));
+        $roles = Role::all();
+        return view('admin.user.edit',compact('user', 'roles'));
     }
 
     /**
@@ -117,8 +121,13 @@ class UserController extends Controller
         $user->username = $request->userName;
         $user->email = $request->email;
         $user->address = $request->address;
+        $user->id_role = $request->id_role;
         $user->status = $request->status;
 
+        if ($request->has('password') && !empty($request->password)) {
+            // Nếu có mật khẩu mới, mã hóa và cập nhật
+            $user->password = bcrypt($request->password);
+        }
 
         // Xử lý tải lên hình ảnh mới
         if ($request->hasFile('image')) {
@@ -126,7 +135,6 @@ class UserController extends Controller
             $request->image->storeAs('public/images', $imageName);
             $user->image = $imageName;
         }
-
         // Lưu thông tin người dùng
         $user->save(); 
 

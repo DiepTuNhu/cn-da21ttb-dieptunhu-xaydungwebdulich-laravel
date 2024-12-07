@@ -19,41 +19,80 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form id="quickForm" action="{{ route('photos.store') }}" method="post">
+            <form id="quickForm" action="{{ route('photos.store') }}" method="post" enctype="multipart/form-data">
               @csrf
               <div class="card-body">
+                <!-- Khung 1: Chọn 1 ảnh, status = 2 -->
                 <div class="form-group">
-                    <label for="">Tên địa điểm</label>
-                    <input type="text" name="photoname" class="form-control" id="photoname" placeholder="Nhập tên người dùng">
+                  <label for="image1" class="form-label">Chọn ảnh (Ảnh chính)</label>
+                  <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="image1" name="image1" accept="image/*" onchange="previewImage(1)" required>
+                      <label class="custom-file-label" for="image1">Chọn tệp...</label>
+                  </div>
+                </div>
+
+                <!-- Khung 2: Chọn tối đa 4 ảnh, status = 0 -->
+                <div class="form-group">
+                  <label for="image2" class="form-label">Chọn tối đa 4 ảnh (Ảnh phụ)</label>
+                  <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="image2" name="images[]" accept="image/*" multiple onchange="previewImages(2)">
+                      <label class="custom-file-label" for="image2">Chọn tệp...</label>
+                  </div>
+                </div>
+
+                <!-- Hiển thị ảnh xem trước -->
+                <div class="form-group">
+                  <label for="imagePreview1">Ảnh xem trước (Ảnh chính):</label>
+                  <div id="imagePreview1" style="margin-top: 10px;"></div>
+                </div>
+
+                <div class="form-group">
+                  <label for="imagePreview2">Ảnh xem trước (Ảnh phụ):</label>
+                  <div id="imagePreview2" style="margin-top: 10px;"></div>
                 </div>
                 <div class="form-group">
-                    <label for="address">Địa chỉ</label>
-                    <input type="text" name="address" class="form-control" id="address" placeholder="Nhập địa chỉ">
+                    <label for="caption">Caption</label>
+                    <input type="text" name="caption" class="form-control" id="caption" placeholder="Nhập địa chỉ">
                 </div>
                 <div class="form-group">
-                    <label for="description">Mô tả</label>
-                    <textarea name="description" id="description" class="form-control">{{ old('description') }}</textarea>
-                </div>
-        
+                    <label for="url">URL</label>
+                    <input type="text" name="url" class="form-control" id="url" placeholder="Nhập địa chỉ">
+                </div>     
+              
+
+{{-- <!-- Dropdown Tỉnh -->
+<div class="form-group">
+  <label for="province">Chọn Tỉnh</label>
+  <select id="province" name="province" class="form-control" onchange="fetchLocations()">
+      <option value="">Chọn tỉnh</option>
+      @foreach($provinces as $province)
+          <option value="{{ $province->id }}">{{ $province->name }}</option>
+      @endforeach
+  </select>
+</div>
+
+<!-- Dropdown Địa Điểm -->
+<div class="form-group">
+  <label for="location">Chọn Địa Điểm</label>
+  <select id="location" name="id_location" class="form-control">
+      <option value="">Chọn địa điểm</option>
+      @foreach($locations as $location)
+          <option value="{{ $location->id }}">{{ $location->name }}</option>
+      @endforeach
+  </select>
+</div> --}}
+
+
+
                 <div class="form-group">
-                  <label for="type">Loại hình</label>
-                  <select name="id_type" class="form-control" id="type">
-                      <option value="">Chọn loại hình</option>
-                      @foreach($types as $type)
-                          <option value="{{ $type->id }}">{{ $type->name }}</option>
-                      @endforeach
-                  </select>
-                </div>
-                
-                <div class="form-group">
-                  <label for="province">Tỉnh/thành phố</label>
-                  <select name="id_province" class="form-control" id="province">
+                  <label for="location">Địa điểm</label>
+                  <select name="id_location" class="form-control" id="location">
                       <option value="">Chọn tỉnh/thành phố</option>
-                      @foreach($provinces as $province)
-                          <option value="{{ $province->id }}">{{ $province->name }}</option>
+                      @foreach($locations as $location)
+                          <option value="{{ $location->id }}">{{ $location->name }}</option>
                       @endforeach
                   </select>
-                </div>                
+                </div>                 
               </div>
               <!-- /.card-body -->
               <div class="card-footer">

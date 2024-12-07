@@ -40,8 +40,17 @@
                 </div>
                 <div class="form-group">
                   <label for="password">Mật khẩu</label>
-                  <input type="password" name="password" class="form-control" value="{{$user->password}}id="password">
+                  <input type="password" name="password" class="form-control" id="password">
                 </div> 
+                <div class="form-group">
+                  <label for="role">Loại hình</label>
+                  <select name="id_role" class="form-control" id="role">
+                    <option value="">Chọn loại hình</option>
+                    @foreach($roles as $role)
+                        <option value="{{ $role->id }}" {{ $user->id_role == $role->id ? 'selected' : '' }}>{{ $role->role }}</option>
+                    @endforeach
+                  </select>
+                </div>
                 <div class="form-group">
                   <label for="status">Trạng thái</label>
                   <select name="status" class="form-control" id="status">

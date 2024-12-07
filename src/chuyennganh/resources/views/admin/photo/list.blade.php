@@ -29,20 +29,23 @@
                   @foreach ($photos as $photo)
     <tr>   
         <td>{{$photo->id}}</td>
-        <td>    
-          @if($photo->image)
-            <img src="{{ asset('storage/images/' . $photo->image) }}" alt="Ảnh của {{$photo->name}}" width="100">
+        <td>
+          @if($photo->name) <!-- Kiểm tra xem có tên ảnh trong cột name không -->
+              <img src="{{ asset('storage/location_image/' . $photo->name) }}" alt="Ảnh của {{$photo->name}}" width="100">
           @else
               <span>Chưa có ảnh</span>
           @endif
         </td>
+        
         <td>{{$photo->url}}</td>  <!-- Chắc chắn rằng bạn đang lấy đúng trường url -->
         <td>{{ $photo->caption }}</td>  <!-- Đảm bảo caption được gọi đúng -->
         <td>{{$photo->location->name ?? 'Chưa xác định' }}</td>  <!-- Sửa 'Locations' thành 'location' -->
         <td>
-            @if($photo->status == 0)  <!-- Sửa $location thành $photo -->
-                <span class="text-success">Visible</span>
-            @else
+            @if($photo->status == 2)  <!-- Sửa $location thành $photo -->
+                <span class="text-success">Main</span>
+            @elseif($photo->status == 0)
+                <span class="text-success">Extra</span>
+            @elseif($photo->status == 1)
                 <span class="text-danger">Hidden</span>
             @endif
         </td>

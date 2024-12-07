@@ -9,7 +9,13 @@ class Photo extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id_location', 'image'];
+    protected $fillable = [
+        'name',
+        'caption',
+        'url',
+        'status',
+        'id_location',
+    ];
     public function location()
     {
         return $this->belongsTo(Location::class,'id_location','id'); 

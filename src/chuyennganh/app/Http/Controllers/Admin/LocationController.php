@@ -110,6 +110,15 @@ class LocationController extends Controller
     return redirect()->route('locations.index')->with('success', 'Location updated successfully!');
 }
 
+// public function getLocations($provinceId)
+// {
+//     $locations = Location::where('province_id', $provinceId)->get(['id', 'name']);
+//     return response()->json($locations);
+// }
+// public function getLocationsByProvince($provinceId)
+//     {
+//         return Location::where('id_province', $provinceId)->get();
+//     }
 
     /**
      * Remove the specified resource from storage.

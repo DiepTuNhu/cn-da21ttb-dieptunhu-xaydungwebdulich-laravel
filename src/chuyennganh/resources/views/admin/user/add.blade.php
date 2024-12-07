@@ -37,7 +37,16 @@
                 <div class="form-group">
                   <label for="password">Mật khẩu</label>
                   <input type="password" name="password" class="form-control" id="password" placeholder="Nhập mật khẩu">
-                </div>                
+                </div>  
+                <div class="form-group">
+                  <label for="type">Phân quyền</label>
+                  <select name="id_role" class="form-control" id="role">
+                      <option value="">Chọn phân quyền</option>
+                      @foreach($roles as $role)
+                          <option value="{{ $role->id }}">{{ $role->role }}</option>
+                      @endforeach
+                  </select>
+                </div>              
                 <div class="form-group">
                   <label for="image" class="form-label">Hình ảnh</label>
                   <div class="custom-file">
@@ -47,7 +56,7 @@
                   <small class="form-text text-muted mt-2" id="file-name">
                       Chưa có tệp nào được chọn.
                   </small>
-              </div>
+                </div>
               
               <script>
                   document.getElementById('image').addEventListener('change', function (e) {
