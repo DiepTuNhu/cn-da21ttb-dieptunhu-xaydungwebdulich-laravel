@@ -62,27 +62,7 @@
                 <label for="url">URL</label>
                 <input type="text" name="url" class="form-control" id="url" placeholder="Nhập URL" value="{{ $photo->url }}">
               </div>
-
-
-
-              {{-- <div class="form-group">
-                <label for="province">Chọn Tỉnh</label>
-                <select id="province" name="province" class="form-control">
-                    <option value="">Chọn tỉnh</option>
-                    @foreach($provinces as $province)
-                        <option value="{{ $province->id }}">{{ $province->name }}</option>
-                    @endforeach
-                </select>
-            </div>
             
-            <div class="form-group">
-                <label for="location">Chọn Địa điểm</label>
-                <select id="location" name="location" class="form-control" disabled>
-                    <option value="">Chọn địa điểm</option>
-                </select>
-            </div> --}}
-            
-
               <!-- Hiển thị Địa điểm -->
               <div class="form-group">
                   <label for="location">Địa điểm</label>

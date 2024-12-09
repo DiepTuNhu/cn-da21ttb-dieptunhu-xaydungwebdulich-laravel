@@ -20,4 +20,10 @@ class Photo extends Model
     {
         return $this->belongsTo(Location::class,'id_location','id'); 
     }
+    
+    // Liên kết gián tiếp tới tỉnh thông qua bảng locations
+    public function province()
+    {
+        return $this->hasOneThrough(Province::class, Location::class, 'id', 'id', 'id_location', 'id_province');
+    }
 }

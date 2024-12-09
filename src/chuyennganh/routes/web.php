@@ -86,16 +86,6 @@ Route::get('/locations/{id}/edit',[LocationController::class,'edit'])->name('loc
 Route::post('/locations/{id}',[LocationController::class,'update'])->name('locations.update');
 Route::get('/locations/{id}',[LocationController::class,'destroy'])->name('locations.destroy');
 
-// Route::get('/get-locations/{provinceId}', [LocationController::class, 'getLocations']);
-// Route::get('/locations/{Id}', function ($provinceId) {
-//   // Trả về danh sách địa điểm theo tỉnh dưới dạng JSON
-//   return Location::where('id_province', $provinceId)->get();
-// });
-// Route::get('/locations/{Id}', function ($provinceId) {
-//   return \App\Models\Location::where('id_province', $provinceId)->get(); // Lấy địa điểm thuộc tỉnh
-// });
-// Route::get('/locations/{provinceId}', [LocationController::class, 'getLocationsByProvince']);
-
 //PHOTO
 Route::get('/photos',[PhotoController::class,'index'])->name('photos.index');
 Route::get('/photos/create',[PhotoController::class,'create'])->name('photos.create');

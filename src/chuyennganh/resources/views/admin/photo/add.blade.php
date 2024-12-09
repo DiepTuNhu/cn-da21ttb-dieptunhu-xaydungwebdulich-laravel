@@ -1,9 +1,9 @@
 @extends('admin.index')
 @section('title_name')
-    Thêm địa điểm 
+    Thêm hình ảnh 
 @endsection
 @section('path')
-    Thêm địa điểm
+    Thêm hình ảnh
 @endsection
 
 @section('content')
@@ -21,15 +21,32 @@
             <!-- form start -->
             <form id="quickForm" action="{{ route('photos.store') }}" method="post" enctype="multipart/form-data">
               @csrf
-              <div class="card-body">
+              <input type="hidden" name="id_location" value="{{ $locationId }}">
+
+                  <!-- Hiển thị tên địa điểm -->
+                  
+                  <div class="card-body">
+                <div class="form-group">
+                  <label for="location_name">Tên địa điểm</label>
+                  <input type="text" class="form-control" id="location_name" value="{{ $locationName }}" readonly>
+                </div>
                 <!-- Khung 1: Chọn 1 ảnh, status = 2 -->
+                {{-- <div class="form-group">
+                  <label for="image1" class="form-label">Chọn ảnh (Ảnh chính)</label>
+                  <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="image1" name="image1" accept="image/*" onchange="previewImage(1)">
+                      <label class="custom-file-label" for="image1">Chọn tệp...</label>
+                  </div>
+                </div> --}}
                 <div class="form-group">
                   <label for="image1" class="form-label">Chọn ảnh (Ảnh chính)</label>
                   <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="image1" name="image1" accept="image/*" onchange="previewImage(1)" required>
-                      <label class="custom-file-label" for="image1">Chọn tệp...</label>
+                    <input type="file" class="custom-file-input" id="image1" name="image1" accept="image/*" onchange="previewImage(1)" 
+                      @if($existingMainPhoto) disabled @endif> <!-- Vô hiệu hóa nếu đã có ảnh chính -->
+                    <label class="custom-file-label" for="image1">Chọn tệp...</label>
                   </div>
                 </div>
+                
 
                 <!-- Khung 2: Chọn tối đa 4 ảnh, status = 0 -->
                 <div class="form-group">
@@ -39,6 +56,7 @@
                       <label class="custom-file-label" for="image2">Chọn tệp...</label>
                   </div>
                 </div>
+                
 
                 <!-- Hiển thị ảnh xem trước -->
                 <div class="form-group">
@@ -59,32 +77,7 @@
                     <input type="text" name="url" class="form-control" id="url" placeholder="Nhập địa chỉ">
                 </div>     
               
-
-{{-- <!-- Dropdown Tỉnh -->
-<div class="form-group">
-  <label for="province">Chọn Tỉnh</label>
-  <select id="province" name="province" class="form-control" onchange="fetchLocations()">
-      <option value="">Chọn tỉnh</option>
-      @foreach($provinces as $province)
-          <option value="{{ $province->id }}">{{ $province->name }}</option>
-      @endforeach
-  </select>
-</div>
-
-<!-- Dropdown Địa Điểm -->
-<div class="form-group">
-  <label for="location">Chọn Địa Điểm</label>
-  <select id="location" name="id_location" class="form-control">
-      <option value="">Chọn địa điểm</option>
-      @foreach($locations as $location)
-          <option value="{{ $location->id }}">{{ $location->name }}</option>
-      @endforeach
-  </select>
-</div> --}}
-
-
-
-                <div class="form-group">
+                {{-- <div class="form-group">
                   <label for="location">Địa điểm</label>
                   <select name="id_location" class="form-control" id="location">
                       <option value="">Chọn tỉnh/thành phố</option>
@@ -92,7 +85,7 @@
                           <option value="{{ $location->id }}">{{ $location->name }}</option>
                       @endforeach
                   </select>
-                </div>                 
+                </div>                  --}}
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
@@ -106,17 +99,7 @@
         <!--/.col (left) -->
         <!-- right column -->
         <div class="col-md-6">
-
-          {{-- <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
-          <script>
-              CKEDITOR.replace('description', {
-                  // Các tùy chọn bạn muốn thêm, ví dụ:
-                  filebrowserUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token() ]) }}",
-                  filebrowserUploadMethod: 'form'
-              });
-          </script> --}}
-          
-
+       
         </div>
         <!--/.col (right) -->
       </div>
@@ -125,4 +108,28 @@
   </section> 
 @endsection
 
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      // Kiểm tra ảnh chính
+      var image1Input = document.getElementById('image1');
+      
+      @if($existingMainPhoto)
+          // Vô hiệu hóa ô nhập ảnh chính nếu đã có ảnh chính
+          image1Input.disabled = true;
+          image1Input.closest('.custom-file').querySelector('label').innerText = 'Ảnh chính đã được chọn';
+      @endif
+
+      // Kiểm tra ảnh phụ (tối đa 4 ảnh phụ)
+      var image2Input = document.getElementById('image2');
+      
+      @if(isset($existingPhotosCount) && $existingPhotosCount >= 4)
+          // Vô hiệu hóa ô nhập ảnh phụ nếu đã đủ 4 ảnh
+          image2Input.disabled = true;
+          image2Input.closest('.custom-file').querySelector('label').innerText = 'Đã đủ 4 ảnh phụ';
+      @else
+          // Nếu chưa đủ 4 ảnh phụ thì cho phép chọn ảnh
+          image2Input.disabled = false;
+      @endif
+  });
+</script>
 

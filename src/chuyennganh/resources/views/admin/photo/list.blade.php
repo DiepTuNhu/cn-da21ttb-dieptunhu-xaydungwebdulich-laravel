@@ -1,9 +1,9 @@
 @extends('admin.index')
 @section('title_name')
-    Địa điểm
+  Hình ảnh
 @endsection
 @section('path')
-  Địa điểm
+  Hình ảnh
 @endsection
 @section('content')
 <section class="content">
@@ -24,38 +24,36 @@
                     <th width="105px">Thao tác</th>
                 </tr>
                 </thead>
-                <a href = "{{route('photos.create')}}" class="btn btn-primary mb-3">Thêm mới</a><br>
+                {{-- <a href = "{{route('photos.create')}}" class="btn btn-primary mb-3">Thêm mới</a><br> --}}
                 <tbody>
                   @foreach ($photos as $photo)
-    <tr>   
-        <td>{{$photo->id}}</td>
-        <td>
-          @if($photo->name) <!-- Kiểm tra xem có tên ảnh trong cột name không -->
-              <img src="{{ asset('storage/location_image/' . $photo->name) }}" alt="Ảnh của {{$photo->name}}" width="100">
-          @else
-              <span>Chưa có ảnh</span>
-          @endif
-        </td>
-        
-        <td>{{$photo->url}}</td>  <!-- Chắc chắn rằng bạn đang lấy đúng trường url -->
-        <td>{{ $photo->caption }}</td>  <!-- Đảm bảo caption được gọi đúng -->
-        <td>{{$photo->location->name ?? 'Chưa xác định' }}</td>  <!-- Sửa 'Locations' thành 'location' -->
-        <td>
-            @if($photo->status == 2)  <!-- Sửa $location thành $photo -->
-                <span class="text-success">Main</span>
-            @elseif($photo->status == 0)
-                <span class="text-success">Extra</span>
-            @elseif($photo->status == 1)
-                <span class="text-danger">Hidden</span>
-            @endif
-        </td>
-        <td>
-            <a class="btn btn-primary" href="{{ route('photos.edit', ['id' => $photo->id]) }}">Sửa</a>
-            <a onclick="return confirm('Bạn có thật sự muốn xóa không?')" class="btn btn-danger" href="{{ route('photos.destroy', ['id' => $photo->id]) }}">Xóa</a>
-        </td>
-    </tr>
-  @endforeach
-
+                  <tr>   
+                      <td>{{$photo->id}}</td>
+                      <td>
+                        @if($photo->name) <!-- Kiểm tra xem có tên ảnh trong cột name không -->
+                            <img src="{{ asset('storage/location_image/' . $photo->name) }}" alt="Ảnh của {{$photo->name}}" width="100">
+                        @else
+                            <span>Chưa có ảnh</span>
+                        @endif
+                      </td>       
+                      <td>{{$photo->url}}</td>  <!-- Chắc chắn rằng bạn đang lấy đúng trường url -->
+                      <td>{{ $photo->caption }}</td>  <!-- Đảm bảo caption được gọi đúng -->
+                      <td>{{$photo->location->name ?? 'Chưa xác định' }}</td>  <!-- Sửa 'Locations' thành 'location' -->
+                      <td>
+                          @if($photo->status == 2)  <!-- Sửa $location thành $photo -->
+                              <span class="text-success">Main</span>
+                          @elseif($photo->status == 0)
+                              <span class="text-success">Extra</span>
+                          @elseif($photo->status == 1)
+                              <span class="text-danger">Hidden</span>
+                          @endif
+                      </td>
+                      <td>
+                          <a class="btn btn-primary" href="{{ route('photos.edit', ['id' => $photo->id]) }}">Sửa</a>
+                          <a onclick="return confirm('Bạn có thật sự muốn xóa không?')" class="btn btn-danger" href="{{ route('photos.destroy', ['id' => $photo->id]) }}">Xóa</a>
+                      </td>
+                    </tr>
+                  @endforeach
                 </tbody>
                 <tfoot>
                 <tr>

@@ -24,6 +24,9 @@
   <link rel="stylesheet" href="admin/plugins/simplemde/simplemde.min.css">
 {{-- CKEditor --}}
   <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/44.0.0/ckeditor5.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -287,34 +290,18 @@
       }
   }
 
-//   function fetchLocations() {
-//     const provinceId = document.getElementById('province').value; // Lấy ID tỉnh đã chọn
-
-//     if (!provinceId) {
-//         // Xóa các tùy chọn nếu không có tỉnh được chọn
-//         document.getElementById('location').innerHTML = '<option value="">Chọn địa điểm</option>';
-//         return;
-//     }
-
-//     // Gửi yêu cầu AJAX để lấy danh sách địa điểm
-//     fetch(`/locations/${provinceId}`)
-//         .then(response => response.json())
-//         .then(data => {
-//             const locationSelect = document.getElementById('location');
-//             locationSelect.innerHTML = '<option value="">Chọn địa điểm</option>'; // Reset
-
-//             // Cập nhật các địa điểm mới
-//             data.forEach(location => {
-//                 const option = document.createElement('option');
-//                 option.value = location.id;
-//                 option.textContent = location.name;
-//                 locationSelect.appendChild(option);
-//             });
-//         })
-//         .catch(error => console.error('Error fetching locations:', error));
-// }
-
-
 </script>
+
+@if(session('error'))
+    <script>
+        Swal.fire({
+            title: 'Lỗi',
+            text: '{{ session('error') }}',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    </script>
+@endif
+
 </body>
 </html>

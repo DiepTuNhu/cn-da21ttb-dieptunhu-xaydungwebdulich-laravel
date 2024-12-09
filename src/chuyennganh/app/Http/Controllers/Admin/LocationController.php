@@ -119,6 +119,14 @@ class LocationController extends Controller
 //     {
 //         return Location::where('id_province', $provinceId)->get();
 //     }
+public function getLocations($provinceId)
+    {
+        // Lấy tất cả địa điểm thuộc tỉnh
+        $locations = Location::where('id_province', $provinceId)->get(['id', 'name']);  // Chỉ lấy id và name
+        
+        // Trả về dữ liệu dưới dạng JSON
+        return response()->json($locations);
+    }
 
     /**
      * Remove the specified resource from storage.
