@@ -38,6 +38,7 @@
                       <label class="custom-file-label" for="image1">Chọn tệp...</label>
                   </div>
                 </div> --}}
+
                 <div class="form-group">
                   <label for="image1" class="form-label">Chọn ảnh (Ảnh chính)</label>
                   <div class="custom-file">
@@ -45,17 +46,31 @@
                       @if($existingMainPhoto) disabled @endif> <!-- Vô hiệu hóa nếu đã có ảnh chính -->
                     <label class="custom-file-label" for="image1">Chọn tệp...</label>
                   </div>
-                </div>
-                
+                </div>             
 
                 <!-- Khung 2: Chọn tối đa 4 ảnh, status = 0 -->
                 <div class="form-group">
                   <label for="image2" class="form-label">Chọn tối đa 4 ảnh (Ảnh phụ)</label>
                   <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="image2" name="images[]" accept="image/*" multiple onchange="previewImages(2)">
-                      <label class="custom-file-label" for="image2">Chọn tệp...</label>
+                    <input type="file" class="custom-file-input" id="image2" name="images[]" accept="image/*" multiple 
+                      onchange="previewImages(2)" 
+                      @if(isset($existingPhotosCount) && $existingPhotosCount >= 4) disabled @endif 
+                      data-max-files="4">
+                    <label class="custom-file-label" for="image2">
+                      @if(isset($existingPhotosCount) && $existingPhotosCount >= 4)
+                        Đã đủ 4 ảnh phụ
+                      @else
+                        Chọn tệp...
+                      @endif
+                    </label>
                   </div>
+                
+                  <!-- Hiển thị lỗi liên quan đến việc upload ảnh -->
+                  @if ($errors->has('images'))
+                    <span class="text-danger">{{ $errors->first('images') }}</span>
+                  @endif
                 </div>
+                
                 
 
                 <!-- Hiển thị ảnh xem trước -->
