@@ -1,9 +1,9 @@
 @extends('admin.index')
 @section('title_name')
-    Thêm địa điểm 
+    Thêm tiện ích 
 @endsection
 @section('path')
-    Thêm địa điểm
+    Thêm tiện ích
 @endsection
 
 @section('content')

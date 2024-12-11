@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\TypeOfUtilityController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\PhotoController;
 use App\Http\Controllers\Admin\UtilityController;
+use App\Http\Controllers\Admin\SlideController;
 
 use App\Http\Controllers\CKEditorController ;
 use Illuminate\Support\Facades\Route;
@@ -104,5 +105,15 @@ Route::post('/utilities',[UtilityController::class,'store'])->name('utilities.st
 Route::get('/utilities/{id}/edit',[UtilityController::class,'edit'])->name('utilities.edit');
 Route::post('/utilities/{id}',[UtilityController::class,'update'])->name('utilities.update');
 Route::get('/utilities/{id}',[UtilityController::class,'destroy'])->name('utilities.destroy');
+
+//SLIDE
+Route::get('/slides',[SlideController::class,'index'])->name('slides.index');
+Route::get('/slides/create',[SlideController::class,'create'])->name('slides.create');
+Route::post('/slides',[SlideController::class,'store'])->name('slides.store');
+Route::get('/slides/{id}/edit',[SlideController::class,'edit'])->name('slides.edit');
+Route::post('/slides/{id}',[SlideController::class,'update'])->name('slides.update');
+Route::get('/slides/{id}',[SlideController::class,'destroy'])->name('slides.destroy');
+
+
 //LOGOUT
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');

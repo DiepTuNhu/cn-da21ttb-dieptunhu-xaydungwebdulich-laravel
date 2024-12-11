@@ -1,9 +1,9 @@
 @extends('admin.index')
 @section('title_name')
-    Sửa người dùng
+    Sửa tiện ích
 @endsection
 @section('path')
-    Sửa người dùng
+    Sửa tiện ích
 @endsection
 
 @section('content')
