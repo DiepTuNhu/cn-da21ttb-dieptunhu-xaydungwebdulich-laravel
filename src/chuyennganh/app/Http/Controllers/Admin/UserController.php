@@ -102,45 +102,49 @@ class UserController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
-        // Tìm người dùng theo ID
-        $user = User::find($id);
+{
+    // Tìm người dùng theo ID
+    $user = User::find($id);
 
-        // Kiểm tra nếu người dùng tồn tại
-        if (!$user) {
-            return redirect()->route('users.index')->with('error', 'User not found');
-        }
-
-        // Kiểm tra và xóa ảnh cũ nếu có
-        if ($user->image && $request->hasFile('image')) {
-            // Xóa ảnh cũ nếu có và có ảnh mới được tải lên
-            Storage::delete('public/images/' . $user->image);
-        }
-
-        // Cập nhật thông tin người dùng
-        $user->username = $request->userName;
-        $user->email = $request->email;
-        $user->address = $request->address;
-        $user->id_role = $request->id_role;
-        $user->status = $request->status;
-
-        if ($request->has('password') && !empty($request->password)) {
-            // Nếu có mật khẩu mới, mã hóa và cập nhật
-            $user->password = bcrypt($request->password);
-        }
-
-        // Xử lý tải lên hình ảnh mới
-        if ($request->hasFile('image')) {
-            $imageName = time() . '.' . $request->image->extension();  
-            $request->image->storeAs('public/images', $imageName);
-            $user->image = $imageName;
-        }
-        // Lưu thông tin người dùng
-        $user->save(); 
-
-        // Quay lại trang danh sách người dùng
-        return redirect()->route('users.index');
+    // Kiểm tra nếu người dùng tồn tại
+    if (!$user) {
+        return redirect()->route('users.index')->with('error', 'User not found');
     }
+
+    // Kiểm tra và xóa ảnh cũ nếu có
+    if ($user->image && $request->hasFile('image1') && $user->image !== 'default.jpg') {
+        // Xóa ảnh cũ nếu có và có ảnh mới được tải lên
+        Storage::delete('public/images/' . $user->image);
+    }
+
+    // Cập nhật thông tin người dùng
+    $user->username = $request->userName;
+    $user->email = $request->email;
+    $user->address = $request->address;
+    $user->id_role = $request->id_role;
+    $user->status = $request->status;
+
+    // Nếu có mật khẩu mới, mã hóa và cập nhật
+    if ($request->has('password') && !empty($request->password)) {
+        $user->password = bcrypt($request->password);
+    }
+
+    // Xử lý tải lên hình ảnh mới nếu có
+    if ($request->hasFile('image1')) {
+        $imageName = time() . '.' . $request->file('image1')->extension();  
+        // Lưu ảnh vào thư mục public/images
+        $request->file('image1')->storeAs('public/images', $imageName);
+        // Cập nhật tên ảnh trong cơ sở dữ liệu
+        $user->image = $imageName;
+    }
+
+    // Lưu thông tin người dùng
+    $user->save(); 
+
+    // Quay lại trang danh sách người dùng với thông báo thành công
+    return redirect()->route('users.index')->with('success', 'User updated successfully');
+}
+
 
     /**
      * Remove the specified resource from storage.
@@ -151,7 +155,7 @@ class UserController extends Controller
         $user = User::find($id);
 
         // Kiểm tra nếu người dùng có ảnh
-        if ($user->image) {
+        if ($user->image && $user->image !== 'default.jpg') {
             // Xóa ảnh khỏi thư mục lưu trữ
             Storage::delete('public/images/' . $user->image);
         }

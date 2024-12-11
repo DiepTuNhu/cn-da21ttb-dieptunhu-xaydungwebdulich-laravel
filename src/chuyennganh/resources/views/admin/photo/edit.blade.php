@@ -28,12 +28,12 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="image1" class="form-label">Chọn ảnh (Ảnh chính)</label>
+                  <label for="image1" class="form-label">Chọn ảnh</label>
                   <div class="custom-file">
                       <input type="file" class="custom-file-input" id="image1" name="image1" accept="image/*" onchange="previewImage(1)">
                       <label class="custom-file-label" for="image1">Chọn tệp...</label>
                   </div>
-              </div>
+                </div>
               
               <!-- Hiển thị ảnh hiện tại -->
               <div class="form-group">

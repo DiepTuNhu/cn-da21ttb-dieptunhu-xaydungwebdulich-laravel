@@ -4,6 +4,7 @@ use App\Http\Controllers\Page\PageController;
 use App\Http\Controllers\User\LoginController;
 use App\Http\Controllers\User\SignupController;
 use App\Http\Controllers\User\AuthController;
+
 use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
@@ -11,6 +12,8 @@ use App\Http\Controllers\Admin\ProvinceController;
 use App\Http\Controllers\Admin\TypeOfUtilityController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\PhotoController;
+use App\Http\Controllers\Admin\UtilityController;
+
 use App\Http\Controllers\CKEditorController ;
 use Illuminate\Support\Facades\Route;
 use App\Models\Location;
@@ -93,3 +96,13 @@ Route::post('/photos',[PhotoController::class,'store'])->name('photos.store');
 Route::get('/photos/{id}/edit',[PhotoController::class,'edit'])->name('photos.edit');
 Route::post('/photos/{id}',[PhotoController::class,'update'])->name('photos.update');
 Route::get('/photos/{id}',[PhotoController::class,'destroy'])->name('photos.destroy');
+
+//UTILITY
+Route::get('/utilities',[UtilityController::class,'index'])->name('utilities.index');
+Route::get('/utilities/create',[UtilityController::class,'create'])->name('utilities.create');
+Route::post('/utilities',[UtilityController::class,'store'])->name('utilities.store');
+Route::get('/utilities/{id}/edit',[UtilityController::class,'edit'])->name('utilities.edit');
+Route::post('/utilities/{id}',[UtilityController::class,'update'])->name('utilities.update');
+Route::get('/utilities/{id}',[UtilityController::class,'destroy'])->name('utilities.destroy');
+//LOGOUT
+Route::get('/logout',[LoginController::class,'logout'])->name('logout');

@@ -15,7 +15,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>ID</th>
                     <th>Tên địa điểm</th>
                     <th>Địa chỉ</th>
                     <th>Mô tả</th>

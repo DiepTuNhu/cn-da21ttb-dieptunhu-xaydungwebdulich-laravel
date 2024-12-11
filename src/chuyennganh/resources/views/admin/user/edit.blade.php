@@ -38,10 +38,10 @@
                   <label for="address">Địa chỉ</label>
                   <input type="text" name="address" class="form-control" value="{{$user->address}}"" id="address">
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                   <label for="password">Mật khẩu</label>
                   <input type="password" name="password" class="form-control" id="password">
-                </div> 
+                </div>  --}}
                 <div class="form-group">
                   <label for="role">Loại hình</label>
                   <select name="id_role" class="form-control" id="role">
@@ -59,7 +59,7 @@
                   </select>
                 </div>
                 
-                <div class="form-group">
+                {{-- <div class="form-group">
                   <label for="image" class="form-label">Hình ảnh</label>
                   <div class="custom-file">
                       <input type="file" class="custom-file-input" id="image" name="image" accept="image/*">
@@ -71,7 +71,34 @@
                       </div>
                   @endif
                   <small class="form-text text-muted mt-2" id="file-name">Chưa có tệp nào được chọn.</small>
+                </div> --}}
+                
+                <div class="form-group">
+                  <label for="image1" class="form-label">Chọn ảnh</label>
+                  <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="image1" name="image1" accept="image/*" onchange="previewImage(1)">
+                      <label class="custom-file-label" for="image1">Chọn tệp...</label>
+                  </div>
                 </div>
+              
+              <!-- Hiển thị ảnh hiện tại -->
+              <div class="form-group">
+                  <label for="currentImage">Ảnh hiện tại:</label>
+                  @if($user->image)
+                      <div id="currentImage" style="margin-top: 10px;">
+                          <img src="{{ asset('storage/images/' . $user->image) }}" alt="Ảnh hiện tại" width="150">
+                      </div>
+                  @else
+                      <p>Không có ảnh hiện tại.</p>
+                  @endif
+              </div>
+              
+              <!-- Hiển thị ảnh xem trước -->
+              <div class="form-group">
+                  <label for="imagePreview1">Ảnh xem trước:</label>
+                  <div id="imagePreview1" style="margin-top: 10px;"></div>
+              </div>
+
               </div>
               <!-- /.card-body -->
               <div class="card-footer">

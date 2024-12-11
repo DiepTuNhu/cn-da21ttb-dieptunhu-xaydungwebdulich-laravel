@@ -15,7 +15,7 @@
           <!-- jquery validation -->
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title"></h3>
+              @include('admin.alert')
             </div>
             <!-- /.card-header -->
             <!-- form start -->
@@ -70,9 +70,7 @@
                     <span class="text-danger">{{ $errors->first('images') }}</span>
                   @endif
                 </div>
-                
-                
-
+                        
                 <!-- Hiển thị ảnh xem trước -->
                 <div class="form-group">
                   <label for="imagePreview1">Ảnh xem trước (Ảnh chính):</label>

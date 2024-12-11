@@ -15,11 +15,11 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>ID</th>
                     <th>Tên đăng nhập</th>
                     <th>Email</th>
                     <th>Địa chỉ</th>
-                    <th>Mật khẩu</th>
+                    {{-- <th>Mật khẩu</th> --}}
                     <th>Hình ảnh</th>
                     <th>Phân quyền</th>
                     <th>Trạng thái</th>
@@ -34,14 +34,14 @@
                         <td>{{$user->username}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->address}}</td>
-                        <td>{{$user->password}}</td>
-                        <td>    
-                          @if($user->image)
-                            <img src="{{ asset('storage/images/' . $user->image) }}" alt="User Image" width="100">
-                          @else
-                              <span>Chưa có ảnh</span>
-                          @endif
-                        </td>
+                        {{-- <td>{{$user->password}}</td> --}}
+                          <td>    
+                            @if($user->image)
+                              <img src="{{ asset('storage/images/' . $user->image) }}" alt="User Image" width="100">
+                            @else
+                                <span>Chưa có ảnh</span>
+                            @endif
+                          </td>
                         <td>{{ $user->role->role }}</td>
                         <td>
                           @if($user->status == 0)
@@ -63,7 +63,7 @@
                     <th>Tên đăng nhập</th>
                     <th>Email</th>
                     <th>Địa chỉ</th>
-                    <th>Mật khẩu</th>
+                    {{-- <th>Mật khẩu</th> --}}
                     <th>Hình ảnh</th>
                     <th>Phân quyền</th>
                     <th>Trạng thái</th>

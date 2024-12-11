@@ -58,7 +58,7 @@ class LocationController extends Controller
         $location->save();
 
         return redirect()->route('locations.index')->with('success', 'Địa điểm đã được thêm thành công.');
-        dd($request->all());
+        // dd($request->all());
     }
     
     /**
@@ -109,24 +109,6 @@ class LocationController extends Controller
     // Chuyển hướng về trang danh sách locations với thông báo thành công
     return redirect()->route('locations.index')->with('success', 'Location updated successfully!');
 }
-
-// public function getLocations($provinceId)
-// {
-//     $locations = Location::where('province_id', $provinceId)->get(['id', 'name']);
-//     return response()->json($locations);
-// }
-// public function getLocationsByProvince($provinceId)
-//     {
-//         return Location::where('id_province', $provinceId)->get();
-//     }
-public function getLocations($provinceId)
-    {
-        // Lấy tất cả địa điểm thuộc tỉnh
-        $locations = Location::where('id_province', $provinceId)->get(['id', 'name']);  // Chỉ lấy id và name
-        
-        // Trả về dữ liệu dưới dạng JSON
-        return response()->json($locations);
-    }
 
     /**
      * Remove the specified resource from storage.

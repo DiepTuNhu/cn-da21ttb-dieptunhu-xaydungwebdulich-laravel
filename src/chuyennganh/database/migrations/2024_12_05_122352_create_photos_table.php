@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('caption');
-            $table->text('url');       
+            $table->text('url')->nullable();     
             $table->unsignedInteger('status');
             $table->unsignedInteger('id_location');
             $table->foreign('id_location')->references('id')->on('locations')->onDelete('cascade')->onUpdate('cascade');

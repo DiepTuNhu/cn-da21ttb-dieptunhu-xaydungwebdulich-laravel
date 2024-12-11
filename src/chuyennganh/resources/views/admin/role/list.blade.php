@@ -17,7 +17,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>ID</th>
                     <th>Phân quyền</th>
 
                     <th width="105px" class="text-center">Thao tác</th>

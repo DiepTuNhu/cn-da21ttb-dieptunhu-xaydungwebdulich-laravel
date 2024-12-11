@@ -140,32 +140,81 @@ return redirect()->route('photos.index')->with('success', 'Ảnh đã được l
     /**
      * Update the specified resource in storage.
      */
+    // public function update(Request $request, string $id)
+    // {
+
+        
+    //     $photo = Photo::find($id);  // Lấy thông tin ảnh cần chỉnh sửa
+    //     // Cập nhật thông tin ảnh chính nếu người dùng chọn ảnh mới
+    //     if ($request->hasFile('image1')) {
+    //         // Xóa ảnh cũ trước khi lưu ảnh mới
+    //         Storage::delete('public/location_image/' . $photo->name);
+
+    //         // Lưu ảnh mới
+    //         $image1 = $request->file('image1');
+    //         $image1Name = time() . '-' . $image1->getClientOriginalName();
+    //         $image1->storeAs('public/location_image', $image1Name);
+
+    //         // Cập nhật thông tin ảnh chính
+    //         $photo->name = $image1Name;
+    //     }
+
+    //     // Cập nhật các trường khác
+    //     $photo->caption = $request->input('caption');
+    //     $photo->url = $request->input('url');
+    //     $photo->status = $request->input('status');
+    //     $photo->id_location = $request->input('id_location');
+    //     $photo->save();
+
+    //     return redirect()->route('photos.index')->with('success', 'Ảnh đã được cập nhật thành công');
+    // }
+
     public function update(Request $request, string $id)
     {
         $photo = Photo::find($id);  // Lấy thông tin ảnh cần chỉnh sửa
-        // Cập nhật thông tin ảnh chính nếu người dùng chọn ảnh mới
+        
+        // Kiểm tra nếu có ảnh mới được chọn và lưu ảnh mới
         if ($request->hasFile('image1')) {
             // Xóa ảnh cũ trước khi lưu ảnh mới
             Storage::delete('public/location_image/' . $photo->name);
-
+    
             // Lưu ảnh mới
             $image1 = $request->file('image1');
             $image1Name = time() . '-' . $image1->getClientOriginalName();
             $image1->storeAs('public/location_image', $image1Name);
-
+    
             // Cập nhật thông tin ảnh chính
             $photo->name = $image1Name;
         }
-
+    
         // Cập nhật các trường khác
         $photo->caption = $request->input('caption');
         $photo->url = $request->input('url');
-        $photo->status = $request->input('status');
         $photo->id_location = $request->input('id_location');
+    
+        // Nếu có thay đổi trạng thái (status), cập nhật trạng thái
+        if ($request->has('status')) {
+            // Trường hợp ảnh chính (status = 2), kiểm tra nếu cần cập nhật ảnh chính mới
+            if ($request->input('status') == 2) {
+                // Chuyển ảnh chính cũ thành ảnh phụ nếu có ảnh chính
+                $existingMainPhoto = Photo::where('id_location', $photo->id_location)
+                                            ->where('status', 2)
+                                            ->first();
+                if ($existingMainPhoto && $existingMainPhoto->id != $photo->id) {
+                    $existingMainPhoto->update(['status' => 0]);
+                }
+            }
+    
+            $photo->status = $request->input('status');
+        }
+    
+        // Lưu thông tin đã thay đổi
         $photo->save();
-
+    
+        // Chuyển hướng sau khi cập nhật
         return redirect()->route('photos.index')->with('success', 'Ảnh đã được cập nhật thành công');
     }
+    
 
     /**
      * Remove the specified resource from storage.

@@ -15,8 +15,8 @@
           <!-- jquery validation -->
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title"></h3>
-            </div>
+              @include('admin.alert')
+           </div>
             <!-- /.card-header -->
             <!-- form start -->
             <form id="quickForm" action="{{ route('users.store') }}" method = "post" enctype="multipart/form-data">
@@ -57,7 +57,7 @@
                       Chưa có tệp nào được chọn.
                   </small>
                 </div>
-              
+              {{-- Hiển thị tên tệp được chọn --}}
               <script>
                   document.getElementById('image').addEventListener('change', function (e) {
                       const fileName = e.target.files[0]?.name || 'Chưa có tệp nào được chọn.';

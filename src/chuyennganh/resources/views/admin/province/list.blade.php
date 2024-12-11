@@ -1,10 +1,10 @@
 @extends('admin.index')
 @section('title_name')
-    Các tỉnh/thành phố
+    Tỉnh/thành phố
 @endsection
 
 @section('path')
-  Các tỉnh/thành phố
+    Tỉnh/thành phố
 @endsection
 
 @section('content')
@@ -17,7 +17,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>ID</th>
                     <th>Tên tỉnh/thành phố</th>
                     <th>Trạng thái</th>
                     <th width="105px" class="text-center">Thao tác</th>

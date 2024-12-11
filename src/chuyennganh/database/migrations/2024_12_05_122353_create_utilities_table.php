@@ -17,9 +17,10 @@ return new class extends Migration
             $table->decimal('price', 10, 2);
             $table->string('address');
             $table->string('phonenumber');
-            $table->time('timeservice');
+            $table->time('openingtime')->nullable();
+            $table->time('closingtime')->nullable();
             $table->unsignedInteger('rank');
-            $table->float('distance');
+            $table->float('distance')->nullable();
             $table->text('description');
             $table->string('image');
             $table->unsignedInteger('status');
