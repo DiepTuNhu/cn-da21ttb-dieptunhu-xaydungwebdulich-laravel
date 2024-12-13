@@ -43,7 +43,7 @@
       <div class="d-flex">
         <a href="{{route('register')}}" class="btn">Đăng ký</a>
         <a href="{{route('login')}}" class="btn">Đăng nhập</a>
-        {{-- <a href="{{route('google.login')}}" class="w3-bar-item w3-button w3-mobile w3-right">Google</a> --}}
+        {{-- <a href="{{route('google.login')}}" class="btn">Google</a> --}}
       </div>
       @endif
     </div>

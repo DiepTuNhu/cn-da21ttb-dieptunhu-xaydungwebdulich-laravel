@@ -48,7 +48,7 @@ class AuthController extends Controller
                 return redirect()->route('page.index');
             }
         } catch (Exception $e) {
-            return redirect('login')->with('error', 'Đăng nhập Google thất bại, vui lòng thử lại.');
+            return redirect()->route('page.index')->with('error', 'Đăng nhập Google thất bại, vui lòng thử lại.');
         }
     }
  

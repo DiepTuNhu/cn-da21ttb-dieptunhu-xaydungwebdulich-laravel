@@ -11,12 +11,23 @@ use App\Models\Province;
 
 class PhotoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+    // Lấy id từ query string
+    $locationId = $request->input('id');
+
+    // Kiểm tra và lọc dữ liệu
+    if ($locationId) {
+        // Lấy hình ảnh liên kết với địa điểm
+        $photos = Photo::where('id_location', $locationId)->get();
+    } else {
+        // Nếu không có id, lấy tất cả hình ảnh
         $photos = Photo::all();
-       
-        return view('admin.photo.list',compact('photos'));
     }
+
+    // Trả dữ liệu ra view
+    return view('admin.photo.list', compact('photos'));
+}
 
     public function create(Request $request)
 {
@@ -51,15 +62,12 @@ class PhotoController extends Controller
     // Validate dữ liệu
     $this->validate($request, [
         'caption' => 'required|max:255',
-        'url' => 'required|url',
         'images' => 'nullable|array|max:4',
-        'images.*' => 'mimes:jpg,jpeg,png,gif|max:2048',
-        'image1' => 'mimes:jpg,jpeg,png,gif|max:2048',
+        'images.*' => 'mimes:webp,jpg,jpeg,png,gif|max:2048',
+        'image1' => 'mimes:webp,jpg,jpeg,png,gif|max:2048',
         'id_location' => 'required|exists:locations,id', // Kiểm tra xem id_location có tồn tại trong bảng locations không
     ], [
         'caption.required' => 'Bạn chưa nhập chú thích',
-        'url.required' => 'Bạn chưa nhập URL',
-        'url.url' => 'URL không hợp lệ',
         'images.max' => 'Bạn chỉ có thể tải lên tối đa 4 ảnh phụ',
         'images.*.mimes' => 'Chỉ chấp nhận định dạng jpg, jpeg, png, gif',
         'image1.mimes' => 'Ảnh chính phải có định dạng jpg, jpeg, png, gif',

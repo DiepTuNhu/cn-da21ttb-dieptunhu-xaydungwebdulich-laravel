@@ -38,7 +38,7 @@
               <!-- Hiển thị ảnh hiện tại -->
               <div class="form-group">
                   <label for="currentImage">Ảnh hiện tại:</label>
-                  @if($photo->url)
+                  @if($photo->id)
                       <div id="currentImage" style="margin-top: 10px;">
                           <img src="{{ asset('storage/location_image/' . $photo->name) }}" alt="Ảnh hiện tại" width="150">
                       </div>

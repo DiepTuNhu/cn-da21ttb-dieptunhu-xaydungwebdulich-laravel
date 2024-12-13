@@ -23,19 +23,6 @@
               @csrf
               <div class="card-body">
                 <div class="form-group">
-                    <label for="">Tên địa điểm</label>
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Nhập tên địa điểm">
-                </div>
-                <div class="form-group">
-                    <label for="address">Địa chỉ</label>
-                    <input type="text" name="address" class="form-control" id="address" placeholder="Nhập địa chỉ">
-                </div>
-                <div class="form-group">
-                    <label for="description">Mô tả</label>
-                    <textarea name="description" id="description" class="form-control">{{ old('description') }}</textarea>
-                </div>
-        
-                <div class="form-group">
                   <label for="type">Loại hình</label>
                   <select name="id_type" class="form-control" id="type">
                       <option value="">Chọn loại hình</option>
@@ -53,7 +40,19 @@
                           <option value="{{ $province->id }}">{{ $province->name }}</option>
                       @endforeach
                   </select>
-                </div>                
+                </div> 
+                <div class="form-group">
+                    <label for="">Tên địa điểm</label>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Nhập tên địa điểm">
+                </div>
+                <div class="form-group">
+                    <label for="address">Địa chỉ</label>
+                    <input type="text" name="address" class="form-control" id="address" placeholder="Nhập địa chỉ">
+                </div>
+                <div class="form-group">
+                    <label for="description">Mô tả</label>
+                    <textarea name="description" id="description" class="form-control">{{ old('description') }}</textarea>
+                </div>               
               </div>
               <!-- /.card-body -->
               <div class="card-footer">

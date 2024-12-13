@@ -11,12 +11,29 @@ use App\Models\Province;
 
 class LocationController extends Controller
 {
-    public function index()
+    // public function index()
+    // {
+    //     $locations = Location::all();
+    //     return view('admin.location.list',compact('locations'));
+    
+    // }
+    public function index(Request $request)
     {
+    // Lấy id từ query string
+    $provinceId = $request->input('id');
+
+    // Kiểm tra và lọc dữ liệu
+    if ($provinceId) {
+        // Lấy hình ảnh liên kết với địa điểm
+        $locations = Location::where('id_province', $provinceId)->get();
+    } else {
+        // Nếu không có id, lấy tất cả hình ảnh
         $locations = Location::all();
-        return view('admin.location.list',compact('locations'));
     }
 
+    // Trả dữ liệu ra view
+    return view('admin.location.list',compact('locations'));
+}
     /**
      * Show the form for creating a new resource.
      */

@@ -35,8 +35,9 @@ class UtilityController extends Controller
         'price' => 'nullable|numeric', // Kiểm tra giá phải là số
         'address' => 'nullable|string|max:255', // Địa chỉ
         'phone' => 'nullable|string|phone_vn', // Sử dụng custom validation rule 'phone_vn'
-        'openingtime' => 'nullable|string|max:255', // Giờ mở cửa
-        'closingtime' => 'nullable|string|max:255', // Giờ đóng cửa
+        // 'openingtime' => 'nullable|string|max:255', // Giờ mở cửa
+        // 'closingtime' => 'nullable|string|max:255', // Giờ đóng cửa
+        'time' => 'nullable|string|max:255', // Giờ đóng cửa
         'rating' => 'nullable|numeric|min:0|max:5', // Xếp hạng
         'distance' => 'nullable|numeric', // Khoảng cách
         'description' => 'nullable|string', // Mô tả
@@ -60,8 +61,9 @@ class UtilityController extends Controller
     $utility->price = $request->price;
     $utility->address = $request->address;
     $utility->phonenumber = $request->phone;
-    $utility->openingtime = $request->openingtime;
-    $utility->closingtime = $request->closingtime;
+    // $utility->openingtime = $request->openingtime;
+    // $utility->closingtime = $request->closingtime;
+    $utility->time = $request->time;
     $utility->rank = $request->rank;
     $utility->distance = $request->distance;
     $utility->description = $request->description;
@@ -116,8 +118,9 @@ public function edit(string $id)
     $utility->price = $request->price;
     $utility->address = $request->address;
     $utility->phonenumber = $request->phone;
-    $utility->openingtime = $request->openingtime;
-    $utility->closingtime = $request->closingtime;
+    // $utility->openingtime = $request->openingtime;
+    // $utility->closingtime = $request->closingtime;
+    $utility->time = $request->time;
     $utility->rank = $request->rank;
     $utility->distance = $request->distance;
     $utility->description = $request->description;

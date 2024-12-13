@@ -37,6 +37,8 @@
                           @endif
                         </td>
                         <td>
+                  <a class="btn btn-success" style="margin-bottom: 5px" href="{{ route('locations.index', ['id' => $province->id]) }}">Xem địa điểm</a>
+
                             <a class = "btn btn-primary" href = "{{route('provinces.edit',['id'=>$province->id])}}">Sửa</a>
                             <a onclick = "return confirm('Bạn có thật sự muốn xóa không?')" class = "btn btn-danger" href = "{{route('provinces.destroy',['id'=>$province->id])}}">Xóa</a>
                         </td>

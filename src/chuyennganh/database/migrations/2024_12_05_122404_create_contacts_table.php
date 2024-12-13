@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('sender');
+            $table->string('sender', 50);
             $table->string('email');
             $table->text('content');
             $table->datetime('time');
-            $table->string('status');
+            $table->unsignedInteger('status');
             $table->unsignedInteger('id_user');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

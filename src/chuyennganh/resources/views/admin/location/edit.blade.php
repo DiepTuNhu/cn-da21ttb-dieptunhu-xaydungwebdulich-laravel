@@ -27,6 +27,23 @@
                   <input type="text" name="name" class="form-control" value="{{$location->id}}"id="name" readonly>
                 </div>
                 <div class="form-group">
+                  <label for="type">Loại hình</label>
+                  <select name="id_type" class="form-control" id="type">
+                    <option value="">Chọn loại hình</option>
+                    @foreach($types as $type)
+                        <option value="{{ $type->id }}" {{ $location->id_type == $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
+                    @endforeach
+                  </select>
+                </div>
+                <div class="form-group">
+                <label for="province">Tỉnh/thành phố</label>
+                <select name="id_province" class="form-control" id="province">
+                  <option value="">Chọn tỉnh/thành phố</option>
+                  @foreach($provinces as $province)
+                      <option value="{{ $province->id }}" {{ $location->id_province == $province->id ? 'selected' : '' }}>{{ $province->name }}</option>
+                  @endforeach
+                </select>               
+                <div class="form-group">
                   <label for="">Tên địa điểm</label>
                   <input type="text" name="name" class="form-control" id="name" value="{{$location->name}}">
                 </div>
@@ -37,29 +54,7 @@
                 <div class="form-group">
                   <label for="description">Mô tả</label>
                   <textarea name="description" id="description" class="form-control">{{ old('description', $location->description)}}</textarea>
-                </div>
-
-                <div class="form-group">
-                  <label for="type">Loại hình</label>
-                  <select name="id_type" class="form-control" id="type">
-                    <option value="">Chọn loại hình</option>
-                    @foreach($types as $type)
-                        <option value="{{ $type->id }}" {{ $location->id_type == $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
-                    @endforeach
-                  </select>
-                </div>
-
-                
-
-                <div class="form-group">
-                <label for="province">Tỉnh/thành phố</label>
-                <select name="id_province" class="form-control" id="province">
-                  <option value="">Chọn tỉnh/thành phố</option>
-                  @foreach($provinces as $province)
-                      <option value="{{ $province->id }}" {{ $location->id_province == $province->id ? 'selected' : '' }}>{{ $province->name }}</option>
-                  @endforeach
-              </select>
-                
+                </div>              
                 </div>  
                 <div class="form-group">
                   <label for="status">Trạng thái</label>

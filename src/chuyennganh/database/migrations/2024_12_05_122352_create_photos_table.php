@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->text('caption');
+            $table->string('name', 50);
+            $table->text('caption')->nullable();
             $table->text('url')->nullable();     
             $table->unsignedInteger('status');
             $table->unsignedInteger('id_location');

@@ -61,7 +61,7 @@
                              onchange="previewImages(2)">
                       <label class="custom-file-label" for="image2">Chọn tệp...</label>
                   </div>
-              </div>
+              {{-- </div> --}}
               
                 
                   <!-- Hiển thị lỗi liên quan đến việc upload ảnh -->

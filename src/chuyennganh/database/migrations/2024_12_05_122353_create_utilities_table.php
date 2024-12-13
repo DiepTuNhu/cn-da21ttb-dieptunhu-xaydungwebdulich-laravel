@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('utilities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->decimal('price', 10, 2);
+            $table->decimal('price', 10, 2)->nullable();
             $table->string('address');
-            $table->string('phonenumber');
-            $table->time('openingtime')->nullable();
-            $table->time('closingtime')->nullable();
+            $table->string('phonenumber')->nullable();
+            $table->string('time')->nullable();
+            // $table->time('closingtime')->nullable();
             $table->unsignedInteger('rank');
             $table->float('distance')->nullable();
             $table->text('description');

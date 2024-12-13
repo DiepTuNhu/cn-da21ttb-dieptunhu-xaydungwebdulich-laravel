@@ -29,8 +29,14 @@
 
 </head>
 <body class="hold-transition sidebar-mini">
-<div class="wrapper">
 
+  
+<div class="wrapper">
+{{-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Fixed topzxccccccccccccccccccccccccccccccccccccccccccccccccccccccc</a>
+    </div>
+  </nav> --}}
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4"  style="position: fixed; overflow: auto; height: 100%;">
     <!-- Brand Logo -->
@@ -84,15 +90,15 @@
             </a>
           </li>
           
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="{{route('photos.index')}}" class="nav-link">
               <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M448 80c8.8 0 16 7.2 16 16l0 319.8-5-6.5-136-176c-4.5-5.9-11.6-9.3-19-9.3s-14.4 3.4-19 9.3L202 340.7l-30.5-42.7C167 291.7 159.8 288 152 288s-15 3.7-19.5 10.1l-80 112L48 416.3l0-.3L48 96c0-8.8 7.2-16 16-16l384 0zM64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zm80 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"/></svg>
-              {{-- <i class="nav-icon far fa-image"></i> --}}
+              
               <p class="mx-1">
                Hình ảnh
               </p>
             </a>
-          </li>
+          </li> --}}
           <li class="nav-item">
             <a href="{{route('typeofutilities.index')}}" class="nav-link">
               <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M0 96C0 60.7 28.7 32 64 32l384 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zm64 0l0 64 64 0 0-64L64 96zm384 0L192 96l0 64 256 0 0-64zM64 224l0 64 64 0 0-64-64 0zm384 0l-256 0 0 64 256 0 0-64zM64 352l0 64 64 0 0-64-64 0zm384 0l-256 0 0 64 256 0 0-64z"/></svg>
@@ -160,12 +166,12 @@
           <div class="col-sm-6">
             <h1 class="mx-3">@yield('title_name')</h1>
           </div>
-          <div class="col-sm-6">
+          {{-- <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item">Home</li>
+              <li class="breadcrumb-item">Trang chủ</li>
               <li class="breadcrumb-item active">@yield('path')</li>
             </ol>
-          </div>
+          </div> --}}
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -215,7 +221,7 @@
 <!-- Summernote -->
 <script src="admin/plugins/summernote/summernote-bs4.min.js"></script>
 <!-- Page specific script -->
-<script>
+{{-- <script>
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
@@ -223,7 +229,37 @@
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     
   });
+</script> --}}
+
+{{-- Khởi tạo datatable --}}
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, 
+      "lengthChange": false, 
+      "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
+      "order": [[0, "desc"]],
+      "language": {
+        "sProcessing": "Đang xử lý...",
+        "sLengthMenu": "Hiển thị _MENU_ dòng",
+        "sZeroRecords": "Không tìm thấy dữ liệu",
+        "sInfo": "Hiển thị _START_ đến _END_ của _TOTAL_ dòng",
+        "sInfoEmpty": "Hiển thị 0 đến 0 của 0 dòng",
+        "sInfoFiltered": "(lọc từ _MAX_ dòng)",
+        "sSearch": "Tìm kiếm:",
+        "oPaginate": {
+          "sFirst": "Đầu",
+          "sPrevious": "Trước",
+          "sNext": "Tiếp",
+          "sLast": "Cuối"
+        }
+      }
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+  });
 </script>
+
+
 <script>
   $(function () {
     // Summernote

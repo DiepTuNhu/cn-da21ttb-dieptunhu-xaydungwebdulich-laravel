@@ -22,6 +22,24 @@
             <form id="quickForm" action="{{ route('utilities.store') }}" method="post" enctype="multipart/form-data">
               @csrf
               <div class="card-body">
+                <div class="form-group">
+                    <label for="typeofutility">Loại tiện ích</label>
+                    <select name="id_typeofutility" class="form-control" id="typeofutility" required>
+                        <option value="">Chọn loại tiện ích</option>
+                        @foreach($typeofutilities as $typeofutility)
+                            <option value="{{ $typeofutility->id }}">{{ $typeofutility->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="location">Địa điểm</label>
+                    <select name="id_location" class="form-control" id="location" required>
+                        <option value="">Chọn địa điểm</option>
+                        @foreach($locations as $location)
+                            <option value="{{ $location->id }}">{{ $location->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
                   <div class="form-group">
                       <label for="name">Tên tiện ích</label>
                       <input type="text" name="name" class="form-control" id="name" placeholder="Nhập tên tiện ích" required>
@@ -38,14 +56,18 @@
                       <label for="phone">Số điện thoại</label>
                       <input type="tel" name="phone" class="form-control" id="phone" placeholder="Nhập số điện thoại" pattern="^(\+84|0)[1-9][0-9]{8}$" title="Vui lòng nhập số điện thoại hợp lệ" required>
                   </div>
-                  <div class="form-group">
+                  {{-- <div class="form-group">
                       <label for="openingtime">Giờ mở cửa</label>
                       <input type="time" name="openingtime" class="form-control" id="openingtime">
                   </div>
                   <div class="form-group">
                       <label for="closingtime">Giờ đóng cửa</label>
                       <input type="time" name="closingtime" class="form-control" id="closingtime">
-                  </div>
+                  </div> --}}
+                  <div class="form-group">
+                    <label for="time">Giờ phục vụ</label>
+                    <input type="time" name="time" class="form-control" id="time">
+                </div>
                   <div class="form-group">
                       <label for="rank">Xếp hạng</label>
                       <input type="number" name="rank" class="form-control" id="rank" placeholder="Nhập xếp hạng" min="1" max="5" step="0.1" required>
@@ -66,24 +88,7 @@
                       </div>
                       <small class="form-text text-muted mt-2" id="file-name">Chưa có tệp nào được chọn.</small>
                   </div>
-                  <div class="form-group">
-                      <label for="typeofutility">Loại tiện ích</label>
-                      <select name="id_typeofutility" class="form-control" id="typeofutility" required>
-                          <option value="">Chọn loại tiện ích</option>
-                          @foreach($typeofutilities as $typeofutility)
-                              <option value="{{ $typeofutility->id }}">{{ $typeofutility->name }}</option>
-                          @endforeach
-                      </select>
-                  </div>
-                  <div class="form-group">
-                      <label for="location">Địa điểm</label>
-                      <select name="id_location" class="form-control" id="location" required>
-                          <option value="">Chọn địa điểm</option>
-                          @foreach($locations as $location)
-                              <option value="{{ $location->id }}">{{ $location->name }}</option>
-                          @endforeach
-                      </select>
-                  </div>
+
               </div>
               <!-- /.card-body -->
               <div class="card-footer">

@@ -26,7 +26,24 @@
                   <label for="exampleInputEmail1">Id</label>
                   <input type="text" name="name" class="form-control" value="{{$utility->id}}"id="name" readonly>
                 </div>
-
+                <div class="form-group">
+                  <label for="typeofutility">Loại tiện ích</label>
+                  <select name="id_typeofutility" class="form-control" id="typeofutility" required>
+                      <option value="">Chọn loại tiện ích</option>
+                      @foreach($typeofutilities as $typeofutility)
+                          <option value="{{ $typeofutility->id }}" {{ $utility->id_typeofutility == $typeofutility->id ? 'selected' : '' }}>{{ $typeofutility->name }}</option>
+                      @endforeach
+                  </select>
+                </div>
+                <div class="form-group">
+                    <label for="location">Địa điểm</label>
+                    <select name="id_location" class="form-control" id="location">
+                        <option value="">Chọn địa điểm</option>
+                        @foreach($locations as $location)
+                            <option value="{{ $location->id }}" {{ $utility->id_location == $location->id ? 'selected' : '' }}>{{ $location->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="form-group">
                   <label for="name">Tên tiện ích</label>
                   <input type="text" name="name" class="form-control" id="name" value="{{$utility->name}}">
@@ -90,24 +107,7 @@
                     <div id="imagePreview1" style="margin-top: 10px;"></div>
                 </div>
 
-                <div class="form-group">
-                  <label for="typeofutility">Loại tiện ích</label>
-                  <select name="id_typeofutility" class="form-control" id="typeofutility" required>
-                      <option value="">Chọn loại tiện ích</option>
-                      @foreach($typeofutilities as $typeofutility)
-                          <option value="{{ $typeofutility->id }}" {{ $utility->id_typeofutility == $typeofutility->id ? 'selected' : '' }}>{{ $typeofutility->name }}</option>
-                      @endforeach
-                  </select>
-                </div>
-                <div class="form-group">
-                    <label for="location">Địa điểm</label>
-                    <select name="id_location" class="form-control" id="location">
-                        <option value="">Chọn địa điểm</option>
-                        @foreach($locations as $location)
-                            <option value="{{ $location->id }}" {{ $utility->id_location == $location->id ? 'selected' : '' }}>{{ $location->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
+ 
          
                 <div class="form-group">
                   <label for="status">Trạng thái</label>
