@@ -31,9 +31,9 @@
                         <td>{{$type->name}}</td>
                         <td>
                           @if($type->status == 0)
-                              <span class="text-success">Visible</span>
+                              <span class="text-success">Hiện</span>
                           @else
-                              <span class="text-danger">Hidden</span>
+                              <span class="text-danger">Ẩn</span>
                           @endif
                         </td>
                         <td>

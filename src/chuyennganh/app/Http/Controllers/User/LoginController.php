@@ -27,7 +27,6 @@ class LoginController extends Controller
              'email.required'=>'Vui lòng nhập email',
              'email.email'=>'Không đúng định dạng email',
              'password.required'=>'Vui lòng nhập mật khẩu',
-             'password.required' => 'Vui lòng nhập mật khẩu',
         ]);
 
         // Kiểm tra thông tin người dùng với email và mật khẩu

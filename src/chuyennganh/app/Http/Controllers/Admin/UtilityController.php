@@ -41,7 +41,7 @@ class UtilityController extends Controller
         'rating' => 'nullable|numeric|min:0|max:5', // Xếp hạng
         'distance' => 'nullable|numeric', // Khoảng cách
         'description' => 'nullable|string', // Mô tả
-        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Kiểm tra ảnh hợp lệ
+        'image' => 'nullable|image|mimes:webp,jpeg,png,jpg,gif|max:2048', // Kiểm tra ảnh hợp lệ
         'id_typeofutility' => 'required|exists:typeofutilities,id', // Kiểm tra loại tiện ích có tồn tại
         'id_location' => 'required|exists:locations,id', // Kiểm tra tỉnh có tồn tại
     ], [

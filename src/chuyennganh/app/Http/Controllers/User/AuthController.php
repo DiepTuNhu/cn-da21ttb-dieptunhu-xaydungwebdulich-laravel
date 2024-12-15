@@ -38,7 +38,7 @@ class AuthController extends Controller
     
             // Đăng nhập người dùng
             Auth::login($user, true);
-    
+            // Lưu session
             Session::put('userID', $user->id);
             // dd(session()->all());
             // Kiểm tra vai trò của người dùng và chuyển hướng tương ứng

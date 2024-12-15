@@ -33,7 +33,7 @@ class SlideController extends Controller
 
     // Xác thực input
     $this->validate($request, [
-        'image1' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'image1' => 'required|image|mimes:webp,jpeg,png,jpg,gif|max:2048',
     ], [
         'image1.required' => 'Bạn chưa nhập hình.',
         'image1.image' => 'Tệp tải lên phải là hình ảnh.',

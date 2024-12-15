@@ -36,7 +36,7 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email|max:255',
             'address' => 'nullable',
             'password' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'required|image|mimes:webp,jpeg,png,jpg,gif|max:2048',
         ],
         [
             'username.required' => 'Bạn chưa nhập tên.',

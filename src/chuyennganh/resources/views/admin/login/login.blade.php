@@ -29,13 +29,13 @@
                     <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
                 </div>
 
-                <div class="d-flex justify-content-between align-items-center">
+                {{-- <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <input type="checkbox" id="remember" name="remember">
                         <label for="remember" class="form-label">Remember me</label>
                     </div>
                     <a href="/forgot-password" class="text-decoration-none">Forgot password?</a>
-                </div>
+                </div> --}}
 
                 <button type="submit" class="btn btn-primary w-100 mt-3">Login</button>
             </form>
@@ -45,11 +45,11 @@
                 <a href="/register" class="text-decoration-none">Sign up</a>
             </div>
 
-            <hr class="my-3">
+            {{-- <hr class="my-3">
             <button class="btn btn-outline-secondary w-100">
                 <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Google" width="20" class="me-2">
                 Login with Google
-            </button>
+            </button> --}}
         </div>
     </div>
 

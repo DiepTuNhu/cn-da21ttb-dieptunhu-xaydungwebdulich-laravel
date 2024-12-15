@@ -19,7 +19,7 @@ class SignupController extends Controller
             'username' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required',
-            'address' => 'required',  // Thêm trường address
+            // 'address' => 'required',  // Thêm trường address
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validate ảnh (nếu có)
         ],[
             'username.required' => 'Vui lòng nhập tên đăng nhập. ',
@@ -27,7 +27,7 @@ class SignupController extends Controller
             'email.email' => 'Email không đúng định dạng. ',
             'email.unique' => 'Email đã tồn tại. ',
             'password.required' => 'Vui lòng nhập mật khẩu. ',
-            'address.required' => 'Vui lòng nhập địa chỉ. ',
+            // 'address.required' => 'Vui lòng nhập địa chỉ. ',
             'image.image' => 'Vui lòng chọn tệp hình ảnh hợp lệ.',
             'image.mimes' => 'Hình ảnh phải có định dạng jpeg, png, jpg, gif, svg.',
             'image.max' => 'Hình ảnh không được vượt quá 2MB.',

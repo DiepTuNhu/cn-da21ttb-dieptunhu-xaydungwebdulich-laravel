@@ -31,9 +31,9 @@
                         <td>{{$typeofutility->name}}</td>
                         <td>
                           @if($typeofutility->status == 0)
-                              <span class="text-success">Visible</span>
+                              <span class="text-success">Hiện</span>
                           @else
-                              <span class="text-danger">Hidden</span>
+                              <span class="text-danger">Ẩn</span>
                           @endif
                         </td>
                         <td>

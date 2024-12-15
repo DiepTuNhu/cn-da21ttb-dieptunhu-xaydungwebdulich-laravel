@@ -17,8 +17,8 @@
                 <tr>
                     <th>ID</th>
                     <th>Hình ảnh</th>
-                    <th>URL</th>
-                    <th>Caption</th>
+                    <th>Đường dẫn</th>
+                    <th>Tiêu đề</th>
                     <th>Địa điểm</th>
                     <th>Trạng thái</th>
                     <th width="105px">Thao tác</th>

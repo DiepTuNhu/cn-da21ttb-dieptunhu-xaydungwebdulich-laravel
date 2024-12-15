@@ -59,8 +59,9 @@
                 <div class="form-group">
                   <label for="status">Trạng thái</label>
                   <select name="status" class="form-control" id="status">
-                      <option value="0" {{ $location->status == 0 ? 'selected' : '' }}>Visible</option>
-                      <option value="1" {{ $location->status == 1 ? 'selected' : '' }}>Hidden</option>
+                      <option value="0" {{ $location->status == 0 ? 'selected' : '' }}>Hiện</option>
+                      <option value="1" {{ $location->status == 1 ? 'selected' : '' }}>Ẩn</option>
+                      <option value="2" {{ $location->status == 2 ? 'selected' : '' }}>Nổi bật</option>
                   </select>
                 </div>
                 

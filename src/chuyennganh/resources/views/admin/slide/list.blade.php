@@ -18,7 +18,7 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Hình ảnh/th>
+                    <th>Hình ảnh</th>
                     <th>Trạng thái</th>
                     <th width="105px" class="text-center">Thao tác</th>
                 </tr>
@@ -37,9 +37,9 @@
                         </td>
                         <td>
                           @if($slide->status == 0)
-                              <span class="text-success">Visible</span>
+                              <span class="text-success">Hiện</span>
                           @else
-                              <span class="text-danger">Hidden</span>
+                              <span class="text-danger">Ẩn</span>
                           @endif
                         </td>
                         <td>

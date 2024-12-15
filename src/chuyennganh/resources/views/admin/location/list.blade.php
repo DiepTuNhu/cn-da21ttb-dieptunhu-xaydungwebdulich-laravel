@@ -37,9 +37,11 @@
                 <td>{{$location->provinces->name ?? 'Chưa xác định' }}</td>  <!-- Hiển thị tên thành phố -->
                 <td>
                     @if($location->status == 0)
-                        <span class="text-success">Visible</span>
+                      <span class="text-success">Hiện</span>
+                    @elseif($location->status == 1)
+                      <span class="text-danger">Ẩn</span>
                     @else
-                        <span class="text-danger">Hidden</span>
+                      <span class="text-danger">Nổi bật</span>
                     @endif
                 </td>
                 <td>

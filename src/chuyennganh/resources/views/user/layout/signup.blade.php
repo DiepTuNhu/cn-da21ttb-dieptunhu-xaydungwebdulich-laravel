@@ -56,11 +56,11 @@
                 <a href="admin/login" class="text-decoration-none">Log in</a>
             </div>
 
-            <hr class="my-3">
+            {{-- <hr class="my-3">
             <button class="btn btn-outline-secondary w-100">
                 <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Google" width="20" class="me-2">
                 Sign up with Google
-            </button>
+            </button> --}}
         </div>
     </div>
 

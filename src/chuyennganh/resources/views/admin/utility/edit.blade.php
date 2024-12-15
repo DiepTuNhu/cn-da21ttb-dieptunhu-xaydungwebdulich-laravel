@@ -112,8 +112,8 @@
                 <div class="form-group">
                   <label for="status">Trạng thái</label>
                   <select name="status" class="form-control" id="status">
-                      <option value="0" {{ $utility->status == 0 ? 'selected' : '' }}>Visible</option>
-                      <option value="1" {{ $utility->status == 1 ? 'selected' : '' }}>Hidden</option>
+                      <option value="0" {{ $utility->status == 0 ? 'selected' : '' }}>Hiện</option>
+                      <option value="1" {{ $utility->status == 1 ? 'selected' : '' }}>Ẩn</option>
                   </select>
                 </div>
                 

@@ -17,7 +17,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Tên tiện ích</th>
-                    <th>Giá</th>
+                    {{-- <th>Giá</th> --}}
                     <th>Địa chỉ</th>
                     <th>Số điện thoại</th>
                     {{-- <th>Giờ mở cửa</th>
@@ -38,7 +38,7 @@
             <tr>   
                 <td>{{$utility->id}}</td>
                 <td>{{$utility->name}}</td>
-                <td>{{$utility->price}}</td>
+                {{-- <td>{{$utility->price}}</td> --}}
                 <td>{{$utility->address}}</td>
                 <td>{{$utility->phonenumber}}</td>
                 {{-- <td>{{$utility->openingtime}}</td>
@@ -57,9 +57,9 @@
                 <td>{{$utility->location->name ?? 'Chưa xác định' }}</td>  <!-- Hiển thị tên thành phố -->
                 <td>
                     @if($utility->status == 0)
-                        <span class="text-success">Visible</span>
+                        <span class="text-success">Hiện</span>
                     @else
-                        <span class="text-danger">Hidden</span>
+                        <span class="text-danger">Ẩn</span>
                     @endif
                 </td>
                 <td>
@@ -77,7 +77,7 @@
                 <tr>
                   <th>Id</th>
                   <th>Tên tiện ích</th>
-                  <th>Giá</th>
+                  {{-- <th>Giá</th> --}}
                   <th>Địa chỉ</th>
                   <th>Số điện thoại</th>
                   {{-- <th>Giờ mở cửa</th>
