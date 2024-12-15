@@ -41,11 +41,11 @@
                       <td>{{$photo->location->name ?? 'Chưa xác định' }}</td>  <!-- Sửa 'Locations' thành 'location' -->
                       <td>
                           @if($photo->status == 2)  <!-- Sửa $location thành $photo -->
-                              <span class="text-success">Main</span>
+                              <span class="text-success">Chính</span>
                           @elseif($photo->status == 0)
-                              <span class="text-success">Extra</span>
+                              <span class="text-success">Phụ</span>
                           @elseif($photo->status == 1)
-                              <span class="text-danger">Hidden</span>
+                              <span class="text-danger">Ẩn</span>
                           @endif
                       </td>
                       <td>

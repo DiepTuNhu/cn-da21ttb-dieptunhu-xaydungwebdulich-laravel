@@ -54,22 +54,25 @@
 <div id="demo" class="carousel slide" data-bs-ride="carousel">
   <!-- Indicators/dots -->
   <div class="carousel-indicators">
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+    @foreach($slides as $key => $slide)
+      <button 
+        type="button" 
+        data-bs-target="#demo" 
+        data-bs-slide-to="{{ $key }}" 
+        class="{{ $key === 0 ? 'active' : '' }}">
+      </button>
+    @endforeach
   </div>
 
   <!-- The slideshow/carousel -->
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="./images/anggiang.jpg" alt="Los Angeles" class="d-block" style="width: 100%" />
-    </div>
-    <div class="carousel-item">
-      <img src="./images/kiengiang.jpg" alt="Chicago" class="d-block" style="width: 100%" />
-    </div>
-    <div class="carousel-item">
-      <img src="./images/travinh.jpg" alt="New York" class="d-block" style="width: 100%" />
-    </div>
+    @foreach($slides as $key => $slide)
+      <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
+        <!-- Hiển thị hình ảnh -->
+        <img src="{{ asset('storage/slide_image/' . $slide->image) }}" alt="{{ $slide->title }}" class="d-block w-100">
+        {{-- <img src="{{ asset('public/slide_image/' . $slide->image) }}" alt="Slide {{ $key + 1 }}" class="d-block" style="width: 100%"> --}}
+      </div>
+    @endforeach
   </div>
 
   <!-- Left and right controls/icons -->

@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('photos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name', 50);
-            $table->text('caption')->nullable();
-            $table->text('url')->nullable();     
-            $table->unsignedInteger('status');
-            $table->unsignedInteger('id_location');
-            $table->foreign('id_location')->references('id')->on('locations')->onDelete('cascade')->onUpdate('cascade');
-            $table->timestamps();
-        });
+            Schema::create('photos', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('name', 50);
+                $table->text('caption')->nullable();
+                $table->text('url')->nullable();     
+                $table->unsignedInteger('status');
+                $table->unsignedInteger('id_location');
+                $table->foreign('id_location')->references('id')->on('locations')->onDelete('cascade')->onUpdate('cascade');
+                $table->timestamps();
+            });
     }
 
     /**

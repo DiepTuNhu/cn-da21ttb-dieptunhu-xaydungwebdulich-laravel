@@ -47,99 +47,40 @@
 <div class="carousel-container">
   <img class="img" height="100%" width="100%" src="./images/hoa.png" alt="" />
   <div class="swiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <div class="card position-relative">
-          <span class="badge hot-badge position-absolute">Hot</span>
-          <img class="card-img-top" src="images/travinh.jpg" alt="Card image" />
-          <div class="card-body">
-            <h4 class="card-title">John Doe</h4>
-            <p class="card-text"><svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              style="fill: rgba(101, 163, 13, 1); padding: 2px;"
-            >
-              <path
-                d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"
-              ></path>
-              </svg>Ấp Ô Đùng, xã Hiếu Tử, huyện Tiểu Cần, tỉnh Trà Vinh</p>
-            
-            <a href="#" class="btn">See Profile</a>
-          </div>
-        </div>
+      <div class="swiper-wrapper">
+          @foreach ($locations as $location)
+              <div class="swiper-slide">
+                  <div class="card position-relative">
+                      <span class="badge hot-badge position-absolute">Hot</span>
+
+                      <!-- Lấy hình ảnh liên quan đến địa điểm -->
+                      @php
+                          $photo = $location->photos()->where('status', 2)->first(); // Lấy hình ảnh chính (status = 0)
+                      @endphp
+                      @if($photo)
+                          <img class="card-img-top" src="{{ asset('storage/location_image/' . $photo->name) }}" alt="Card image" />
+                      @else
+                          <img class="card-img-top" src="path_to_default_image.jpg" alt="Card image" />
+                      @endif
+
+                      <div class="card-body">
+                          <h4 class="card-title">{{ $location->name }}</h4>
+                          <p class="card-text">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(101, 163, 13, 1); padding: 2px;">
+                                  <path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"></path>
+                              </svg>
+                              {{ $location->address }}
+                          </p>
+                          <a href="#" class="btn">Xem chi tiết</a>
+                      </div>
+                  </div>
+              </div>
+          @endforeach
       </div>
 
-      <div class="swiper-slide">
-        <div class="card position-relative">
-          <span class="badge hot-badge position-absolute">Hot</span>
-          <img class="card-img-top" src="images/anggiang.jpg" alt="Card image" />
-          <div class="card-body">
-            <h4 class="card-title">John Doe</h4>
-            <p class="card-text"><svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              style="fill: rgba(101, 163, 13, 1); padding: 2px;"
-            >
-              <path
-                d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"
-              ></path>
-              </svg>Ấp Ô Đùng, xã Hiếu Tử, huyện Tiểu Cần, tỉnh Trà Vinh</p>
-            <a href="#" class="btn">See Profile</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="swiper-slide">
-        <div class="card position-relative">
-          <span class="badge hot-badge position-absolute">Hot</span>
-          <img class="card-img-top" src="images/kiengiang.jpg" alt="Card image" />
-          <div class="card-body">
-            <h4 class="card-title">John Doe</h4>
-            <p class="card-text"><svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              style="fill: rgba(101, 163, 13, 1); padding: 2px;"
-            >
-              <path
-                d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"
-              ></path>
-              </svg>Ấp Ô Đùng, xã Hiếu Tử, huyện Tiểu Cần, tỉnh Trà Vinh</p>
-            <a href="#" class="btn">See Profile</a>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="card position-relative">
-          <span class="badge hot-badge position-absolute">Hot</span>
-          <img class="card-img-top" src="images/Muicamau.png" alt="Card image" />
-          <div class="card-body">
-            <h4 class="card-title">John Doe sadasfdsa sdas sad</h4>
-            <p class="card-text"><svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            style="fill: rgba(101, 163, 13, 1); padding: 2px;"
-          >
-            <path
-              d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"
-            ></path>
-            </svg>Ấp Ô Đùng, xã Hiếu Tử, huyện Tiểu Cần, tỉnh Trà Vinh</p>
-            <a href="#" class="btn">See Profile</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Navigation buttons -->
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
+      <!-- Navigation buttons -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
   </div>
 </div>
 
@@ -149,7 +90,7 @@
     Đồng bằng sông Cửu Long hay còn gọi là miền Tây có nhiều địa điểm du lịch rất hấp dẫn. Nếu
     bạn thích đi du lịch có thể tham khảo gợi ý dưới đây.
   </h5>
-  <div class="card-container">
+  {{-- <div class="card-container">
     <div class="card">
       <img class="card-img-top" src="images/travinh.jpg" alt="Card image" />
       <div class="card-body">
@@ -312,6 +253,32 @@
       </div>
     </div>
 
-  </div>
+  </div> --}}
+
+  <div class="card-container">
+    @foreach($randomLocations as $randomLocation)
+        <div class="card">
+            <!-- Lấy đường dẫn ảnh chính hoặc ảnh mặc định -->
+            @php
+                $imagePath = $randomLocation->mainImage 
+                             ? asset('storage/location_image/' . $randomLocation->mainImage->name) 
+                             : asset('storage/default-image.jpg');
+            @endphp
+            
+            <img class="card-img-top" src="{{ $imagePath }}" alt="Card image" />
+            <div class="card-body">
+                <h4 class="card-title">{{ $randomLocation->name }}</h4>
+                <p class="card-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(101, 163, 13, 1); padding: 2px;">
+                        <path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"></path>
+                    </svg> {{ $randomLocation->address }}
+                </p>
+                <a href="#" class="btn">Xem chi tiết</a>
+            </div>
+        </div>
+    @endforeach
+</div>
+
+
 </div>
 @endsection

@@ -22,8 +22,8 @@ use App\Models\Location;
 // Route::get('/', function () {
 //     return view('user.index');
 // });
+// Route::get('/', [PageController::class, 'index'])->name('page.index');
 Route::get('/', [PageController::class, 'index'])->name('page.index');
-
 //LOGIN
 Route::get('admin/login',[LoginController::class,'index'])->name('login');
 Route::post('admin/login/store',[LoginController::class,'store'])->name('login.store');
@@ -38,6 +38,8 @@ Route::post('xulydangky',[SignupController::class,'postSignup'])->name('postSign
 
 // //LOGOUT
 Route::post('/page/logout', [AuthController::class, 'logout'])->name('page.logout');
+
+
 
 // ADMIN=========================================================================================================
 

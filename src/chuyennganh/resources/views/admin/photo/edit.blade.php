@@ -80,9 +80,9 @@
               <div class="form-group">
                   <label for="status">Trạng thái</label>
                   <select name="status" class="form-control" id="status">
-                      <option value="0" {{ $photo->status == 0 ? 'selected' : '' }}>Extra</option>
-                      <option value="1" {{ $photo->status == 1 ? 'selected' : '' }}>Hidden</option>
-                      <option value="2" {{ $photo->status == 2 ? 'selected' : '' }}>Main</option>
+                      <option value="0" {{ $photo->status == 0 ? 'selected' : '' }}>Phụ</option>
+                      <option value="1" {{ $photo->status == 1 ? 'selected' : '' }}>Ẩn</option>
+                      <option value="2" {{ $photo->status == 2 ? 'selected' : '' }}>Chính</option>
                   </select>
               </div>
                 
