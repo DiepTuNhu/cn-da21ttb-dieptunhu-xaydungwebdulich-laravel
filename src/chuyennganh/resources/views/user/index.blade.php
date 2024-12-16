@@ -1,6 +1,6 @@
 @extends('user.master')
 @section('content')
-
+@include('user.layout.search')
 <div class="introduce">
   <h1>Đôi nét về du lịch tại Đồng bằng sông Cửu Long</h1>
   <div class="introduce">
@@ -90,170 +90,6 @@
     Đồng bằng sông Cửu Long hay còn gọi là miền Tây có nhiều địa điểm du lịch rất hấp dẫn. Nếu
     bạn thích đi du lịch có thể tham khảo gợi ý dưới đây.
   </h5>
-  {{-- <div class="card-container">
-    <div class="card">
-      <img class="card-img-top" src="images/travinh.jpg" alt="Card image" />
-      <div class="card-body">
-        <h4 class="card-title">John Doe biết chưa biết ôn rõ chưa</h4>
-        <p class="card-text">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            style="fill: rgba(101, 163, 13, 1); padding: 2px;"
-          >
-            <path
-              d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"
-            ></path>
-            </svg>Ấp Ô Đùng, xã Hiếu Tử, huyện Tiểu Cần, tỉnh Trà Vinh
-        </p>
-        <a href="#" class="btn">See Profile</a>
-      </div>
-    </div>
-    
-    <div class="card">
-      <img class="card-img-top" src="images/Muicamau.png" alt="Card image" />
-      <div class="card-body">
-        <h4 class="card-title">John Doe</h4>
-        <p class="card-text">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            style="fill: rgba(101, 163, 13, 1); padding: 2px;"
-          >
-            <path
-              d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"
-            ></path>
-            </svg>Ấp Ô Đùng, xã Hiếu Tử, huyện Tiểu Cần, tỉnh Trà Vinh
-        </p>
-        <a href="#" class="btn">See Profile</a>
-      </div>
-    </div>
-    <div class="card">
-      <img class="card-img-top" src="images/Muicamau.png" alt="Card image" />
-      <div class="card-body">
-        <h4 class="card-title">John Doe</h4>
-        <p class="card-text">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            style="fill: rgba(101, 163, 13, 1); padding: 2px;"
-          >
-            <path
-              d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"
-            ></path>
-            </svg>Ấp Ô Đùng, xã Hiếu Tử, huyện Tiểu Cần, tỉnh Trà Vinh
-        </p>
-        <a href="#" class="btn">See Profile</a>
-      </div>
-    </div>
-    <div class="card">
-      <img class="card-img-top" src="images/Muicamau.png" alt="Card image" />
-      <div class="card-body">
-        <h4 class="card-title">John Doe</h4>
-        <p class="card-text">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            style="fill: rgba(101, 163, 13, 1); padding: 2px;"
-          >
-            <path
-              d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"
-            ></path>
-            </svg>Ấp Ô Đùng, xã Hiếu Tử, huyện Tiểu Cần, tỉnh Trà Vinh
-        </p>
-        <a href="#" class="btn">See Profile</a>
-      </div>
-    </div>
-    <div class="card">
-      <img class="card-img-top" src="images/Muicamau.png" alt="Card image" />
-      <div class="card-body">
-        <h4 class="card-title">John Doe</h4>
-        <p class="card-text">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            style="fill: rgba(101, 163, 13, 1); padding: 2px;"
-          >
-            <path
-              d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"
-            ></path>
-            </svg>Ấp Ô Đùng, xã Hiếu Tử, huyện Tiểu Cần, tỉnh Trà Vinh
-        </p>
-        <a href="#" class="btn">See Profile</a>
-      </div>
-    </div>
-    <div class="card">
-      <img class="card-img-top" src="images/Muicamau.png" alt="Card image" />
-      <div class="card-body">
-        <h4 class="card-title">John Doe</h4>
-        <p class="card-text">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            style="fill: rgba(101, 163, 13, 1); padding: 2px;"
-          >
-            <path
-              d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"
-            ></path>
-            </svg>Ấp Ô Đùng, xã Hiếu Tử, huyện Tiểu Cần, tỉnh Trà Vinh
-        </p>
-        <a href="#" class="btn">See Profile</a>
-      </div>
-    </div>
-    <div class="card">
-      <img class="card-img-top" src="images/Muicamau.png" alt="Card image" />
-      <div class="card-body">
-        <h4 class="card-title">John Doe</h4>
-        <p class="card-text">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            style="fill: rgba(101, 163, 13, 1); padding: 2px;"
-          >
-            <path
-              d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"
-            ></path>
-            </svg>Ấp Ô Đùng, xã Hiếu Tử, huyện Tiểu Cần, tỉnh Trà Vinh
-        </p>
-        <a href="#" class="btn">See Profile</a>
-      </div>
-    </div>
-    <div class="card">
-      <img class="card-img-top" src="images/Muicamau.png" alt="Card image" />
-      <div class="card-body">
-        <h4 class="card-title">John Doe</h4>
-        <p class="card-text">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            style="fill: rgba(101, 163, 13, 1); padding: 2px;"
-          >
-            <path
-              d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"
-            ></path>
-            </svg>Ấp Ô Đùng, xã Hiếu Tử, huyện Tiểu Cần, tỉnh Trà Vinh
-        </p>
-        <a href="#" class="btn">See Profile</a>
-      </div>
-    </div>
-
-  </div> --}}
 
   <div class="card-container">
     @foreach($randomLocations as $randomLocation)
@@ -277,8 +113,7 @@
             </div>
         </div>
     @endforeach
-</div>
-
-
+  </div>
+  
 </div>
 @endsection

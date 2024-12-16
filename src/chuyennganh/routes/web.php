@@ -24,6 +24,11 @@ use App\Models\Location;
 // });
 // Route::get('/', [PageController::class, 'index'])->name('page.index');
 Route::get('/', [PageController::class, 'index'])->name('page.index');
+// Route::get('/search', [PageController::class, 'getSearch'])->name('search');  
+Route::get('/search', [PageController::class, 'getSearch'])->name('search');
+
+
+
 //LOGIN
 Route::get('admin/login',[LoginController::class,'index'])->name('login');
 Route::post('admin/login/store',[LoginController::class,'store'])->name('login.store');

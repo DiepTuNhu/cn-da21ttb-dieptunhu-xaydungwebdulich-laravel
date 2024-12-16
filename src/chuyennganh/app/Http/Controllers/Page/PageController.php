@@ -5,14 +5,11 @@ use App\Models\Location;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Slide;
+use App\Models\Type;
+use App\Models\Province;
 
 class PageController extends Controller
 {
-    // public function index()
-    // {
-    //     $location = Location::all();  // Lấy tất cả các bản ghi trong bảng foods
-    //     return view('user.index');
-    // }
     public function index()
     {
         // Lấy các slides có status = 0
@@ -39,4 +36,45 @@ class PageController extends Controller
         // Truyền dữ liệu sang view
         return view('user.index', compact('slides', 'locations', 'randomLocations'));
     }
+
+    public function getSearch(Request $req)
+{
+    // Lấy từ khóa tìm kiếm từ form
+    $key = $req->input('key'); 
+
+    // Tìm kiếm địa điểm trong cơ sở dữ liệu
+    $locations = Location::where('name', 'like', '%' . $key . '%')->get();
+    
+    foreach ($locations as $location) {
+        // Lấy hình ảnh chính với status = 2
+        $location->mainImage = $location->photos()->where('status', 2)->first();
+    }
+    // Lấy dữ liệu slideshow hoặc các dữ liệu khác nếu cần
+    $slides = Slide::where('status', 0)->get();
+
+    // Trả về view với kết quả tìm kiếm
+    return view('user.layout.page_search', compact('locations', 'slides', 'key'));
+}
+
+
+    
+    
+
+// public function getSearch(Request $req)
+// { $slides = Slide::all();   
+//     $query = Location::query(); // Khởi tạo query
+
+//     // Tìm kiếm theo tên
+//     if ($req->has('name') && $req->name) {
+//         $query->where('name', 'like', '%' . $req->name . '%');
+//     }
+
+//     // Lấy kết quả tìm kiếm
+//     $locations = $query->get(); // Lấy kết quả tìm kiếm
+
+//     // Trả dữ liệu ra view
+//     return view('user.layout.page_search', compact('slides','locations'));
+// }
+
+
 }
