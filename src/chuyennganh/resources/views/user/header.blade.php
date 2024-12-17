@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="" style="padding: 0 20px 0 50px">
+    <a class="navbar-brand" href="/" style="padding: 0 20px 0 50px">
       <img src="images/logo.png" alt="" width="100px" />
     </a>
     <button
@@ -14,11 +14,14 @@
     <div class="collapse navbar-collapse" id="mynavbar">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link btn" href="javascript:void(0)">Trang chủ</a>
+          <a class="nav-link btn {{request() -> is('/') ? 'active' : ''}}" href="{{ route('page.index') }}">Trang chủ</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link btn" href="javascript:void(0)">Địa điểm</a>
+          <a class="nav-link btn {{request() -> is('location') ? 'active' : ''}}" href="{{ route('page.location') }}">Địa điểm</a>
         </li>
+        {{-- <li class="nav-item">
+          <a class="nav-link {{request() -> is('about') ? 'active' : ''}}" href="about">Link 2</a>
+        </li> --}}
         <li class="nav-item">
           <a class="nav-link btn" href="javascript:void(0)">Ẩm thực</a>
         </li>

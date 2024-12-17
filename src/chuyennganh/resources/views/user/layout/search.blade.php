@@ -42,7 +42,7 @@
   </button>
   <!-- Search bar chồng lên carousel -->
   <div class="search-bar position-absolute">
-    <form action="{{ route('search') }}" method="GET">
+    <form action="{{ route('search') }}" method="GET" style="margin:0">
       <input type="text" class="form-control" name="key" placeholder="Tìm kiếm..." />
       <button type="submit" class="btn search">Tìm</button>
     </form>    

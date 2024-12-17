@@ -56,25 +56,56 @@ class PageController extends Controller
     return view('user.layout.page_search', compact('locations', 'slides', 'key'));
 }
 
+public function getLocation(Request $request)
+{
+    // Lấy các slides có status = 0
+    $slides = Slide::where('status', 0)->get();
 
-    
-    
+    // Lấy tất cả các tỉnh có status = 0
+    $provinces = Province::where('status', 0)->get();
+    // Tìm tỉnh Trà Vinh
+    $travinh = $provinces->where('name', 'Tỉnh Trà Vinh')->first();
 
-// public function getSearch(Request $req)
-// { $slides = Slide::all();   
-//     $query = Location::query(); // Khởi tạo query
+    if ($travinh) {
+        $provinces = $provinces->reject(function($province) use ($travinh) {
+            return $province->id == $travinh->id;
+        });
+        // Đưa tỉnh Trà Vinh lên đầu
+        $provinces->prepend($travinh);
+    }
 
-//     // Tìm kiếm theo tên
-//     if ($req->has('name') && $req->name) {
-//         $query->where('name', 'like', '%' . $req->name . '%');
-//     }
+    // Lấy province_id từ yêu cầu nếu có
+    $provinceId = $request->get('province_id');
+    if ($provinceId) {
+        // Lọc địa điểm theo province_id được chọn
+        $locations = Location::where('status', '!=', 1)
+                              ->where('id_province', $provinceId)
+                              ->get();
+    } else {
+        // Lấy địa điểm mặc định (ví dụ: theo tỉnh Trà Vinh)
+        $locations = Location::where('status', '!=', 1)
+                              ->where('id_province', $travinh->id)
+                              ->get();
+        $provinceId = $travinh->id;  // Sử dụng tỉnh Trà Vinh làm mặc định nếu không có province_id
+    }
 
-//     // Lấy kết quả tìm kiếm
-//     $locations = $query->get(); // Lấy kết quả tìm kiếm
+    // Gắn hình ảnh chính cho các địa điểm
+    foreach ($locations as $location) {
+        $location->mainImage = $location->photos()->where('status', 2)->first();
+    }
 
-//     // Trả dữ liệu ra view
-//     return view('user.layout.page_search', compact('slides','locations'));
-// }
+    // Kiểm tra nếu yêu cầu là JSON từ AJAX
+    if ($request->wantsJson()) {
+        return response()->json([
+            'provinces' => $provinces,
+            'locations' => $locations,
+            'activeProvince' => $provinceId  // Trả về tỉnh đang active
+        ]);
+    }
+
+    // Trả về dữ liệu cho view nếu không phải là AJAX
+    return view('user.layout.location', compact('provinces', 'locations', 'slides', 'travinh'));
+}
 
 
 }

@@ -19,19 +19,29 @@ nav {
   font-size: 17px;
 }
 
+/* Khi không có active, không có background-color */
 .btn {
-  transition: all 0, 5s ease; /* Tạo hiệu ứng chuyển động mượt */
-  border-radius: 5px; /* Bo góc mặc định */
+  transition: all 0.5s ease;
+  border-radius: 5px;
   margin: 0 10px;
   color: #ffffff;
+  background-color: transparent; /* Mặc định không có nền */
 }
 
+/* Khi hover, có background-color */
 .btn:hover {
   background-color: rgba(255, 255, 255, 0.3);
   color: rgb(255, 255, 255);
   transition: all 0.5s ease;
-  border-radius: 5px; /* Bo góc nhiều hơn khi hover */
+  border-radius: 5px;
 }
+
+/* Khi có active, nền có background-color */
+.btn.active {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: rgb(255, 255, 255);
+}
+
 
 .carousel-item img {
   height: 600px;
@@ -192,7 +202,7 @@ nav {
 }
 
 .card img {
-  border-radius: 10px 10px 0 0;
+  border-radius: 8px 8px 0 0;
   width: 100%; /* Đặt chiều rộng cố định cho hình ảnh */
   height: 200px; /* Đặt chiều cao cố định cho hình ảnh */
   object-fit: cover; /* Giữ tỷ lệ hình ảnh, cắt bớt nếu cần thiết */
@@ -384,4 +394,66 @@ footer {
 
 .list-unstyled li a:hover{
  color: #000 ;
+}
+
+/* page amthuc ==================================================================================================================*/
+/* Ẩn thanh cuộn trên mọi trình duyệt */
+
+
+.nav-tabs::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.nav-tabs:active {
+  cursor: grabbing; /* Thay đổi biểu tượng khi kéo */
+}
+
+.nav .nav-tabs .flex-nowrap li .nav-link{
+  font-size: 20px;
+}
+
+.cuisine .nav-link {
+  font-size:18px; /* Kích thước chữ */
+  color: #007bff; /* Màu chữ */
+  text-decoration: none; /* Loại bỏ gạch chân */
+  padding: 10px 15px; /* Khoảng cách bên trong */
+  transition: color 0.3s; /* Hiệu ứng chuyển màu mượt */
+}
+
+.vertical-nav {
+  display: flex;
+  flex-direction: column; /* Hiển thị theo chiều dọc */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  /* border: 1px solid #ccc; Tùy chỉnh border nếu cần */
+  max-width: 500px; /* Tùy chỉnh chiều rộng */
+}
+
+.vertical-nav .nav-item {
+  margin: 0; /* Đặt lại margin */
+}
+
+.vertical-nav .nav-link {
+  display: block;
+  padding: 10px 15px;
+  color: rgba(54, 83, 20, 1); /* Màu chữ */
+  text-decoration: none;
+  font-size: 18px;
+  border-bottom: 1px solid #ddd; /* Đường gạch ngang giữa các mục */
+  
+}
+
+.vertical-nav .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.8); /* Hiệu ứng hover */
+  font-weight: bold;
+}
+
+.vertical-nav .nav-link.active {
+  color: #fff;
+  background-color: rgba(54, 83, 20, 1); /* Màu nền cho mục active */
+}
+
+.navcol {
+  padding-left: 80px;
 }

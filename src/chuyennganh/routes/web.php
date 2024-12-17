@@ -26,6 +26,7 @@ use App\Models\Location;
 Route::get('/', [PageController::class, 'index'])->name('page.index');
 // Route::get('/search', [PageController::class, 'getSearch'])->name('search');  
 Route::get('/search', [PageController::class, 'getSearch'])->name('search');
+Route::get('/location', [PageController::class, 'getLocation'])->name('page.location');
 
 
 
