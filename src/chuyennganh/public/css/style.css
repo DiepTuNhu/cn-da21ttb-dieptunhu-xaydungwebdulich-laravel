@@ -12,7 +12,7 @@ body {
 }
 
 nav {
-  background-color: rgba(54, 83, 20, 0.8);
+  background-color: rgba(54, 83, 20, 1);
   font-family: "Chakra Petch", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -39,7 +39,7 @@ nav {
 /* Khi có active, nền có background-color */
 .btn.active {
   background-color: rgba(255, 255, 255, 0.3);
-  color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255) !important;
 }
 
 
@@ -396,6 +396,7 @@ footer {
  color: #000 ;
 }
 
+
 /* page amthuc ==================================================================================================================*/
 /* Ẩn thanh cuộn trên mọi trình duyệt */
 
@@ -410,14 +411,6 @@ footer {
 
 .nav .nav-tabs .flex-nowrap li .nav-link{
   font-size: 20px;
-}
-
-.cuisine .nav-link {
-  font-size:18px; /* Kích thước chữ */
-  color: #007bff; /* Màu chữ */
-  text-decoration: none; /* Loại bỏ gạch chân */
-  padding: 10px 15px; /* Khoảng cách bên trong */
-  transition: color 0.3s; /* Hiệu ứng chuyển màu mượt */
 }
 
 .vertical-nav {
@@ -456,4 +449,40 @@ footer {
 
 .navcol {
   padding-left: 80px;
+}
+
+/* Chi tiết=================================================================================== */
+/* Tạo hiệu ứng phóng to khi hover vào hình nhỏ */
+.img-hover-zoom {
+  transition: transform 0.3s ease-in-out; /* Thêm hiệu ứng mượt */
+}
+
+.img-hover-zoom:hover {
+  transform: scale(1.5); /* Phóng to ảnh khi hover */
+  z-index: 10; /* Đưa ảnh nổi lên trên các phần tử khác */
+  position: relative; /* Đảm bảo ảnh hover nổi lên */
+}
+body {
+  padding-top: 66px; /* Điều chỉnh khoảng các */
+}
+
+.navbar {
+  z-index: 1030; /* Đảm bảo navbar luôn nằm trên */
+}
+
+.summary {
+  margin: 20px 0;
+  font-size: 18px;
+}
+#full-description {
+  /* Giữ nguyên các dòng mới trong nội dung */ */
+  word-wrap: break-word; /* Giới hạn từ dài, không bị tràn ra ngoài */
+  margin-top: 10px; /* Tạo khoảng cách giữa các đoạn văn */
+  margin: 0; /* Xóa bỏ khoảng margin thừa */
+  padding: -20px; /* Xóa bỏ padding nếu có */
+  line-height: 1.6; /* Giảm chiều cao dòng, giúp nội dung chặt chẽ hơn */
+  
+}
+#full-description p {
+  text-indent: 30px; /* Thụt đầu dòng 30px cho mỗi đoạn văn */
 }

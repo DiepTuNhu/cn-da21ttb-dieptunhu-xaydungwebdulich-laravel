@@ -50,6 +50,10 @@
                     <input type="text" name="address" class="form-control" id="address" placeholder="Nhập địa chỉ">
                 </div>
                 <div class="form-group">
+                    <label for="price">Giá</label>
+                    <input type="text" name="price" class="form-control" id="price" placeholder="Nhập giá">
+                </div>
+                <div class="form-group">
                     <label for="description">Mô tả</label>
                     <textarea name="description" id="description" class="form-control">{{ old('description') }}</textarea>
                 </div>               

@@ -53,12 +53,14 @@ class LocationController extends Controller
         $this->validate($request, [
             'name' => 'required|string|max:255|unique:locations,name',
             'address' => 'nullable|string|max:255',
+            'price' => 'required|string|max:255',
             'description' => 'nullable|string',
             'id_type' => 'required|exists:types,id', // Kiểm tra id có tồn tại trong bảng types
             'id_province' => 'required|exists:provinces,id', // Kiểm tra id có tồn tại trong bảng cities
         ], [
             'name.required' => 'Bạn chưa nhập tên.',
             'name.unique' => 'Bạn chưa nhập tên.',
+            'price.required' => 'Bạn chưa nhập giá.',
             'id_type.required' => 'Bạn chưa chọn loại hình.',
             'id_province.required' => 'Bạn chưa chọn tỉnh/thành phố.',
 
@@ -67,6 +69,7 @@ class LocationController extends Controller
         $location = new Location();
         $location->name = $request->name;
         $location->address = $request->address;
+        $location->price = $request->price;
         $location->description = $request->description;
         $location->id_type = $request->id_type; // Lưu ID của loại hình
         $location->id_province = $request->id_province; // Lưu ID của thành phố
@@ -114,6 +117,7 @@ class LocationController extends Controller
     // Cập nhật các trường thông tin từ request
     $location->name = $request->name;
     $location->address = $request->address;
+    $location->price = $request->price;
     $location->description = $request->description;
     $location->id_type = $request->id_type; // Lưu ID của loại hình
     $location->id_province = $request->id_province; // Lưu ID của tỉnh/thành phố

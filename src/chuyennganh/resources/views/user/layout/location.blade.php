@@ -24,76 +24,81 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-$(document).ready(function() {
-    // Hàm tải các tỉnh và địa điểm
-    function loadLocations(provinceId = null) {
-        $.ajax({
-            url: '{{ route('page.location') }}',
-            type: 'GET',
-            data: { province_id: provinceId },
-            dataType: 'json',
-            success: function(response) {
-                // Cập nhật danh sách tỉnh
-                let provinceList = $('#province-list');
-                provinceList.empty();
-
-                response.provinces.forEach(function(province) {
-                    let activeClass = (province.id === response.activeProvince) ? 'active' : '';
-                    provinceList.append(`
-                        <li class="nav-item">
-                            <a class="nav-link ${activeClass}" href="#" data-province-id="${province.id}">
-                                ${province.name}
-                            </a>
-                        </li>
-                    `);
-                });
-
-                // Cập nhật danh sách địa điểm
-                let locationList = $('#location-list');
-                locationList.empty();
-                response.locations.forEach(function(location) {
-                    let imageUrl = location.mainImage ? '/storage/location_image/' + location.mainImage.name : '/images/default-image.jpg';
-                    locationList.append(`
-                        <div class="col-md-4 mb-4">
-                            <div class="card">
-                                <img class="card-img-top" src="${imageUrl}" alt="Card image" />
-                                <div class="card-body">
-                                    <h4 class="card-title">${location.name}</h4>
-                                    <p class="card-text">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(101, 163, 13, 1); padding: 2px;">
-                                            <path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"></path>
-                                        </svg>
-                                        ${location.address}
-                                    </p>
-                                    <a href="#" class="btn btn-primary">Xem chi tiết</a>
+    $(document).ready(function() {
+        // Hàm tải các tỉnh và địa điểm
+        function loadLocations(provinceId = null) {
+            $.ajax({
+                url: '{{ route('page.location') }}',
+                type: 'GET',
+                data: { province_id: provinceId },
+                dataType: 'json',
+                success: function(response) {
+                    // Cập nhật danh sách tỉnh
+                    let provinceList = $('#province-list');
+                    provinceList.empty();
+    
+                    response.provinces.forEach(function(province) {
+                        let activeClass = (province.id === provinceId) ? 'active' : '';
+                        provinceList.append(`
+                            <li class="nav-item">
+                                <a class="nav-link ${activeClass}" href="#" data-province-id="${province.id}">
+                                    ${province.name}
+                                </a>
+                            </li>
+                        `);
+                    });
+    
+                    // Cập nhật danh sách địa điểm
+                    let locationList = $('#location-list');
+                    locationList.empty();
+                    response.locations.forEach(function(location) {
+                        let imageUrl = location.mainImage ? '/storage/location_image/' + location.mainImage.name : '/images/default-image.jpg';
+                        locationList.append(`
+                            <div class="col-md-4 mb-4">
+                                <div class="card">
+                                    <img class="card-img-top" src="${imageUrl}" alt="Card image" />
+                                    <div class="card-body">
+                                        <h4 class="card-title">${location.name}</h4>
+                                        <p class="card-text">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(101, 163, 13, 1); padding: 2px;">
+                                                <path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"></path>
+                                            </svg>
+                                            ${location.address}
+                                        </p>
+                                        <a href="/detail_location/${location.id}" class="btn btn-primary">Xem chi tiết</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    `);
-                });
-            },
-            error: function() {
-                alert('Lỗi khi tải dữ liệu.');
-            }
+                        `);
+                    });
+                },
+                error: function() {
+                    alert('Lỗi khi tải dữ liệu.');
+                }
+            });
+        }
+    
+        // Tải trạng thái activeProvince từ localStorage
+        const storedProvinceId = localStorage.getItem('activeProvince');
+    
+        // Tải các tỉnh và địa điểm khi trang tải
+        loadLocations(storedProvinceId ? parseInt(storedProvinceId) : null);
+    
+        // Khi một tỉnh được chọn
+        $('#province-list').on('click', '.nav-link', function(e) {
+            e.preventDefault();
+            const provinceId = $(this).data('province-id');
+    
+            // Đánh dấu tỉnh được chọn là active
+            $(this).addClass('active').siblings().removeClass('active');
+    
+            // Lưu tỉnh được chọn vào localStorage
+            localStorage.setItem('activeProvince', provinceId);
+    
+            // Tải lại địa điểm cho tỉnh đã chọn
+            loadLocations(provinceId);
         });
-    }
-
-    // Tải các tỉnh và địa điểm khi trang tải
-    loadLocations();
-
-    // Khi một tỉnh được chọn
-    $('#province-list').on('click', '.nav-link', function(e) {
-        e.preventDefault();
-        const provinceId = $(this).data('province-id');
-
-       // Đánh dấu tỉnh được chọn là active
-      $(this).addClass('active').siblings().removeClass('active');
-
-
-        // Tải lại địa điểm cho tỉnh đã chọn
-        loadLocations(provinceId);
     });
-});
-
-</script>
+    </script>
+    
 @endsection

@@ -52,6 +52,10 @@
                   <input type="text" name="address" class="form-control" id="address" value="{{$location->address}}">
                 </div>
                 <div class="form-group">
+                  <label for="price">Giá</label>
+                  <input type="text" name="price" class="form-control" id="price" value="{{$location->price}}">
+                </div>
+                <div class="form-group">
                   <label for="description">Mô tả</label>
                   <textarea name="description" id="description" class="form-control">{{ old('description', $location->description)}}</textarea>
                 </div>              

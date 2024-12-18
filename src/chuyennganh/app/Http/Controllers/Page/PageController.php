@@ -107,5 +107,19 @@ public function getLocation(Request $request)
     return view('user.layout.location', compact('provinces', 'locations', 'slides', 'travinh'));
 }
 
+public function getDetailLocation($id) {
+    $detail_location = Location::with('photos', 'types')->find($id);
+
+    if (!$detail_location) {
+        return redirect()->back()->with('error', 'Địa điểm không tồn tại!');
+    }
+
+    // Lọc hình lớn và hình nhỏ
+    $main_photo = $detail_location->photos->firstWhere('status', 2); // Hình lớn có status = 2
+    $small_photos = $detail_location->photos->where('status', 0); // Hình nhỏ có status = 0
+
+    return view('user.layout.detail_location', compact('detail_location', 'main_photo', 'small_photos'));
+}
+
 
 }
