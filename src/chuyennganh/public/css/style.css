@@ -518,3 +518,18 @@ body {
   overflow: hidden; 
   text-overflow: ellipsis; /* Hiện dấu ... nếu text quá dài */
 }
+/* Lớp CSS tùy chỉnh chỉ ảnh hưởng đến thẻ .card */
+.card-custom {
+  width: 100%;  /* Thẻ card chiếm hết chiều rộng của .col-md-3 */
+  height: 100%; /* Thẻ card có chiều cao bằng với chiều cao của .col-md-3 */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Tạo bóng cho card */
+}
+
+/* Điều chỉnh chiều cao của hình ảnh trong card */
+.card-custom .card-img-top {
+  width: 100%;
+  height: 200px; /* Điều chỉnh chiều cao của hình ảnh */
+  object-fit: cover; /* Đảm bảo hình ảnh không bị méo */
+}

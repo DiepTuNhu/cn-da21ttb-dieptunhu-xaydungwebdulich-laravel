@@ -124,11 +124,15 @@ public function getDetailLocation($id) {
     $main_photo = $detail_location->photos->firstWhere('status', 2); // Hình lớn có status = 2
     $small_photos = $detail_location->photos->where('status', 0); // Hình nhỏ có status = 0
 
+    // Ghép name và address
+    $full_address = $detail_location->name . ', ' . $detail_location->address;
+
+
     // $utilities = Utility::where('id_typeofutility', 2)->get();
     // $utilities1 = Utility::where('id_typeofutility', 1)->get();
     $utilities = Utility::where('id_location', $id)->where('id_typeofutility', 2)->get();
     $utilities1 = Utility::where('id_location', $id)->where('id_typeofutility', 1)->get();
-    return view('user.layout.detail_location', compact('detail_location', 'main_photo', 'small_photos', 'utilities', 'utilities1'));
+    return view('user.layout.detail_location', compact('detail_location', 'main_photo', 'small_photos', 'utilities', 'utilities1', 'full_address'));
 }
 
 public function getGastronomy(Request $request)
@@ -190,19 +194,21 @@ public function getDetailUtility($id) {
     }
     // Lấy danh sách địa điểm liên quan
     $locations = Location::where('id', $detail_utility->id_location)->get();
+    
     // Lấy hình ảnh từ bảng photos với status = 2
     foreach ($locations as $location) {
         $location->photo = Photo::where('id_location', $location->id)
                                 ->where('status', 2)
                                 ->value('name');
     }
-
+    // Ghép name và address
+    $full_address = $detail_utility->name . ', ' . $detail_utility->address;
     // Hình ảnh tiện ích
     $imageUrl = $detail_utility->image 
                 ? '/storage/utility_image/' . $detail_utility->image 
                 : 'https://via.placeholder.com/600x400';
 
-    return view('user.layout.detail_utility', compact('detail_utility', 'imageUrl', 'locations'));
+    return view('user.layout.detail_utility', compact('detail_utility', 'imageUrl', 'locations', 'full_address'));
 }
 
 }

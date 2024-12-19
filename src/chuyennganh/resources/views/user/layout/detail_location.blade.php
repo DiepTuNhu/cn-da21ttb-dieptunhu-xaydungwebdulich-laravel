@@ -19,7 +19,7 @@
           
     
             <!-- Thông tin tóm tắt -->
-            <div class="col-md-6 d-flex align-items-center">
+            <div class="col-md-6">
               <div>
                   <h2><strong>{{ $detail_location->name }}</strong></h2>
                   <ul class="list-unstyled mt-3">
@@ -28,6 +28,18 @@
                       <li class="summary"><strong>💵 Giá tham khảo:</strong> {{ $detail_location->price }}</li>
                   </ul>
               </div>
+
+              <!-- Google Map -->
+              <div class="mt-5">
+                <iframe 
+                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDhmbf1S5U1T5iD0FAZ24VqxShFSvGB8Ds&q={{ urlencode($full_address) }}" 
+                    width="100%" 
+                    height="300" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
           </div>
           
         </div>
@@ -38,20 +50,7 @@
           <div id="full-description" style="text-align: justify;">
             {!! $detail_location->description !!} <!-- Giữ nguyên các dòng mới trong nội dung -->
           </div>
-        </div>
-      
-
-        <!-- Google Map -->
-        <div class="mt-5">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.706663756334!2d106.34526271411637!3d10.837862761297705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310b5ec77c497c4f%3A0xe5c6c7c94f7dc7b1!2zQW8gQsOgIE9tLCBUcsOgIFZpbmg!5e0!3m2!1sen!2s!4v1696854681558" 
-                width="100%" 
-                height="400" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy">
-            </iframe>
-        </div>
+        </div>     
     </div>
 
     
@@ -110,7 +109,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $utility->name }}</h5>
                             <p class="card-text">{{ $utility->address }}</p>
-                            <a href="{{ route('page.detail_location', ['id' => $utility->id]) }}" 
+                            <a href="{{ route('page.detail_utility', ['id' => $utility->id]) }}" 
                                class="btn btn-primary">Xem chi tiết</a>
                         </div>
                     </div>

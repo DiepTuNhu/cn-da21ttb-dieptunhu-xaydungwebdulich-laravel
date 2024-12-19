@@ -3,9 +3,8 @@
 @include('user.layout.search')
 
 <!-- CONTENT ---------------------------------------------------------------------------------------------------------------------- -->
-<div class="container-fluid container-location row mt">
+<div class="container-location row mt">
     <h2 class="text-content p-5 m-0">Những nơi tham quan đặc sắc</h2>
-
     <div class="card-container col-sm-12">
         <div class="container mt-4">
             <div class="row" id="location-list">
@@ -33,7 +32,7 @@
                         let imageUrl = location.mainImage ? '/storage/location_image/' + location.mainImage.name : '/images/default-image.jpg';
                         locationList.append(`
                             <div class="col-md-3 mb-4">
-                                <div class="card">
+                                <div class="card card-custom">
                                     <img class="card-img-top" src="${imageUrl}" alt="Card image" />
                                     <div class="card-body">
                                         <h4 class="card-title">${location.name}</h4>
