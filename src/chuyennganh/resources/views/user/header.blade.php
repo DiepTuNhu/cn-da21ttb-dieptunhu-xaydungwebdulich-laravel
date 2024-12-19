@@ -19,11 +19,8 @@
         <li class="nav-item">
           <a class="nav-link btn {{request() -> is('location') ? 'active' : ''}}" href="{{ route('page.location') }}">Địa điểm</a>
         </li>
-        {{-- <li class="nav-item">
-          <a class="nav-link {{request() -> is('about') ? 'active' : ''}}" href="about">Link 2</a>
-        </li> --}}
         <li class="nav-item">
-          <a class="nav-link btn" href="javascript:void(0)">Ẩm thực</a>
+          <a class="nav-link btn {{request() -> is('gastronomy') ? 'active' : ''}}" href="{{ route('page.gastronomy') }}">Ẩm thực</a>
         </li>
         <li class="nav-item">
           <a class="nav-link btn" href="javascript:void(0)">Lưu trú</a>

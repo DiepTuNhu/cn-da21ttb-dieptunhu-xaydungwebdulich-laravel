@@ -371,7 +371,7 @@ nav {
   border: 2px solid #65a30d;
   font-weight: bold;
   color: #65a30d;
-  text-decoration: none;
+  text-decoration: none; 
   padding: 10px 15px;
   border-radius: 5px;
   display: inline-block;
@@ -479,10 +479,21 @@ body {
   word-wrap: break-word; /* Giới hạn từ dài, không bị tràn ra ngoài */
   margin-top: 10px; /* Tạo khoảng cách giữa các đoạn văn */
   margin: 0; /* Xóa bỏ khoảng margin thừa */
-  padding: -20px; /* Xóa bỏ padding nếu có */
+  padding: 0px; /* Xóa bỏ padding nếu có */
   line-height: 1.6; /* Giảm chiều cao dòng, giúp nội dung chặt chẽ hơn */
   
 }
 #full-description p {
   text-indent: 30px; /* Thụt đầu dòng 30px cho mỗi đoạn văn */
+}
+
+.card-container-detlo .btn {
+  /* background-color: rgba(54, 83, 20, 1); */
+  border: 2px solid #65a30d;
+  font-weight: bold;
+  color: #65a30d;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  display: inline-block;
 }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Slide;
 use App\Models\Type;
 use App\Models\Province;
+use App\Models\Utility;
 
 class PageController extends Controller
 {
@@ -118,8 +119,74 @@ public function getDetailLocation($id) {
     $main_photo = $detail_location->photos->firstWhere('status', 2); // Hình lớn có status = 2
     $small_photos = $detail_location->photos->where('status', 0); // Hình nhỏ có status = 0
 
-    return view('user.layout.detail_location', compact('detail_location', 'main_photo', 'small_photos'));
+    // $utilities = Utility::where('id_typeofutility', 2)->get();
+    // $utilities1 = Utility::where('id_typeofutility', 1)->get();
+    $utilities = Utility::where('id_location', $id)->where('id_typeofutility', 2)->get();
+    $utilities1 = Utility::where('id_location', $id)->where('id_typeofutility', 1)->get();
+    return view('user.layout.detail_location', compact('detail_location', 'main_photo', 'small_photos', 'utilities', 'utilities1'));
 }
 
+public function getGastronomy(Request $request)
+{
+    // Lấy các slides có status = 0
+    $slides = Slide::where('status', 0)->get();
 
+    // Lấy tất cả các tỉnh có status = 0
+    $provinces = Province::where('status', 0)->get();
+    // Tìm tỉnh Trà Vinh
+    $travinh = $provinces->where('name', 'Tỉnh Trà Vinh')->first();
+
+    if ($travinh) {
+        $provinces = $provinces->reject(function($province) use ($travinh) {
+            return $province->id == $travinh->id;
+        });
+        // Đưa tỉnh Trà Vinh lên đầu
+        $provinces->prepend($travinh);
+    }
+
+    // Lấy province_id từ yêu cầu nếu có
+    $provinceId = $request->get('province_id');
+    if ($provinceId) {
+        // Lọc địa điểm theo province_id được chọn
+        $locations = Location::where('status', '!=', 1)
+                              ->where('id_province', $provinceId)
+                              ->get();
+    } else {
+        // Lấy địa điểm mặc định (ví dụ: theo tỉnh Trà Vinh)
+        $locations = Location::where('status', '!=', 1)
+                              ->where('id_province', $travinh->id)
+                              ->get();
+        $provinceId = $travinh->id;  // Sử dụng tỉnh Trà Vinh làm mặc định nếu không có province_id
+    }
+
+    // Gắn hình ảnh chính cho các địa điểm
+    foreach ($locations as $location) {
+        $location->mainImage = $location->photos()->where('status', 2)->first();
+    }
+
+    // Kiểm tra nếu yêu cầu là JSON từ AJAX
+    if ($request->wantsJson()) {
+        return response()->json([
+            'provinces' => $provinces,
+            'locations' => $locations,
+            'activeProvince' => $provinceId  // Trả về tỉnh đang active
+        ]);
+    }
+
+    // Trả về dữ liệu cho view nếu không phải là AJAX
+    return view('user.layout.gastronomy', compact('provinces', 'locations', 'slides', 'travinh'));
+}
+
+public function getDetailUtility($id) {
+    $detail_utility = Utility::with( 'typeOfUtility')->find($id);
+
+    if (!$detail_utility) {
+        return redirect()->back()->with('error', 'Địa điểm không tồn tại!');
+    }
+
+        // Lấy hình ảnh của địa điểm (giả sử có bảng lưu hình ảnh)
+        $imageUrl = $detail_utility->image ? '/storage/utility_image/' . $detail_utility->image : 'https://via.placeholder.com/600x400';
+    
+    return view('user.layout.detail_utility', compact('detail_utility', 'imageUrl'));
+}
 }

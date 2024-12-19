@@ -35,7 +35,7 @@
         <!-- Phần Giới thiệu -->
         <div class="mt-5">
           <h4><strong>Giới thiệu</strong></h4>
-          <div id="full-description">
+          <div id="full-description" style="text-align: justify;">
             {!! $detail_location->description !!} <!-- Giữ nguyên các dòng mới trong nội dung -->
           </div>
         </div>
@@ -53,50 +53,66 @@
             </iframe>
         </div>
     </div>
+
+    
+    <div class="container mt-5 p-2" style="border-left: 8px solid #365314; background-color:rgba(77, 124, 15, 0.8); border-radius:5px">
+        <h4 style="margin: 0;">Các dịch vụ gần đây</h4>
+    </div>
+    
 <!-- Tiêu đề và Thẻ Ẩm Thực -->
-<div class="container mt-5">
+<div class="container mt-5 card-container-detlo">
     <h4 class="text-center mb-4"><strong>Ẩm thực</strong></h4>
     <div class="row row-cols-1 row-cols-md-4 g-4">
-        <!-- Thẻ 1 -->
-        <div class="col">
-            <div class="card h-100">
-                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Món ăn 1">
-                <div class="card-body">
-                    <h5 class="card-title">Bánh tét Trà Cuôn</h5>
-                    <p class="card-text">Đặc sản nổi tiếng với hương vị thơm ngon và đậm đà.</p>
-                </div>
+        @if ($utilities->isEmpty())
+            <div class="col-12">
+                <p class="text-center text-muted">Hiện tại không có địa điểm nào.</p>
             </div>
-        </div>
-        <!-- Thẻ 2 -->
-        <div class="col">
-            <div class="card h-100">
-                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Món ăn 2">
-                <div class="card-body">
-                    <h5 class="card-title">Cháo ám</h5>
-                    <p class="card-text">Món cháo độc đáo với cá lóc và các loại rau đặc trưng.</p>
+        @else
+            @foreach ($utilities as $utility)
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="{{ asset('storage/utility_image/' . $utility->image) }}" 
+                             class="card-img-top" 
+                             alt="{{ $utility->name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $utility->name }}</h5>
+                            <p class="card-text">{{ $utility->address }}</p>
+                            <a href="{{ route('page.detail_utility', ['id' => $utility->id]) }}" 
+                               class="btn btn-primary">Xem chi tiết</a>
+                        </div>
+                    </div>
                 </div>
+            @endforeach
+        @endif
+    </div>
+</div>
+
+
+<!-- Tiêu đề và Thẻ lưu trú -->
+<div class="container mt-5 mb-5 card-container-detlo">
+    <h4 class="text-center mb-4"><strong>Lưu trú</strong></h4>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        @if ($utilities1->isEmpty())
+            <div class="col-12">
+                <p class="text-center text-muted">Hiện tại không có địa điểm nào.</p>
             </div>
-        </div>
-        <!-- Thẻ 3 -->
-        <div class="col">
-            <div class="card h-100">
-                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Món ăn 3">
-                <div class="card-body">
-                    <h5 class="card-title">Bún nước lèo</h5>
-                    <p class="card-text">Món bún đậm đà mang hương vị đặc trưng của vùng đất Trà Vinh.</p>
+        @else
+            @foreach ($utilities1 as $utility)
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="{{ asset('storage/utility_image/' . $utility->image) }}" 
+                             class="card-img-top" 
+                             alt="{{ $utility->name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $utility->name }}</h5>
+                            <p class="card-text">{{ $utility->address }}</p>
+                            <a href="{{ route('page.detail_location', ['id' => $utility->id]) }}" 
+                               class="btn btn-primary">Xem chi tiết</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <!-- Thẻ 4 -->
-        <div class="col">
-            <div class="card h-100">
-                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Món ăn 4">
-                <div class="card-body">
-                    <h5 class="card-title">Dừa sáp</h5>
-                    <p class="card-text">Đặc sản nổi tiếng với lớp cơm dày và mềm dẻo của dừa.</p>
-                </div>
-            </div>
-        </div>
+            @endforeach
+        @endif
     </div>
 </div>
 

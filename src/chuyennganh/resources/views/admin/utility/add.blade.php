@@ -46,7 +46,7 @@
                   </div>
                   <div class="form-group">
                       <label for="price">Giá</label>
-                      <input type="number" name="price" class="form-control" id="price" placeholder="Nhập giá" min="0">
+                      <input type="text" name="price" class="form-control" id="price" placeholder="Nhập giá" min="0">
                   </div>
                   <div class="form-group">
                       <label for="address">Địa chỉ</label>
@@ -66,7 +66,7 @@
                   </div> --}}
                   <div class="form-group">
                     <label for="time">Giờ phục vụ</label>
-                    <input type="time" name="time" class="form-control" id="time">
+                    <input type="text" name="time" class="form-control" id="time">
                 </div>
                   <div class="form-group">
                       <label for="rank">Xếp hạng</label>

@@ -50,7 +50,7 @@
                 </div>
                 <div class="form-group">
                     <label for="price">Giá</label>
-                    <input type="number" name="price" class="form-control" id="price" value="{{$utility->price}}" min="0">
+                    <input type="text" name="price" class="form-control" id="price" value="{{$utility->price}}" min="0">
                 </div>
                 <div class="form-group">
                     <label for="address">Địa chỉ</label>
@@ -60,13 +60,17 @@
                     <label for="phone">Số điện thoại</label>
                     <input type="tel" name="phone" class="form-control" id="phone" value="{{$utility->phonenumber}}" pattern="^(\+84|0)[1-9][0-9]{8}$" title="Vui lòng nhập số điện thoại hợp lệ" required>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="openingtime">Giờ mở cửa</label>
                     <input type="time" name="openingtime" class="form-control" id="openingtime" value="{{$utility->openingtime}}">
                 </div>
                 <div class="form-group">
                     <label for="closingtime">Giờ đóng cửa</label>
                     <input type="time" name="closingtime" class="form-control" id="closingtime" value="{{$utility->closingtime}}">
+                </div> --}}
+                <div class="form-group">
+                    <label for="time">Giờ phục vụ</label>
+                    <input type="text" name="time" class="form-control" id="time" value="{{$utility->time}}">
                 </div>
                 <div class="form-group">
                     <label for="rank">Xếp hạng</label>
