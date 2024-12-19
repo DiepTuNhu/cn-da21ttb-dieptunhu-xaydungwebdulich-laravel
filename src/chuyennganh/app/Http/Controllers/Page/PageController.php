@@ -5,9 +5,10 @@ use App\Models\Location;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Slide;
-use App\Models\Type;
+use App\Models\Photo;
 use App\Models\Province;
 use App\Models\Utility;
+use App\Models\Type;
 
 class PageController extends Controller
 {
@@ -64,49 +65,53 @@ public function getLocation(Request $request)
 
     // Lấy tất cả các tỉnh có status = 0
     $provinces = Province::where('status', 0)->get();
-    // Tìm tỉnh Trà Vinh
     $travinh = $provinces->where('name', 'Tỉnh Trà Vinh')->first();
 
     if ($travinh) {
         $provinces = $provinces->reject(function($province) use ($travinh) {
             return $province->id == $travinh->id;
         });
-        // Đưa tỉnh Trà Vinh lên đầu
-        $provinces->prepend($travinh);
+        $provinces->prepend($travinh); // Đưa Trà Vinh lên đầu
     }
 
-    // Lấy province_id từ yêu cầu nếu có
-    $provinceId = $request->get('province_id');
+    // Lấy danh sách loại hình du lịch
+    $types = Type::all();
+
+    // Lấy bộ lọc từ request (province hoặc type)
+    $provinceId = $request->get('province'); // Lọc theo địa phương
+    $typeId = $request->get('type');        // Lọc theo loại hình
+
+    // Lọc các địa điểm
+    $query = Location::where('status', '!=', 1);
     if ($provinceId) {
-        // Lọc địa điểm theo province_id được chọn
-        $locations = Location::where('status', '!=', 1)
-                              ->where('id_province', $provinceId)
-                              ->get();
-    } else {
-        // Lấy địa điểm mặc định (ví dụ: theo tỉnh Trà Vinh)
-        $locations = Location::where('status', '!=', 1)
-                              ->where('id_province', $travinh->id)
-                              ->get();
-        $provinceId = $travinh->id;  // Sử dụng tỉnh Trà Vinh làm mặc định nếu không có province_id
+        $query->where('id_province', $provinceId);
     }
+    if ($typeId) {
+        $query->where('id_type', $typeId);
+    }
+
+    $locations = $query->get();
 
     // Gắn hình ảnh chính cho các địa điểm
     foreach ($locations as $location) {
         $location->mainImage = $location->photos()->where('status', 2)->first();
     }
 
-    // Kiểm tra nếu yêu cầu là JSON từ AJAX
+    // Trả về dữ liệu nếu yêu cầu là AJAX
     if ($request->wantsJson()) {
         return response()->json([
             'provinces' => $provinces,
+            'types' => $types,
             'locations' => $locations,
-            'activeProvince' => $provinceId  // Trả về tỉnh đang active
+            'activeProvince' => $provinceId,
+            'activeType' => $typeId
         ]);
     }
 
-    // Trả về dữ liệu cho view nếu không phải là AJAX
-    return view('user.layout.location', compact('provinces', 'locations', 'slides', 'travinh'));
+    // Trả về view nếu không phải AJAX
+    return view('user.layout.location', compact('provinces', 'types', 'locations', 'slides', 'travinh', 'provinceId', 'typeId'));
 }
+
 
 public function getDetailLocation($id) {
     $detail_location = Location::with('photos', 'types')->find($id);
@@ -178,15 +183,26 @@ public function getGastronomy(Request $request)
 }
 
 public function getDetailUtility($id) {
-    $detail_utility = Utility::with( 'typeOfUtility')->find($id);
+    $detail_utility = Utility::with(['typeOfUtility', 'location'])->find($id);
 
     if (!$detail_utility) {
         return redirect()->back()->with('error', 'Địa điểm không tồn tại!');
     }
+    // Lấy danh sách địa điểm liên quan
+    $locations = Location::where('id', $detail_utility->id_location)->get();
+    // Lấy hình ảnh từ bảng photos với status = 2
+    foreach ($locations as $location) {
+        $location->photo = Photo::where('id_location', $location->id)
+                                ->where('status', 2)
+                                ->value('name');
+    }
 
-        // Lấy hình ảnh của địa điểm (giả sử có bảng lưu hình ảnh)
-        $imageUrl = $detail_utility->image ? '/storage/utility_image/' . $detail_utility->image : 'https://via.placeholder.com/600x400';
-    
-    return view('user.layout.detail_utility', compact('detail_utility', 'imageUrl'));
+    // Hình ảnh tiện ích
+    $imageUrl = $detail_utility->image 
+                ? '/storage/utility_image/' . $detail_utility->image 
+                : 'https://via.placeholder.com/600x400';
+
+    return view('user.layout.detail_utility', compact('detail_utility', 'imageUrl', 'locations'));
 }
+
 }

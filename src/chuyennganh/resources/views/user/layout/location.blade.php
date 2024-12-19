@@ -6,14 +6,7 @@
 <div class="container-fluid container-location row mt">
     <h2 class="text-content p-5 m-0">Những nơi tham quan đặc sắc</h2>
 
-    <div class="container mb-4 col-sm-3 navcol mt-4">
-        <ul id="province-list" class="nav nav-tabs vertical-nav" 
-            style="white-space: nowrap; overflow-x: auto; -ms-overflow-style: none; scrollbar-width: none;">
-            <!-- Các mục tỉnh sẽ được tải qua AJAX -->
-        </ul>
-    </div>
-  
-    <div class="card-container col-sm-9">
+    <div class="card-container col-sm-12">
         <div class="container mt-4">
             <div class="row" id="location-list">
                 <!-- Các địa điểm sẽ được tải qua AJAX -->
@@ -25,36 +18,21 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
-        // Hàm tải các tỉnh và địa điểm
+        // Hàm tải các địa điểm khi chọn tỉnh
         function loadLocations(provinceId = null) {
             $.ajax({
                 url: '{{ route('page.location') }}',
                 type: 'GET',
-                data: { province_id: provinceId },
+                data: { province: provinceId },
                 dataType: 'json',
                 success: function(response) {
-                    // Cập nhật danh sách tỉnh
-                    let provinceList = $('#province-list');
-                    provinceList.empty();
-    
-                    response.provinces.forEach(function(province) {
-                        let activeClass = (province.id === provinceId) ? 'active' : '';
-                        provinceList.append(`
-                            <li class="nav-item">
-                                <a class="nav-link ${activeClass}" href="#" data-province-id="${province.id}">
-                                    ${province.name}
-                                </a>
-                            </li>
-                        `);
-                    });
-    
                     // Cập nhật danh sách địa điểm
                     let locationList = $('#location-list');
                     locationList.empty();
                     response.locations.forEach(function(location) {
                         let imageUrl = location.mainImage ? '/storage/location_image/' + location.mainImage.name : '/images/default-image.jpg';
                         locationList.append(`
-                            <div class="col-md-4 mb-4">
+                            <div class="col-md-3 mb-4">
                                 <div class="card">
                                     <img class="card-img-top" src="${imageUrl}" alt="Card image" />
                                     <div class="card-body">
@@ -77,28 +55,28 @@
                 }
             });
         }
-    
+
         // Tải trạng thái activeProvince từ localStorage
         const storedProvinceId = localStorage.getItem('activeProvince');
-    
+        
         // Tải các tỉnh và địa điểm khi trang tải
         loadLocations(storedProvinceId ? parseInt(storedProvinceId) : null);
-    
-        // Khi một tỉnh được chọn
-        $('#province-list').on('click', '.nav-link', function(e) {
+
+        // Khi một tỉnh được chọn từ dropdown
+        $('ul.dropdown-menu .dropdown-item').on('click', function(e) {
             e.preventDefault();
             const provinceId = $(this).data('province-id');
-    
+            
             // Đánh dấu tỉnh được chọn là active
             $(this).addClass('active').siblings().removeClass('active');
-    
+
             // Lưu tỉnh được chọn vào localStorage
             localStorage.setItem('activeProvince', provinceId);
-    
+            
             // Tải lại địa điểm cho tỉnh đã chọn
             loadLocations(provinceId);
         });
     });
-    </script>
-    
+</script>
+
 @endsection

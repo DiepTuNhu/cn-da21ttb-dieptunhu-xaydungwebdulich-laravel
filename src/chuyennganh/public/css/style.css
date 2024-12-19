@@ -54,7 +54,10 @@ nav {
   position: relative; /* Đặt slider làm container tham chiếu */
 }
 
-
+.form-control{
+  height: 50px;
+  border-radius: 15px;
+}
 
 /* Tùy chỉnh form bên trong thanh tìm kiếm */
 .search-bar form {
@@ -68,15 +71,19 @@ nav {
   left: 50%; /* Căn giữa theo chiều ngang */
   transform: translate(-50%, -50%); /* Đảm bảo thanh tìm kiếm nằm chính giữa */
   z-index: 10; /* Đưa thanh tìm kiếm lên trên carousel */
-  width: 40%; /* Độ rộng của thanh tìm kiếm */
+  /* height: 100px */
+  width: 60%; /* Độ rộng của thanh tìm kiếm */
   background-color: rgba(255, 255, 255, 0.6); /* Nền trắng trong suốt */
   padding: 15px; /* Khoảng cách bên trong để nội dung thoáng hơn */
-  border-radius: 10px; /* Bo góc */
+  border-radius: 20px; /* Bo góc */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Tạo hiệu ứng nổi */
 }
 
 .search {
   background-color: #65a30d;
+  width: 80px;
+  border-radius: 15px;
+
 }
 
 .search:hover {
@@ -496,4 +503,18 @@ body {
   padding: 10px 15px;
   border-radius: 5px;
   display: inline-block;
+}
+
+.dropdown-menu {
+  max-width: 600px; /* Giới hạn chiều rộng */
+}
+
+.dropdown-menu .row {
+  margin: 0; /* Xoá khoảng cách dư thừa */
+}
+
+.dropdown-item {
+  white-space: nowrap; /* Giữ text không xuống dòng */
+  overflow: hidden; 
+  text-overflow: ellipsis; /* Hiện dấu ... nếu text quá dài */
 }

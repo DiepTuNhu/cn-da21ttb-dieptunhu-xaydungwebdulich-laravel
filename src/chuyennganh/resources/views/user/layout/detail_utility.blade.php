@@ -46,50 +46,45 @@
         </div>
     </div>
 <!-- Tiêu đề và Thẻ Ẩm Thực -->
-<div class="container mt-5">
-    <h4 class="text-center mb-4"><strong>Ẩm thực</strong></h4>
+<div class="container mt-5 mb-5 card-container-detlo">
+    <h4 class="text-center mb-4"><strong>Địa điểm du lịch gần đó</strong></h4>
     <div class="row row-cols-1 row-cols-md-4 g-4">
-        <!-- Thẻ 1 -->
-        <div class="col">
-            <div class="card h-100">
-                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Món ăn 1">
-                <div class="card-body">
-                    <h5 class="card-title">Bánh tét Trà Cuôn</h5>
-                    <p class="card-text">Đặc sản nổi tiếng với hương vị thơm ngon và đậm đà.</p>
-                </div>
+        @if ($locations->isEmpty())
+            <div class="col-12">
+                <p class="text-center text-muted">Hiện tại không có địa điểm nào.</p>
             </div>
-        </div>
-        <!-- Thẻ 2 -->
-        <div class="col">
-            <div class="card h-100">
-                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Món ăn 2">
-                <div class="card-body">
-                    <h5 class="card-title">Cháo ám</h5>
-                    <p class="card-text">Món cháo độc đáo với cá lóc và các loại rau đặc trưng.</p>
+        @else
+            @foreach ($locations as $location)
+                <div class="col">
+                    <div class="card h-100">
+                        <!-- Hình ảnh địa điểm -->
+                        <img src="{{ $location->photo ? asset('storage/location_image/' . $location->photo) : 'https://via.placeholder.com/600x400' }}" 
+                             class="card-img-top" 
+                             alt="{{ $location->name }}">
+    
+                        <div class="card-body">
+                            <!-- Tên và địa chỉ địa điểm -->
+                            <h5 class="card-title">{{ $location->name }}</h5>
+                            <p class="card-text">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(101, 163, 13, 1); padding: 2px;">
+                                    <path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"></path>
+                                </svg>
+                                {{ $location->address }}</p>
+    
+                            <!-- Liên kết chi tiết -->
+                            <a href="{{ route('page.detail_location', ['id' => $location->id]) }}" 
+                               class="btn btn-primary">Xem chi tiết</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <!-- Thẻ 3 -->
-        <div class="col">
-            <div class="card h-100">
-                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Món ăn 3">
-                <div class="card-body">
-                    <h5 class="card-title">Bún nước lèo</h5>
-                    <p class="card-text">Món bún đậm đà mang hương vị đặc trưng của vùng đất Trà Vinh.</p>
-                </div>
-            </div>
-        </div>
-        <!-- Thẻ 4 -->
-        <div class="col">
-            <div class="card h-100">
-                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Món ăn 4">
-                <div class="card-body">
-                    <h5 class="card-title">Dừa sáp</h5>
-                    <p class="card-text">Đặc sản nổi tiếng với lớp cơm dày và mềm dẻo của dừa.</p>
-                </div>
-            </div>
-        </div>
+            @endforeach
+        @endif
     </div>
+    
+    
+
+    
+    
 </div>
 
     <!-- Bootstrap JS -->
