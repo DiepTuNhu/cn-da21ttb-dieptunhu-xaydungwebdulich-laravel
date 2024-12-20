@@ -123,7 +123,7 @@ if ($request->hasFile('images')) {
 }
 
 
-return redirect()->route('photos.index')->with('success', 'Ảnh đã được lưu thành công');
+return redirect()->route('locations.index')->with('success', 'Ảnh đã được lưu thành công');
 }
 
     /**
