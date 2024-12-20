@@ -37,88 +37,98 @@
                     height="300" 
                     style="border:0;" 
                     allowfullscreen="" 
-                    loading="lazy">
-                </iframe>
+                    loading="lazy"></iframe>
+              </div>
             </div>
+        </div>
+    {{-- </div> --}}
+
+            <!-- Phần Giới thiệu -->
+            <div class="mt-5">
+                <h4><strong>Giới thiệu</strong></h4>
+                <div id="full-description" style="text-align: justify;">
+                  {!! $detail_location->description !!} <!-- Giữ nguyên các dòng mới trong nội dung -->
+                </div>
+              </div>     
+          </div>
+      
+          
+          <div class="container mt-5 p-2" style="border-left: 8px solid #365314; background-color:rgba(77, 124, 15, 0.8); border-radius:5px">
+              <h4 style="margin: 0;">Các dịch vụ gần đây</h4>
           </div>
           
-        </div>
-        
-        <!-- Phần Giới thiệu -->
-        <div class="mt-5">
-          <h4><strong>Giới thiệu</strong></h4>
-          <div id="full-description" style="text-align: justify;">
-            {!! $detail_location->description !!} <!-- Giữ nguyên các dòng mới trong nội dung -->
+      <!-- Tiêu đề và Thẻ Ẩm Thực -->
+      <div class="container mt-5 card-container-detlo">
+          <h4 class="text-center mb-4"><strong>Ẩm thực</strong></h4>
+          <div class="row row-cols-1 row-cols-md-4 g-4">
+              @if ($utilities->isEmpty())
+                  <div class="col-12">
+                      <p class="text-center text-muted">Hiện tại không có địa điểm nào.</p>
+                  </div>
+              @else
+                  @foreach ($utilities as $utility)
+                      <div class="col">
+                          <div class="card h-100">
+                              <img src="{{ asset('storage/utility_image/' . $utility->image) }}" 
+                                   class="card-img-top" 
+                                   alt="{{ $utility->name }}">
+                              <div class="card-body">
+                                  <h5 class="card-title">{{ $utility->name }}</h5>
+                                  <p class="card-text">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(101, 163, 13, 1); padding: 2px;">
+                                          <path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"></path>
+                                      </svg>
+                                      {{ $utility->address }}</p>
+                                  <a href="{{ route('page.detail_utility', ['id' => $utility->id]) }}" 
+                                     class="btn btn-primary">Xem chi tiết</a>
+                              </div>
+                          </div>
+                      </div>
+                  @endforeach
+              @endif
           </div>
-        </div>     
-    </div>
+      </div>
+      
+      
+      <!-- Tiêu đề và Thẻ lưu trú -->
+      <div class="container mt-5 mb-5 card-container-detlo">
+          <h4 class="text-center mb-4"><strong>Lưu trú</strong></h4>
+          <div class="row row-cols-1 row-cols-md-4 g-4">
+              @if ($utilities1->isEmpty())
+                  <div class="col-12">
+                      <p class="text-center text-muted">Hiện tại không có địa điểm nào.</p>
+                  </div>
+              @else
+                  @foreach ($utilities1 as $utility)
+                      <div class="col">
+                          <div class="card h-100">
+                              <img src="{{ asset('storage/utility_image/' . $utility->image) }}" 
+                                   class="card-img-top" 
+                                   alt="{{ $utility->name }}">
+                              <div class="card-body">
+                                  <h5 class="card-title">{{ $utility->name }}</h5>
+                                  <p class="card-text">{{ $utility->address }}</p>
+                                  <a href="{{ route('page.detail_utility', ['id' => $utility->id]) }}" 
+                                     class="btn btn-primary">Xem chi tiết</a>
+                              </div>
+                          </div>
+                      </div>
+                  @endforeach
+              @endif
+          </div>
+      </div>
+    <!-- Bao gồm các thư viện CSS và JavaScript cần thiết -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+    {{-- <link href="{{ asset('css/custom.css') }}" rel="stylesheet"> <!-- Bao gồm tệp CSS chung --> --}}
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 
-    
-    <div class="container mt-5 p-2" style="border-left: 8px solid #365314; background-color:rgba(77, 124, 15, 0.8); border-radius:5px">
-        <h4 style="margin: 0;">Các dịch vụ gần đây</h4>
-    </div>
-    
-<!-- Tiêu đề và Thẻ Ẩm Thực -->
-<div class="container mt-5 card-container-detlo">
-    <h4 class="text-center mb-4"><strong>Ẩm thực</strong></h4>
-    <div class="row row-cols-1 row-cols-md-4 g-4">
-        @if ($utilities->isEmpty())
-            <div class="col-12">
-                <p class="text-center text-muted">Hiện tại không có địa điểm nào.</p>
-            </div>
-        @else
-            @foreach ($utilities as $utility)
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="{{ asset('storage/utility_image/' . $utility->image) }}" 
-                             class="card-img-top" 
-                             alt="{{ $utility->name }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $utility->name }}</h5>
-                            <p class="card-text">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(101, 163, 13, 1); padding: 2px;">
-                                    <path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"></path>
-                                </svg>
-                                {{ $utility->address }}</p>
-                            <a href="{{ route('page.detail_utility', ['id' => $utility->id]) }}" 
-                               class="btn btn-primary">Xem chi tiết</a>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        @endif
-    </div>
-</div>
-
-
-<!-- Tiêu đề và Thẻ lưu trú -->
-<div class="container mt-5 mb-5 card-container-detlo">
-    <h4 class="text-center mb-4"><strong>Lưu trú</strong></h4>
-    <div class="row row-cols-1 row-cols-md-4 g-4">
-        @if ($utilities1->isEmpty())
-            <div class="col-12">
-                <p class="text-center text-muted">Hiện tại không có địa điểm nào.</p>
-            </div>
-        @else
-            @foreach ($utilities1 as $utility)
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="{{ asset('storage/utility_image/' . $utility->image) }}" 
-                             class="card-img-top" 
-                             alt="{{ $utility->name }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $utility->name }}</h5>
-                            <p class="card-text">{{ $utility->address }}</p>
-                            <a href="{{ route('page.detail_utility', ['id' => $utility->id]) }}" 
-                               class="btn btn-primary">Xem chi tiết</a>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        @endif
-    </div>
-</div>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Gắn sự kiện cho dropdown -->
+    <script>
+        $(document).ready(function() {
+            // Gắn sự kiện cho dropdown
+            $('.dropdown-toggle').dropdown();
+        });
+    </script>
 @endsection

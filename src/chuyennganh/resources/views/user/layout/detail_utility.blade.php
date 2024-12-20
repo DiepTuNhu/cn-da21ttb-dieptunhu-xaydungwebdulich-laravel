@@ -85,8 +85,18 @@
     
     
 </div>
+    <!-- Bao gồm các thư viện CSS và JavaScript cần thiết -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+    {{-- <link href="{{ asset('css/custom.css') }}" rel="stylesheet"> <!-- Bao gồm tệp CSS chung --> --}}
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <!-- Gắn sự kiện cho dropdown -->
+    <script>
+        $(document).ready(function() {
+            // Gắn sự kiện cho dropdown
+            $('.dropdown-toggle').dropdown();
+        });
+    </script>
 </html>

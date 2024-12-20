@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th12 19, 2024 lúc 12:18 PM
+-- Thời gian đã tạo: Th12 20, 2024 lúc 01:37 AM
 -- Phiên bản máy phục vụ: 8.0.30
 -- Phiên bản PHP: 8.1.10
 
@@ -490,7 +490,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `google_id`, `username`, `email`, `address`, `password`, `image`, `status`, `id_role`, `created_at`, `updated_at`) VALUES
 (2, NULL, 'admin', 'admin@gmail.com', 'Trà Vinh', '$2y$12$NzG19XOwvU7OR.2.OnsWi.eNQPCEWISIAFCXl304uvbM.0ccdEcXa', 'default.jpg', 0, 1, '2024-12-12 18:13:50', '2024-12-12 18:13:50'),
-(3, NULL, 'abc', 'abc@gmail.com', NULL, '$2y$12$PmF4qTvExN6j6bNQWNdcsOMwh7HWSbjtf1qKYzDpkVfJFQ6IKux6u', 'default.jpg', 0, 2, '2024-12-13 01:55:37', '2024-12-13 01:55:37');
+(4, NULL, 'nhudiep', 'nhudiep@gmail.com', 'Trà Vinh', '$2y$12$X8Y0VFt5bOdFQXi/tBM17O0drSaOboELPFLWYAsd5ahDsDAC7Hrx6', '1734653521.jpg', 0, 2, '2024-12-19 17:12:02', '2024-12-19 17:12:02');
 
 -- --------------------------------------------------------
 
@@ -726,7 +726,7 @@ ALTER TABLE `types`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `utilities`

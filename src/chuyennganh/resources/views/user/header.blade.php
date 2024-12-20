@@ -24,30 +24,24 @@
               Loại hình du lịch
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            @foreach(App\Models\Type::all() as $type)
-                <li>
-                    <a class="dropdown-item" href="{{ route('page.location') }}" data-type-id="{{ $type->id }}">
-                        {{ $type->name }}
-                    </a>
-                </li>
-            @endforeach
-        </ul>
-        
+              @foreach($types as $type)
+                  <li>
+                      <a class="dropdown-item" href="{{ route('page.location') }}" data-type-id="{{ $type->id }}">
+                          {{ $type->name }}
+                      </a>
+                  </li>
+              @endforeach
+          </ul>
       </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link btn dropdown-toggle" 
-             href="#" 
-             id="navbarDropdown" 
-             role="button" 
-             data-bs-toggle="dropdown" 
-             aria-expanded="false">
+      
+      <li class="nav-item dropdown">
+          <a class="nav-link btn dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Địa phương
           </a>
           <ul class="dropdown-menu p-3" aria-labelledby="navbarDropdown" style="width: 600px;">
               <div class="container">
                   <div class="row">
-                      @foreach(App\Models\Province::all() as $province)
+                      @foreach($provinces as $province)
                           <div class="col-4 mb-2">
                               <a class="dropdown-item" href="{{ route('page.location') }}" data-province-id="{{ $province->id }}">
                                   {{ $province->name }}
@@ -58,6 +52,8 @@
               </div>
           </ul>
       </li>
+      
+      
       
         
         {{-- <li class="nav-item">
