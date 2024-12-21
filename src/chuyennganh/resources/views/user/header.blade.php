@@ -70,19 +70,35 @@
       </div> --}}
 
       @if(Auth::check() || Session::has('userEmail'))
-      <form id="logout-form" action="{{ route('page.logout') }}" method="POST" style="display: none;">
-          @csrf
-      </form>
-      <a href="#" class="btn" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-          Đăng xuất
-      </a>
-      @else
-      <div class="d-flex">
-        <a href="{{route('register')}}" class="btn">Đăng ký</a>
-        <a href="{{route('login')}}" class="btn">Đăng nhập</a>
-        {{-- <a href="{{route('google.login')}}" class="btn">Google</a> --}}
-      </div>
-      @endif
+    <div class="dropdown">
+        <!-- Hiển thị ảnh đại diện và tên người dùng -->
+        <a href="#" class="btn dropdown-toggle" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <!-- Hiển thị ảnh đại diện nếu có, nếu không có thì hiển thị chữ cái đầu tiên của tên -->
+            <img src="{{ Auth::user()->image ? asset('storage/images/' . Auth::user()->image) : asset('images/default.jpg') }}" alt="Avatar" class="rounded-circle" width="40" height="40">
+            <span class="ms-2">{{ Auth::user()->username }}</span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item" href="mailto:{{ Auth::user()->email }}">Email: {{ Auth::user()->email }}</a></li>
+            <li>
+                <!-- Form đăng xuất -->
+                <form id="logout-form" action="{{ route('page.logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+                <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Đăng xuất</a>
+            </li>
+        </ul>
+    </div>
+@else
+    <div class="d-flex">
+        <a href="{{ route('register') }}" class="btn">Đăng ký</a>
+        <a href="{{ route('login') }}" class="btn">Đăng nhập</a>
+        {{-- <a href="{{ route('google.login') }}" class="btn">Google</a> --}}
+    </div>
+@endif
+
+  
+
+
     </div>
   </div>
 </nav>

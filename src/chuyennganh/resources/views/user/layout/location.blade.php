@@ -47,6 +47,10 @@
                             `);
                         });
                     }
+                    // Cuộn xuống vị trí của các thẻ hiển thị địa điểm
+                    $('html, body').animate({
+                        scrollTop: $('#location-list').offset().top
+                    }, 500);
                 },
                 error: function() {
                     alert('Lỗi khi tải dữ liệu.');

@@ -533,3 +533,20 @@ body {
   height: 200px; /* Điều chỉnh chiều cao của hình ảnh */
   object-fit: cover; /* Đảm bảo hình ảnh không bị méo */
 }
+
+#userDropdown {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+#userDropdown img {
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.dropdown-menu {
+  min-width: 200px;
+  right: 0;
+  left: auto; /* Đảm bảo menu không bị xê dịch ra ngoài */
+}

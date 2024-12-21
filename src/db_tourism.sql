@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Dec 20, 2024 at 03:37 PM
--- Server version: 8.0.30
--- PHP Version: 8.1.10
+-- Máy chủ: localhost:3306
+-- Thời gian đã tạo: Th12 21, 2024 lúc 03:47 AM
+-- Phiên bản máy phục vụ: 8.0.30
+-- Phiên bản PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_tourism`
+-- Cơ sở dữ liệu: `db_tourism`
 --
 CREATE DATABASE IF NOT EXISTS `db_tourism` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 USE `db_tourism`;
@@ -26,7 +26,7 @@ USE `db_tourism`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contacts`
+-- Cấu trúc bảng cho bảng `contacts`
 --
 
 CREATE TABLE `contacts` (
@@ -44,7 +44,7 @@ CREATE TABLE `contacts` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `failed_jobs`
+-- Cấu trúc bảng cho bảng `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
@@ -60,7 +60,7 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `locations`
+-- Cấu trúc bảng cho bảng `locations`
 --
 
 CREATE TABLE `locations` (
@@ -77,7 +77,7 @@ CREATE TABLE `locations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `locations`
+-- Đang đổ dữ liệu cho bảng `locations`
 --
 
 INSERT INTO `locations` (`id`, `name`, `address`, `price`, `description`, `status`, `id_type`, `id_province`, `created_at`, `updated_at`) VALUES
@@ -101,7 +101,7 @@ INSERT INTO `locations` (`id`, `name`, `address`, `price`, `description`, `statu
 (19, 'Phước Kiển Tự', 'Xã Hoà Tân, Huyện Châu Thành, Đồng Tháp', 'Miễn phí', '<p>Trong số rất nhiều ngôi chùa nổi tiếng ở tỉnh Đồng Tháp có kiến trúc cổ kính, khung cảnh đẹp mắt thì chùa Phước Kiển không phải là chùa đẹp nhưng vẫn được đông đảo du khách và Phật tử viếng thăm vì sở hữu một hồ sen rất đặc biệt. Nhắc đến hoa sen, người ta thường liên tưởng đến vẻ đẹp thanh cao, tinh tế mà mỏng manh. Nhưng hoa sen trong ngôi chùa Phước Kiển ở Đồng Tháp lại nổi tiếng bởi kích thước khổng lồ, có thể “cõng” người mà chỉ làm khẽ xao động mặt nước.</p><p>Chùa Phước Kiển nằm ở xã Hòa Tân, huyện Châu Thành, tỉnh Đồng Tháp, được thành lập trước thời vua Thiệu Trị. Theo sư trụ trì Thích Huệ Từ thì trước đây ngôi chùa rất lớn, uy nghiêm, sở hữu không gian khoáng đãng, thanh tịnh, mát mẻ, Phước Kiển Tự còn từng là cơ sở hoạt động cách mạng. Tuy nhiên không may là vào năm 1966, bom đạn chiến tranh đã làm sập hoàn toàn ngôi chùa. Sau năm 1975, chùa được xây lại với kiến trúc đơn giản không cầu kỳ bao gồm: cổng vào, tháp thờ Phật Quan Âm và chính điện.</p><p>Những hố bom được các sư thầy trong chùa dùng làm hồ sen. Vừa khỏa lấp được vết tích của chiến tranh vừa có chỗ để khách du lịch tham quan. Trong ao sen có một loài sen kỳ lạ và hiếm thấy không chỉ ở Việt Nam mà ở cả các nước Đông Nam Á.</p><p>Ao sen ở chùa Phước Kiển có hình vuông tượng trưng cho đất, lá sen có hình tròn tượng trưng cho trời. Lá sen khổng lồ, to như những cái nia, vành cong gần cả tấc tay, nom rất đẹp mắt. Nếu không tận mắt nhìn thấy, chắc chắn bạn sẽ hồ nghi rằng, đây chỉ là lá sen làm bằng nhựa hoặc bên dưới lá có sắt thép chống đỡ.</p><p>Được biết, loài sen này xuất hiện trong ao của nhà chùa từ năm 1992 và tồn tại cho đến bây giờ. Không ai biết tên gọi chính xác của chúng nên người ta thường gọi bằng nhiều tên khác nhau. Có người gọi là sen vua, có khi gọi là súng nia, cây nong tầm,…chính vì có loài sen lạ nên người dân thường gọi chùa bằng cái tên dân dã “Chùa Sen Vua” hay “Chùa Lá Sen”…,</p>', 0, 2, 6, '2024-12-19 02:13:46', '2024-12-19 02:13:46'),
 (20, 'Đồng sen Tháp Mười', 'Xã Mỹ Hòa, huyện Tháp Mười, tỉnh Đồng Tháp', 'Ngày thường 20,000 VND/ người. Cuối tuần là 30,000 VND/ người.', '<p>Để cảm nhận những điều tuyệt vời từ hoa sen, bạn nên đến Đồng Tháp Mười vào mùa hoa nở rộ, thường là vào mùa nước nổi từ tháng 6 đến tháng 11 hằng năm. Nếu không đến được vào mùa hoa nở nhiều nhất thì bạn vẫn có thể đến đây bất cứ lúc nào trong năm, vì không gian và không khí nơi đây vẫn thế, vẫn trong lành và dịu dàng như vậy.</p><p>Nếu đã đến đây, bạn có thể để ý xem sự chuyển màu đặc sắc của hoa sen. Thường vào buổi sáng thì hoa sẽ có màu hồng nhạt, sau đó chuyển sang hồng vào buổi trưa. Và lúc sen được xem là đẹp nhất trong ngày là khoảng 3h chiều vì lúc này hoa sẽ nở khá to khoe đài đen vàng lấp lánh dưới ánh mặt trời. Sau đó đến chiều thì sen có màu hồng đậm dần, rồi khi mặt trời lặn cũng là lúc màu sen đỏ như mặt trời hoàng hôn.</p><p>Điều làm bạn thích thú và u mê không lối thoát chính là bức tranh vùng quê rực rỡ màu hồng trắng của hoa xen kẽ giữa màu xanh của lá và chút nắng vàng của mặt trời. Cảnh thế này thì chỉ cần bạn chụp hình thôi, còn đẹp cứ để cánh đồng sen tại khu du lịch sinh thái đồng sen Tháp Mười lo.</p><p>Sau khi dạo bước vui chơi trực tiếp với những đóa sen thỏa thích thì bạn có thể đến các chòi lá ngay cạnh hồ sen để nghỉ ngơi. Ngồi bên trong các mái lá đơn sơ, nhìn ra cánh đồng sen bạt ngàn thoang thoảng hương sen nhè nhẹ, húp một tí trà sen nữa thì bạn sẽ phải bất ngờ vì cả người trở nên nhẹ nhàng và tâm hồn thanh tịnh hơn bao giờ hết.</p>', 0, 1, 6, '2024-12-19 02:14:37', '2024-12-19 02:14:37'),
 (21, 'Vườn quốc gia Tràm Chim', 'Huyện Tam Nông tỉnh Đồng Tháp', 'Miễn phí', '<p>Vườn quốc gia Tràm Chim là vùng đất nằm trong địa phận của 7 xã (Tân Công Sính, Phú Đức, Phú Thọ, Phú Thành A, Phú Thành B, Phú Hiệp), thị trấn Tràm Chim thuộc huyện Tam Nông. Vườn quốc gia Tràm Chim có tổng diện tích hơn 7500 ha là mô hình thu nhỏ đặc trưng của vùng Đồng Tháp Mười, với hệ sinh thái đa đạng, nơi du khách khám phá những nét đặc trưng của miền Tây sông nước.</p><p>Vùng đất “sáu tháng đồng khô cỏ cháy, sáu tháng nước ngập trắng đồng” này là nơi phát triển của thảm thực vật phong phú với hơn 130 loài khác nhau. Hệ động vật ở đây nổi bật với hệ chim nước giàu có gồm 233 loài, thuộc 25 chi, 49 họ. Trong đó, 88% được tìm thấy vào mùa khô, chiếm ¼ tổng số các loài chim đã phát hiện ở Việt Nam. Và đặc biệt là loài Sếu đầu đỏ, lớn nhất trong họ Hạc – một tài sản thiên thiên vô giá của vườn quốc gia Tràm Chim ở Đồng Tháp.</p><p>Hệ cá ở vườn quốc gia Tràm Chim cũng không kém phần phong phú, vừa đóng vai trò cân bằng sinh thái vừa là nguồn thức ăn cho các loài chim. Trong đó có một số loài cá nằm trong sách đỏ Việt Nam như: cá Còm, cá Mang hổ, cá Ngựa nam, cá Duồng bay, cá Ét mọi, cá Hô…</p><p>Mùa nước nổi từ tháng 8 đến tháng 11 âm lịch (khoảng tháng 9 – 12 dương lịch) là mùa du lịch vườn quốc gia Tràm Chim. Khung cảnh ngập nước, xanh tốt, điểm xuyến sắc hồng của hoa sen, hoa súng bừng nở. Nguồn sản vật trở nên dồi dào và các loài chim như tụ họp về đây dự tiệc.</p><p>Vào khoảng thời gian này củng mùa chim sinh sản. Đền đây, du khách có dịp tận mắt chứng kiến cuộc sống sinh sôi, nảy nở của những loài chim quả là một điều thú vị. Hàng nghìn con chim đua nhau mớm mồi (tiêu biểu là điêng điểng và cồng cộc), thể hiện tình mẫu tử thiêng liêng và nâng tính giáo dục môi trường lên hàng đầu cho du khách gần xa, đồng thời có dịp lưu giữ mãi hình ảnh đẹp về nơi đất lành chim đậu.</p>', 0, 1, 6, '2024-12-19 02:15:08', '2024-12-19 02:15:08'),
-(22, 'Lò gạch Mang Thít', 'Huyện Mang Thít, tỉnh Vĩnh Long', 'Miễn phí', '<p>Lò gạch Mang Thít Vĩnh Long đã tồn tại và lớn dần cùng với dòng sông Cổ chiên hơn 100 năm qua. Chính vì thế, lò gạch gốm này vô cùng nổi tiếng và lớn nhất ở vùng Đồng bằng sông Cửu Long. Không những thể, các sản phẩm của làng gốm còn được phép xuất khẩu sang nhiều nước phát triển trên thế giới. Dân gian, người bản địa sinh sống tại vùng đất này hàng trăm năm nay ưu ái gọi lò gạch Mang Thít Vĩnh Long là “Vương quốc gạch ngói”.</p><p>Lò gạch Mang Thít Vĩnh Long được mọi người nhớ đến với hình ảnh từng mái lò đỏ hồng, những hàng gạch nhuốm màu thời gian giữa dòng sông Cổ Chiên hàng trăm năm qua. Từ những viên gạch đỏ với đầy đủ sắc thái khác nhau, dưới bàn tay điêu luyện của nghệ nhân làng Mang Thít, nhiều tác phẩm kiệt tác được ra đời.</p><p>Theo lời kể của người dân địa phương, nghề làm gạch gốm thủ công truyền thống tại Vĩnh Long đã từng có một thời kỳ thịnh vượng và vô cùng huy hoàng đến nỗi bất kỳ gia đình nào sống ven sông này đều sở hữu một miệng lò. Đó là lý do tại sao làng nghề lò gạch gốm Mang Thít Vĩnh Long vẫn còn lưu giữ được nhiều giá trị truyền thống. Mỗi lò gạch nung được xem như là một biểu tượng của thời gian, phảng phất nhiều kỉ niệm.</p>', 0, 4, 5, '2024-12-19 02:16:05', '2024-12-19 02:16:05'),
+(22, 'Lò gạch Mang Thít', 'Huyện Mang Thít, tỉnh Vĩnh Long', 'Miễn phí', '<p>Lò gạch Mang Thít Vĩnh Long đã tồn tại và lớn dần cùng với dòng sông Cổ chiên hơn 100 năm qua. Chính vì thế, lò gạch gốm này vô cùng nổi tiếng và lớn nhất ở vùng Đồng bằng sông Cửu Long. Không những thể, các sản phẩm của làng gốm còn được phép xuất khẩu sang nhiều nước phát triển trên thế giới. Dân gian, người bản địa sinh sống tại vùng đất này hàng trăm năm nay ưu ái gọi lò gạch Mang Thít Vĩnh Long là “Vương quốc gạch ngói”.</p><p>Lò gạch Mang Thít Vĩnh Long được mọi người nhớ đến với hình ảnh từng mái lò đỏ hồng, những hàng gạch nhuốm màu thời gian giữa dòng sông Cổ Chiên hàng trăm năm qua. Từ những viên gạch đỏ với đầy đủ sắc thái khác nhau, dưới bàn tay điêu luyện của nghệ nhân làng Mang Thít, nhiều tác phẩm kiệt tác được ra đời.</p><p>Theo lời kể của người dân địa phương, nghề làm gạch gốm thủ công truyền thống tại Vĩnh Long đã từng có một thời kỳ thịnh vượng và vô cùng huy hoàng đến nỗi bất kỳ gia đình nào sống ven sông này đều sở hữu một miệng lò. Đó là lý do tại sao làng nghề lò gạch gốm Mang Thít Vĩnh Long vẫn còn lưu giữ được nhiều giá trị truyền thống. Mỗi lò gạch nung được xem như là một biểu tượng của thời gian, phảng phất nhiều kỉ niệm.</p>', 0, 5, 5, '2024-12-19 02:16:05', '2024-12-20 20:34:21'),
 (23, 'Chùa Phật Ngọc Xá Lợi', 'Xã Tân Ngãi, thành phố Vĩnh Long, tỉnh Vĩnh Long', 'Miễn phí', '<p>Đứng từ xa nhìn lại, bạn sẽ nhìn thấy hình ảnh cổng chùa với vẻ đẹp uy nghiêm, bề thế. MIA.vn nghĩ rằng, các bạn nên check-in ngay cổng chùa để lưu lại nhiều khoảnh khắc tuyệt đẹp, có 1 - 0 -2 ngay tại đây. Khi đến Chùa Phật Ngọc Xá Lợi Vĩnh Long, các bạn không chỉ được hòa mình vào khung cảnh thiên nhiên yên bình, thanh tĩnh mà còn được chiêm ngưỡng vẻ đẹp cổ kính, linh thiêng của ngôi chùa.</p><p>Ngôi chùa sở hữu diện tích hơn 1.7ha , được xây dựng vào năm 1970 do cố Hòa Thượng Thích Thiện Hoa trụ trì. Tuy nhiên, đến tháng 4 nằm 1975, vì nhiều lý do khác nhau nên việc thi công đã tạm dừng. Đến năm 2015, việc thi xông xây dựng tại Chùa Phật Ngọc Xá Lợi Vĩnh Long mới được tiếp tục. Trong đó có nhiều hạng mục đến thời điểm 2015 mới dần hoàn thiện như: chánh điện, bảo tháp, đài Đức Quan Thế Âm lộ thiên, cổng tam quan...</p><p>Chùa Phật Ngọc Xá Lợi Vĩnh Long được mọi người ví von như một thị trấn cổ thu nhỏ vì phong cách kiến trúc mang đậm bản sắc văn hóa Phật giáo của người Việt Nam. Với lối thiết kế khoa học, ngôi chùa sử dụng nhiều khoảng trống để tạo không gian nhẹ nhàng, thanh tịnh. Lối kiến trúc nghệ thuật vừa tinh xảo vừa hài hòa của Chùa Phật Ngọc Xá Lợi Vĩnh Long khiến nhiều người vô cùng thích thú khi được check-in tại đây. Không những thế, hầu hết các hạng mục từ ngoài vào trong của ngôi chùa đều mang đậm nét văn hóa tâm linh đặc trưng của kiến trúc truyền thống Việt Nam nên đã vô cùng thu hút khách thập phương.</p><p>Chùa Phật Ngọc Xá Lợi Vĩnh Long có rất nhiều góc hấp dẫn, vô cùng đẹp tạo điều kiện cho nhiều bạn trẻ đến đây sống ảo. Từ mái chùa cong cong, bậc thang bề thế đến bảo tháp cao lớn, mỗi góc tại Chùa Phật Ngọc Xá Lợi Vĩnh Long đều có thể trở thành nơi tuyệt vời để bạn có thể thả dáng chụp ảnh.</p>', 0, 2, 5, '2024-12-19 02:16:58', '2024-12-19 02:16:58'),
 (24, 'Chùa ông Thất Phủ Miếu', 'Số 22, đường Nguyễn Chí Thanh, phường 5, thành phố Vĩnh Long.', 'Miễn phí', '<p>Chùa Ông Thất Phủ Miếu là một trong những công trình kiến trúc nổi bật của người Hoa trên mảnh đất Vĩnh Long. Người dân địa phương thường quen gọi là chùa Ông để thuận miệng. Tuy nhiên, tên thật của ngôi chùa lại Chùa Ông Thất Phủ Miếu bởi có 7 phủ của người Hoa đang hiện hữu ở trong ngôi miếu này. Trong đó có thể kể đến như: Ninh Ba, Phước Châu, Chương Châu, Truyền Châu, Quảng Châu, Triều Châu và Quỳnh Châu. Các phủ trên trực thuộc các tỉnh Trực Lệ, Phước Kiến và Quảng Đông của Trung Quốc.</p><p>Với kinh nghiệm của một số bạn trẻ đã từng đến tham quan Chùa Ông Thất Phủ Miếu, các bạn nên lưu lại một vài lưu ý sau đây:</p><p>- Chùa Ông Thất Phủ Miếu mở cửa tất cả các ngày trong tuần và giá vé hoàn toàn miễn phí. Do đó, mọi người có thể ghé đến tham quan bất cứ ngày nào trong tuần.</p><p>- Bạn nên dâng hương và chiêm bái đúng quy định.</p><p>- Không nên xả rác bừa bãi, gây mất trật tự trong lúc dâng hương.</p><p>- Các bạn nên mặc quần áo chỉn chu, kín đáo để phù hợp với hoàn cảnh hơn.</p><p>- Ngoài ra, theo kinh nghiệm của các bạn, chuyến tham quan đến chùa Ông thường kéo dài khoảng 2-3 giờ đồng hồ. Do đó, bạn nên tìm hiểu một vài điểm đến gần đó để hành trình khám phá của mình có thể chủ động hơn.</p><p>Theo sử sách ghi lại, Chùa Ông Thất Phủ Miếu đã có từ thời Nguyễn. Căn cứ vào các dữ liệu lịch sử, hai vị tướng nhà Minh Mạt tên là Dương Ngạn Địch và Trần Thượng Xuyên đã sang Việt Nam lánh nạn. Các quan tướng nhà Nguyễn cho phép người của Dương Ngạn Địch lập hội Thất Phủ, cũng tương tự như các bang cộng đồng hương của người Hoa lúc này.</p><p>Vì địa hình tương đối tốt, thuận lợi cả đường bộ và đường thủy cho nên người Hoa đã ưu ái chọn nơi này để đặt làm Hội quán tiếp xúc. Khi đến thời kỳ Pháp thuộc, số lượng người Hoa di cư đến Vĩnh Long để sinh sống ngày càng nhiều. Số người từ Quảng Đông, Triều Châu tách ra lập bang hội riêng nên một số người dân Phúc Kiến bị bỏ rơi đã cùng nhau tái thiết miếu Thất Phủ cũ. Ngôi miếu này được người dân đặt tên mới là \"Vĩnh An cung\" để trùng tu, gia công Hội quán cho bang của mình.</p>', 0, 2, 5, '2024-12-20 07:32:34', '2024-12-20 07:32:34'),
 (25, 'Chợ nổi Ngã Bảy', 'Phường Ngã Bảy, thị xã Ngã Bảy, tỉnh Hậu Giang', 'Miễn phí', '<p>Chợ nổi Ngã Bảy còn gọi là chợ nổi Phụng Hiệp nức tiếng một thời, bởi bề dày lịch sử hơn trăm năm và không khí mua bán nhộn nhịp nhất vùng đồng bằng sông Cửu Long. Chợ nổi Ngã Bảy hình thành vào khoảng năm 1915, sau 10 năm đào kênh xáng ở đây. Chợ nằm ngay nơi giao nhau của 7 tuyến sông: Cái Côn, Mang Cá, Búng Tàu, Sóc Trăng, Xẻo Môn, Lái Hiếu, Xẻo Vong. Nhiều làng nghề đã hình thành dọc tuyến sông như đóng ghe, đan cần xé, trồng rẫy… Với chợ nổi Ngã Bảy, việc tụ họp tại 7 nhánh sông đã trở thành một nét riêng khó hòa lẫn và sẽ là điều bí ẩn thu hút những ai thích du lịch Miền Tây khám phá, bởi mỗi nhánh sông có một làng nghề đặc trưng không giống nhau… Nơi đây cũng đã đi vào thơ, nhạc càng làm say đắm lòng người.</p><p>Ở Nam bộ có nhiều chợ nổi nhưng không chợ nào “nổi” bằng chợ Ngã Bảy về quy mô, sự sung túc cũng như cái danh, cái thế của nó. Ngày trước, vùng tâm chợ Ngã Bảy có trên 1.000 ghe tàu lớn nhỏ; dịp cao điểm tết có khi đến hơn 3.000 chiếc; đò ngang cũng hàng trăm chiếc. Đêm xuống đèn dầu, đèn bình giăng giăng bập bềnh theo sóng nước suốt canh thâu như hội hoa đăng, thật kỳ thú..</p><p>Chợ nổi Ngã Bảy thường nhóm vào tờ mờ sáng hằng ngày. Từ 5 đến 8 giờ sáng là cao điểm cho việc mua bán nông sản tươi. Từ đó đến chiều và tối, chợ vẫn tiếp tục hoạt động. Hàng hóa ở chợ nổi vô cùng đa dạng, nhất là trái cây. Theo từng mùa, nhìn vào cảnh xuồng ghe tấp nập, đầy ắp trái cây, du khách sẽ biết được đang là vụ chính của loại trái cây nào.</p>', 0, 4, 10, '2024-12-20 07:36:41', '2024-12-20 07:36:41'),
@@ -139,7 +139,7 @@ INSERT INTO `locations` (`id`, `name`, `address`, `price`, `description`, `statu
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Cấu trúc bảng cho bảng `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -149,7 +149,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `migrations`
+-- Đang đổ dữ liệu cho bảng `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -172,7 +172,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_reset_tokens`
+-- Cấu trúc bảng cho bảng `password_reset_tokens`
 --
 
 CREATE TABLE `password_reset_tokens` (
@@ -184,7 +184,7 @@ CREATE TABLE `password_reset_tokens` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `personal_access_tokens`
+-- Cấu trúc bảng cho bảng `personal_access_tokens`
 --
 
 CREATE TABLE `personal_access_tokens` (
@@ -203,7 +203,7 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `photos`
+-- Cấu trúc bảng cho bảng `photos`
 --
 
 CREATE TABLE `photos` (
@@ -218,7 +218,7 @@ CREATE TABLE `photos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `photos`
+-- Đang đổ dữ liệu cho bảng `photos`
 --
 
 INSERT INTO `photos` (`id`, `name`, `caption`, `url`, `status`, `id_location`, `created_at`, `updated_at`) VALUES
@@ -491,7 +491,7 @@ INSERT INTO `photos` (`id`, `name`, `caption`, `url`, `status`, `id_location`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `posts`
+-- Cấu trúc bảng cho bảng `posts`
 --
 
 CREATE TABLE `posts` (
@@ -509,7 +509,7 @@ CREATE TABLE `posts` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `provinces`
+-- Cấu trúc bảng cho bảng `provinces`
 --
 
 CREATE TABLE `provinces` (
@@ -522,7 +522,7 @@ CREATE TABLE `provinces` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `provinces`
+-- Đang đổ dữ liệu cho bảng `provinces`
 --
 
 INSERT INTO `provinces` (`id`, `code`, `name`, `status`, `created_at`, `updated_at`) VALUES
@@ -543,7 +543,7 @@ INSERT INTO `provinces` (`id`, `code`, `name`, `status`, `created_at`, `updated_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reviews`
+-- Cấu trúc bảng cho bảng `reviews`
 --
 
 CREATE TABLE `reviews` (
@@ -561,7 +561,7 @@ CREATE TABLE `reviews` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roles`
+-- Cấu trúc bảng cho bảng `roles`
 --
 
 CREATE TABLE `roles` (
@@ -572,7 +572,7 @@ CREATE TABLE `roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `roles`
+-- Đang đổ dữ liệu cho bảng `roles`
 --
 
 INSERT INTO `roles` (`id`, `role`, `created_at`, `updated_at`) VALUES
@@ -582,7 +582,7 @@ INSERT INTO `roles` (`id`, `role`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `slides`
+-- Cấu trúc bảng cho bảng `slides`
 --
 
 CREATE TABLE `slides` (
@@ -594,7 +594,7 @@ CREATE TABLE `slides` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `slides`
+-- Đang đổ dữ liệu cho bảng `slides`
 --
 
 INSERT INTO `slides` (`id`, `image`, `status`, `created_at`, `updated_at`) VALUES
@@ -607,7 +607,7 @@ INSERT INTO `slides` (`id`, `image`, `status`, `created_at`, `updated_at`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `typeofutilities`
+-- Cấu trúc bảng cho bảng `typeofutilities`
 --
 
 CREATE TABLE `typeofutilities` (
@@ -619,7 +619,7 @@ CREATE TABLE `typeofutilities` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `typeofutilities`
+-- Đang đổ dữ liệu cho bảng `typeofutilities`
 --
 
 INSERT INTO `typeofutilities` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
@@ -629,7 +629,7 @@ INSERT INTO `typeofutilities` (`id`, `name`, `status`, `created_at`, `updated_at
 -- --------------------------------------------------------
 
 --
--- Table structure for table `types`
+-- Cấu trúc bảng cho bảng `types`
 --
 
 CREATE TABLE `types` (
@@ -641,7 +641,7 @@ CREATE TABLE `types` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `types`
+-- Đang đổ dữ liệu cho bảng `types`
 --
 
 INSERT INTO `types` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
@@ -654,7 +654,7 @@ INSERT INTO `types` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Cấu trúc bảng cho bảng `users`
 --
 
 CREATE TABLE `users` (
@@ -672,7 +672,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Đang đổ dữ liệu cho bảng `users`
 --
 
 INSERT INTO `users` (`id`, `google_id`, `username`, `email`, `address`, `password`, `image`, `status`, `id_role`, `created_at`, `updated_at`) VALUES
@@ -682,7 +682,7 @@ INSERT INTO `users` (`id`, `google_id`, `username`, `email`, `address`, `passwor
 -- --------------------------------------------------------
 
 --
--- Table structure for table `utilities`
+-- Cấu trúc bảng cho bảng `utilities`
 --
 
 CREATE TABLE `utilities` (
@@ -704,7 +704,7 @@ CREATE TABLE `utilities` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `utilities`
+-- Đang đổ dữ liệu cho bảng `utilities`
 --
 
 INSERT INTO `utilities` (`id`, `name`, `price`, `address`, `phonenumber`, `time`, `rank`, `distance`, `description`, `image`, `status`, `id_typeofutility`, `id_location`, `created_at`, `updated_at`) VALUES
@@ -713,25 +713,25 @@ INSERT INTO `utilities` (`id`, `name`, `price`, `address`, `phonenumber`, `time`
 (4, 'Quán cháo cá lóc Cây Sung', '50.000đ/người.', '577 QL1A, Phường 4, Tân An, Long An', '0982971717', '7h00 sáng đến 21h00 các ngày trong tuần', 3, 6.00, '<p>Cháo cá lóc Cây Sung là một trong những quán ăn cực kỳ nổi tiếng ở Tân An, Long An. Quán cháo cá lóc Cây Sung mở cửa đều đặn từ 7 giờ sáng tới 9 giờ tối mỗi ngày trung bình quán bán hơn 100 kg cá lóc tươi. Những ngày cuối tuần, lễ lạt, số cá lóc bán được hơn 150 kg/ngày và hơn thế, con số đủ cho thấy cháo cá lóc rau đắng Long An&nbsp;có sức hấp dẫn như thế nào với bao người.</p>', '1734601420.jpg', 0, 2, 11, '2024-12-19 02:43:40', '2024-12-19 02:43:40');
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `contacts`
+-- Chỉ mục cho bảng `contacts`
 --
 ALTER TABLE `contacts`
   ADD PRIMARY KEY (`id`),
   ADD KEY `contacts_id_user_foreign` (`id_user`);
 
 --
--- Indexes for table `failed_jobs`
+-- Chỉ mục cho bảng `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Indexes for table `locations`
+-- Chỉ mục cho bảng `locations`
 --
 ALTER TABLE `locations`
   ADD PRIMARY KEY (`id`),
@@ -739,19 +739,19 @@ ALTER TABLE `locations`
   ADD KEY `locations_id_province_foreign` (`id_province`);
 
 --
--- Indexes for table `migrations`
+-- Chỉ mục cho bảng `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `password_reset_tokens`
+-- Chỉ mục cho bảng `password_reset_tokens`
 --
 ALTER TABLE `password_reset_tokens`
   ADD PRIMARY KEY (`email`);
 
 --
--- Indexes for table `personal_access_tokens`
+-- Chỉ mục cho bảng `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
@@ -759,14 +759,14 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indexes for table `photos`
+-- Chỉ mục cho bảng `photos`
 --
 ALTER TABLE `photos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `photos_id_location_foreign` (`id_location`);
 
 --
--- Indexes for table `posts`
+-- Chỉ mục cho bảng `posts`
 --
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`),
@@ -774,13 +774,13 @@ ALTER TABLE `posts`
   ADD KEY `posts_id_location_foreign` (`id_location`);
 
 --
--- Indexes for table `provinces`
+-- Chỉ mục cho bảng `provinces`
 --
 ALTER TABLE `provinces`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `reviews`
+-- Chỉ mục cho bảng `reviews`
 --
 ALTER TABLE `reviews`
   ADD PRIMARY KEY (`id`),
@@ -788,31 +788,31 @@ ALTER TABLE `reviews`
   ADD KEY `reviews_id_location_foreign` (`id_location`);
 
 --
--- Indexes for table `roles`
+-- Chỉ mục cho bảng `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `slides`
+-- Chỉ mục cho bảng `slides`
 --
 ALTER TABLE `slides`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `typeofutilities`
+-- Chỉ mục cho bảng `typeofutilities`
 --
 ALTER TABLE `typeofutilities`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `types`
+-- Chỉ mục cho bảng `types`
 --
 ALTER TABLE `types`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -820,7 +820,7 @@ ALTER TABLE `users`
   ADD KEY `users_id_role_foreign` (`id_role`);
 
 --
--- Indexes for table `utilities`
+-- Chỉ mục cho bảng `utilities`
 --
 ALTER TABLE `utilities`
   ADD PRIMARY KEY (`id`),
@@ -828,144 +828,144 @@ ALTER TABLE `utilities`
   ADD KEY `utilities_id_location_foreign` (`id_location`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `contacts`
+-- AUTO_INCREMENT cho bảng `contacts`
 --
 ALTER TABLE `contacts`
   MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `failed_jobs`
+-- AUTO_INCREMENT cho bảng `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `locations`
+-- AUTO_INCREMENT cho bảng `locations`
 --
 ALTER TABLE `locations`
   MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
--- AUTO_INCREMENT for table `migrations`
+-- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
--- AUTO_INCREMENT for table `personal_access_tokens`
+-- AUTO_INCREMENT cho bảng `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `photos`
+-- AUTO_INCREMENT cho bảng `photos`
 --
 ALTER TABLE `photos`
   MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=272;
 
 --
--- AUTO_INCREMENT for table `posts`
+-- AUTO_INCREMENT cho bảng `posts`
 --
 ALTER TABLE `posts`
   MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `provinces`
+-- AUTO_INCREMENT cho bảng `provinces`
 --
 ALTER TABLE `provinces`
   MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `reviews`
+-- AUTO_INCREMENT cho bảng `reviews`
 --
 ALTER TABLE `reviews`
   MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `roles`
+-- AUTO_INCREMENT cho bảng `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `slides`
+-- AUTO_INCREMENT cho bảng `slides`
 --
 ALTER TABLE `slides`
   MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `typeofutilities`
+-- AUTO_INCREMENT cho bảng `typeofutilities`
 --
 ALTER TABLE `typeofutilities`
   MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `types`
+-- AUTO_INCREMENT cho bảng `types`
 --
 ALTER TABLE `types`
   MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `utilities`
+-- AUTO_INCREMENT cho bảng `utilities`
 --
 ALTER TABLE `utilities`
   MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `contacts`
+-- Các ràng buộc cho bảng `contacts`
 --
 ALTER TABLE `contacts`
   ADD CONSTRAINT `contacts_id_user_foreign` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `locations`
+-- Các ràng buộc cho bảng `locations`
 --
 ALTER TABLE `locations`
   ADD CONSTRAINT `locations_id_province_foreign` FOREIGN KEY (`id_province`) REFERENCES `provinces` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `locations_id_type_foreign` FOREIGN KEY (`id_type`) REFERENCES `types` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `photos`
+-- Các ràng buộc cho bảng `photos`
 --
 ALTER TABLE `photos`
   ADD CONSTRAINT `photos_id_location_foreign` FOREIGN KEY (`id_location`) REFERENCES `locations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `posts`
+-- Các ràng buộc cho bảng `posts`
 --
 ALTER TABLE `posts`
   ADD CONSTRAINT `posts_id_location_foreign` FOREIGN KEY (`id_location`) REFERENCES `locations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `posts_id_user_foreign` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `reviews`
+-- Các ràng buộc cho bảng `reviews`
 --
 ALTER TABLE `reviews`
   ADD CONSTRAINT `reviews_id_location_foreign` FOREIGN KEY (`id_location`) REFERENCES `locations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `reviews_id_user_foreign` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `users`
+-- Các ràng buộc cho bảng `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_id_role_foreign` FOREIGN KEY (`id_role`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `utilities`
+-- Các ràng buộc cho bảng `utilities`
 --
 ALTER TABLE `utilities`
   ADD CONSTRAINT `utilities_id_location_foreign` FOREIGN KEY (`id_location`) REFERENCES `locations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
