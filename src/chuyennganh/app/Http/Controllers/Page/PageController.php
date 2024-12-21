@@ -65,29 +65,23 @@ public function getLocation(Request $request)
 
     // Lấy tất cả các tỉnh có status = 0
     $provinces = Province::where('status', 0)->get();
-    $travinh = $provinces->where('name', 'Tỉnh Trà Vinh')->first();
 
-    if ($travinh) {
-        $provinces = $provinces->reject(function($province) use ($travinh) {
-            return $province->id == $travinh->id;
-        });
-        $provinces->prepend($travinh); // Đưa Trà Vinh lên đầu
-    }
-
-    // Lấy danh sách loại hình du lịch
-    $types = Type::all();
+    // Lấy danh sách loại hình du lịch có status = 0
+    $types = Type::where('status', 0)->get();
 
     // Lấy bộ lọc từ request (province hoặc type)
-    $provinceId = $request->get('province'); // Lọc theo địa phương
     $typeId = $request->get('type');        // Lọc theo loại hình
+    $provinceId = $request->get('province'); // Lọc theo địa phương
 
     // Lọc các địa điểm
     $query = Location::where('status', '!=', 1);
-    if ($provinceId) {
-        $query->where('id_province', $provinceId);
-    }
+
     if ($typeId) {
         $query->where('id_type', $typeId);
+    }
+
+    if ($provinceId) {
+        $query->where('id_province', $provinceId);
     }
 
     $locations = $query->get();
@@ -109,9 +103,8 @@ public function getLocation(Request $request)
     }
 
     // Trả về view nếu không phải AJAX
-    return view('user.layout.location', compact('provinces', 'types', 'locations', 'slides', 'travinh', 'provinceId', 'typeId'));
+    return view('user.layout.location', compact('provinces', 'types', 'locations', 'slides', 'provinceId', 'typeId'));
 }
-
 
 public function getDetailLocation($id) {
     $detail_location = Location::with('photos', 'types')->find($id);

@@ -17,37 +17,36 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
-        // Hàm tải các địa điểm khi chọn tỉnh
-        function loadLocations(provinceId = null) {
+        // Hàm tải các địa điểm khi chọn tỉnh hoặc loại hình
+        function loadLocations(provinceId = null, typeId = null) {
             $.ajax({
                 url: '{{ route('page.location') }}',
                 type: 'GET',
-                data: { province: provinceId },
+                data: { province: provinceId, type: typeId },
                 dataType: 'json',
                 success: function(response) {
                     // Cập nhật danh sách địa điểm
                     let locationList = $('#location-list');
                     locationList.empty();
-                    response.locations.forEach(function(location) {
-                        let imageUrl = location.mainImage ? '/storage/location_image/' + location.mainImage.name : '/images/default-image.jpg';
-                        locationList.append(`
-                            <div class="col-md-3 mb-4">
-                                <div class="card card-custom">
-                                    <img class="card-img-top" src="${imageUrl}" alt="Card image" />
-                                    <div class="card-body">
-                                        <h4 class="card-title">${location.name}</h4>
-                                        <p class="card-text">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(101, 163, 13, 1); padding: 2px;">
-                                                <path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"></path>
-                                            </svg>
-                                            ${location.address}
-                                        </p>
-                                        <a href="/detail_location/${location.id}" class="btn btn-primary">Xem chi tiết</a>
+                    if (response.locations.length === 0) {
+                        locationList.append('<p>Không tìm thấy địa điểm nào phù hợp.</p>');
+                    } else {
+                        response.locations.forEach(function(location) {
+                            let imageUrl = location.mainImage ? '/storage/location_image/' + location.mainImage.name : '/images/default-image.jpg';
+                            locationList.append(`
+                                <div class="col-md-3 mb-4">
+                                    <div class="card card-custom">
+                                        <img class="card-img-top" src="${imageUrl}" alt="${location.name}" />
+                                        <div class="card-body">
+                                            <h4 class="card-title">${location.name}</h4>
+                                            <p class="card-text">${location.address}</p>
+                                            <a href="/detail_location/${location.id}" class="btn btn-primary">Xem chi tiết</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        `);
-                    });
+                            `);
+                        });
+                    }
                 },
                 error: function() {
                     alert('Lỗi khi tải dữ liệu.');
@@ -55,25 +54,63 @@
             });
         }
 
-        // Tải trạng thái activeProvince từ localStorage
-        const storedProvinceId = localStorage.getItem('activeProvince');
-        
-        // Tải các tỉnh và địa điểm khi trang tải
-        loadLocations(storedProvinceId ? parseInt(storedProvinceId) : null);
+        // Hàm lấy tham số từ URL
+        function getParameterByName(name) {
+            const url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+            const results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        // Lấy giá trị type và province từ URL
+        const typeId = getParameterByName('type');
+        const provinceId = getParameterByName('province');
+
+        // Tải các địa điểm khi trang tải
+        loadLocations(provinceId, typeId);
 
         // Khi một tỉnh được chọn từ dropdown
-        $('ul.dropdown-menu .dropdown-item').on('click', function(e) {
+        $('ul.dropdown-menu .dropdown-item[data-province-id]').on('click', function(e) {
             e.preventDefault();
             const provinceId = $(this).data('province-id');
             
-            // Đánh dấu tỉnh được chọn là active
-            $(this).addClass('active').siblings().removeClass('active');
+            // Đánh dấu tỉnh được chọn là active và tắt trạng thái active của các mục khác
+            $('ul.dropdown-menu .dropdown-item[data-province-id]').removeClass('active');
+            $(this).addClass('active');
 
             // Lưu tỉnh được chọn vào localStorage
             localStorage.setItem('activeProvince', provinceId);
             
+            // Thay đổi URL mà không tải lại trang
+            const newUrl = new URL(window.location.href);
+            newUrl.searchParams.set('province', provinceId);
+            newUrl.searchParams.delete('type');
+            history.pushState(null, '', newUrl.toString());
+
             // Tải lại địa điểm cho tỉnh đã chọn
-            loadLocations(provinceId);
+            loadLocations(provinceId, null);
+        });
+
+        // Khi một loại hình được chọn từ dropdown
+        $('ul.dropdown-menu .dropdown-item[data-type-id]').on('click', function(e) {
+            e.preventDefault();
+            const typeId = $(this).data('type-id');
+            
+            // Đánh dấu loại hình được chọn là active và tắt trạng thái active của các mục khác
+            $('ul.dropdown-menu .dropdown-item[data-type-id]').removeClass('active');
+            $(this).addClass('active');
+
+            // Thay đổi URL mà không tải lại trang
+            const newUrl = new URL(window.location.href);
+            newUrl.searchParams.set('type', typeId);
+            newUrl.searchParams.delete('province');
+            history.pushState(null, '', newUrl.toString());
+
+            // Tải lại địa điểm cho loại hình đã chọn
+            loadLocations(null, typeId);
         });
     });
 </script>

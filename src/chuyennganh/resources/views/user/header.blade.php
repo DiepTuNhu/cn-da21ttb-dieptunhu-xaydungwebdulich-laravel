@@ -26,14 +26,14 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               @foreach($types as $type)
                   <li>
-                      <a class="dropdown-item" href="{{ route('page.location') }}" data-type-id="{{ $type->id }}">
-                          {{ $type->name }}
-                      </a>
+                    <a class="dropdown-item" href="{{ route('page.location', ['type' => $type->id]) }}" data-type-id="{{ $type->id }}">
+                      {{ $type->name }}
+                  </a>
                   </li>
               @endforeach
           </ul>
       </li>
-      
+
       <li class="nav-item dropdown">
           <a class="nav-link btn dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Địa phương
@@ -43,7 +43,7 @@
                   <div class="row">
                       @foreach($provinces as $province)
                           <div class="col-4 mb-2">
-                              <a class="dropdown-item" href="{{ route('page.location') }}" data-province-id="{{ $province->id }}">
+                              <a class="dropdown-item" href="{{ route('page.location', ['province' => $province->id]) }}" data-province-id="{{ $province->id }}">
                                   {{ $province->name }}
                               </a>
                           </div>
