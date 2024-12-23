@@ -35,7 +35,7 @@
     </div>
     <div class="mt-5">
         <iframe 
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDhmbf1S5U1T5iD0FAZ24VqxShFSvGB8Ds&q={{ urlencode($full_address) }}" 
+            src="https://www.google.com/maps/embed/v1/place?key={{ env('GOOGLE_MAPS_API_KEY') }}&q={{ urlencode($full_address) }}" 
             width="100%" 
             height="300" 
             style="border:0;" 
