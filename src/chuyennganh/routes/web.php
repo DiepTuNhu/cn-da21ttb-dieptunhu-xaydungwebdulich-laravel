@@ -132,6 +132,10 @@ Route::get('/slides/{id}/edit',[SlideController::class,'edit'])->name('slides.ed
 Route::post('/slides/{id}',[SlideController::class,'update'])->name('slides.update');
 Route::get('/slides/{id}',[SlideController::class,'destroy'])->name('slides.destroy');
 
+//ADMIN REVIEWS
+Route::get('reviews', [App\Http\Controllers\Admin\ReviewController::class, 'index'])->name('reviews.index');
+Route::post('reviews/toggle-status/{id}', [App\Http\Controllers\Admin\ReviewController::class, 'toggleStatus'])->name('reviews.toggleStatus');
+Route::delete('reviews/{id}', [App\Http\Controllers\Admin\ReviewController::class, 'destroy'])->name('reviews.destroy');
 
 //LOGOUT
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');

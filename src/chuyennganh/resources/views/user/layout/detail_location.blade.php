@@ -54,7 +54,7 @@
         <div class="mt-5">
             <h4><strong>Đánh giá</strong></h4>
             @auth
-                <form action="{{ route('reviews.store') }}" method="POST">
+                <form action="{{ route('reviews.store') }}" method="POST" onsubmit="return validateForm()">
                     @csrf
                     <input type="hidden" name="id_location" value="{{ $detail_location->id }}">
                     <div class="form-group">
@@ -83,18 +83,25 @@
                     <p>Chưa có đánh giá nào.</p>
                 @else
                     @foreach($reviews as $review)
-                        <div class="review mt-3">
+                        <div class="review mt-3 position-relative">
                             <div class="d-flex align-items-center">
                                 <img src="{{ asset('storage/images/' . ($review->user->image ?? 'default_avatar.jpg')) }}" alt="Avatar" class="rounded-circle" width="50" height="50">
                                 <h5 class="ml-3 mb-0 m-3">{{ $review->user->username }}</h5>
                                 @if(Auth::id() == $review->id_user)
-                                    <div class="ml-auto">
-                                        <a href="{{ route('reviews.edit', $review->id) }}" class="btn btn-sm btn-warning">Sửa</a>
-                                        <form action="{{ route('reviews.destroy', $review->id) }}" method="POST" class="d-inline" onsubmit="return confirmDelete()">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm custom-btn">Xóa</button>
-                                        </form>
+                                    <div class="dropdown-comment position-absolute top-0 end-0">
+                                        <button class="btn btn-sm dropdown-toggle no-border no-shadow" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                            &#x22EE;
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <li><a class="dropdown-item" href="{{ route('reviews.edit', $review->id) }}">Sửa</a></li>
+                                            <li>
+                                                <form action="{{ route('reviews.destroy', $review->id) }}" method="POST" class="d-inline" onsubmit="return confirmDelete()">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="dropdown-item">Xóa</button>
+                                                </form>
+                                            </li>
+                                        </ul>
                                     </div>
                                 @endif
                             </div>
@@ -223,6 +230,15 @@
         function confirmDelete() {
             return confirm('Bạn có chắc chắn muốn xóa đánh giá này không?');
         }
+
+        function validateForm() {
+            const rating = document.getElementById('rating').value;
+            if (rating == 0) {
+                alert('Vui lòng chọn cấp độ sao trước khi gửi đánh giá.');
+                return false;
+            }
+            return true;
+        }
     </script>
 
     <style>
@@ -234,5 +250,21 @@
         .star.selected {
             color: #f39c12;
         }
+        .dropdown-comment {
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: black;
+        }
+        .dropdown-comment button {
+    color: #000000; /* Màu xanh hoặc bất kỳ màu nào bạn muốn */
+    background-color: transparent; /* Đảm bảo nút không có nền */
+    border: none; /* Xóa viền nếu có */
+    cursor: pointer; /* Thêm hiệu ứng con trỏ */
+    font-size: 16px;
+}
+.dropdown-comment button:hover {
+    color: black; /* Màu khi hover */
+}
     </style>
 @endsection
