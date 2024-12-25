@@ -44,8 +44,15 @@ class PageController extends Controller
     // Lấy từ khóa tìm kiếm từ form
     $key = $req->input('key'); 
 
-    // Tìm kiếm địa điểm trong cơ sở dữ liệu
-    $locations = Location::where('name', 'like', '%' . $key . '%')->get();
+    // Tìm kiếm địa điểm trong cơ sở dữ liệu theo tên địa điểm, tên tỉnh hoặc loại hình du lịch
+    $locations = Location::where('name', 'like', '%' . $key . '%')
+        ->orWhereHas('provinces', function($query) use ($key) {
+            $query->where('name', 'like', '%' . $key . '%');
+        })
+        ->orWhereHas('types', function($query) use ($key) {
+            $query->where('name', 'like', '%' . $key . '%');
+        })
+        ->get();
     
     foreach ($locations as $location) {
         // Lấy hình ảnh chính với status = 2
