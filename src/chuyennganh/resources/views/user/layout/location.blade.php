@@ -4,7 +4,7 @@
 
 <!-- CONTENT ---------------------------------------------------------------------------------------------------------------------- -->
 <div class="container-location row mt">
-    <h2 class="text-content p-5 m-0">Những nơi tham quan đặc sắc</h2>
+    <h2 class="text-content p-5 m-0">Những nơi tham quan đặc sắc <span id="selected-type"></span></h2>
     <div class="card-container col-sm-12">
         <div class="container mt-4">
             <div class="row" id="location-list">
@@ -39,7 +39,7 @@
                                         <img class="card-img-top" src="${imageUrl}" alt="${location.name}" />
                                         <div class="card-body">
                                             <h4 class="card-title">${location.name}</h4>
-                                            <p class="card-text">${location.address}</p>
+                                            <p class="card-text two-line-height">${location.address}</p>
                                             <a href="/detail_location/${location.id}" class="btn btn-primary">Xem chi tiết</a>
                                         </div>
                                     </div>
@@ -80,6 +80,7 @@
         $('ul.dropdown-menu .dropdown-item[data-province-id]').on('click', function(e) {
             e.preventDefault();
             const provinceId = $(this).data('province-id');
+            const provinceName = $(this).text();
             
             // Đánh dấu tỉnh được chọn là active và tắt trạng thái active của các mục khác
             $('ul.dropdown-menu .dropdown-item[data-province-id]').removeClass('active');
@@ -94,6 +95,9 @@
             newUrl.searchParams.delete('type');
             history.pushState(null, '', newUrl.toString());
 
+            // Thay đổi tiêu đề
+            $('#selected-type').text(` - ${provinceName}`);
+
             // Tải lại địa điểm cho tỉnh đã chọn
             loadLocations(provinceId, null);
         });
@@ -102,6 +106,7 @@
         $('ul.dropdown-menu .dropdown-item[data-type-id]').on('click', function(e) {
             e.preventDefault();
             const typeId = $(this).data('type-id');
+            const typeName = $(this).text();
             
             // Đánh dấu loại hình được chọn là active và tắt trạng thái active của các mục khác
             $('ul.dropdown-menu .dropdown-item[data-type-id]').removeClass('active');
@@ -112,6 +117,9 @@
             newUrl.searchParams.set('type', typeId);
             newUrl.searchParams.delete('province');
             history.pushState(null, '', newUrl.toString());
+
+            // Thay đổi tiêu đề
+            $('#selected-type').text(` - ${typeName}`);
 
             // Tải lại địa điểm cho loại hình đã chọn
             loadLocations(null, typeId);

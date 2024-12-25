@@ -18,7 +18,15 @@ class SignupController extends Controller
         $request->validate([
             'username' => 'required',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required',
+            'password' => [
+                'required',
+                'string',
+                'min:8', // ít nhất 8 ký tự
+                'regex:/[a-z]/', // ít nhất một chữ cái viết thường
+                'regex:/[A-Z]/', // ít nhất một chữ cái viết hoa
+                'regex:/[0-9]/', // ít nhất một chữ số
+                'regex:/[@$!%*?&#]/' // ít nhất một ký tự đặc biệt
+            ],
             // 'address' => 'required',  // Thêm trường address
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validate ảnh (nếu có)
         ],[
@@ -27,6 +35,8 @@ class SignupController extends Controller
             'email.email' => 'Email không đúng định dạng. ',
             'email.unique' => 'Email đã tồn tại. ',
             'password.required' => 'Vui lòng nhập mật khẩu. ',
+            'password.min' => 'Mật khẩu phải chứa ít nhất 8 ký tự.',
+            'password.regex' => 'Mật khẩu phải chứa ít nhất một chữ cái viết thường, một chữ cái viết hoa, một chữ số và một ký tự đặc biệt.',
             // 'address.required' => 'Vui lòng nhập địa chỉ. ',
             'image.image' => 'Vui lòng chọn tệp hình ảnh hợp lệ.',
             'image.mimes' => 'Hình ảnh phải có định dạng jpeg, png, jpg, gif, svg.',

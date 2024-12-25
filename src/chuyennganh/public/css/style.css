@@ -327,6 +327,8 @@ nav {
   /* border: 1px solid black; */
   height: auto;
   padding-bottom: 30px;
+  margin: 0;
+  padding: 0;
 }
 
 .container-card .text-content {
@@ -549,4 +551,10 @@ body {
   min-width: 200px;
   right: 0;
   left: auto; /* Đảm bảo menu không bị xê dịch ra ngoài */
+}
+
+.two-line-height {
+  line-height: 1.5em; /* Chiều cao của một dòng */
+  height: 3em; /* Chiều cao của hai dòng */
+  overflow: hidden; /* Ẩn phần nội dung vượt quá */
 }
