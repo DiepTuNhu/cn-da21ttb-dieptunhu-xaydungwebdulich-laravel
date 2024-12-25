@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Page\PageController;
+use App\Http\Controllers\Page\ReviewController;
 use App\Http\Controllers\User\LoginController;
 use App\Http\Controllers\User\SignupController;
 use App\Http\Controllers\User\AuthController;
@@ -33,6 +34,10 @@ Route::get('detail_location/{id}',[PageController::class,'getDetailLocation'])->
 Route::get('detail_utility/{id}',[PageController::class,'getDetailUtility'])->name('page.detail_utility');
 
 Route::get('/gastronomy', [PageController::class, 'getGastronomy'])->name('page.gastronomy');
+Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+Route::get('/reviews/{id}/edit', [ReviewController::class, 'edit'])->name('reviews.edit');
+Route::put('/reviews/{id}', [ReviewController::class, 'update'])->name('reviews.update');
+Route::delete('/reviews/{id}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
 
 
 //LOGIN

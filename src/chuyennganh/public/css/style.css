@@ -558,3 +558,45 @@ body {
   height: 3em; /* Chiều cao của hai dòng */
   overflow: hidden; /* Ẩn phần nội dung vượt quá */
 }
+
+.star {
+  font-size: 1.5rem;
+  color: #ddd;
+  cursor: pointer;
+}
+.star.selected {
+  color: #f39c12;
+}
+
+.btn-submit{
+  background-color: #0000ff;
+}
+
+.btn-submit:hover{
+  background-color: rgba(0, 0, 255, 0.5);
+}
+
+.custom-btn {
+  background-color: red; /* Màu nền đỏ */
+  color: white;         /* Chữ trắng */
+  border: none;         /* Bỏ viền */
+  padding: 5px 10px;    /* Khoảng cách trong nút */
+  font-size: 14px;      /* Kích thước chữ */
+  border-radius: 4px;   /* Bo góc nút */
+  cursor: pointer;      /* Thay đổi con trỏ khi di chuột */
+}
+
+.custom-btn:hover {
+  background-color: darkred; /* Màu nền khi hover */
+}
+
+.btn-warning {
+  background-color: #ffc107; /* Màu vàng Bootstrap */
+  color: black;             /* Chữ đen */
+  border: none;             /* Bỏ viền */
+}
+
+.btn-warning:hover {
+  background-color: #e0a800; /* Màu vàng đậm hơn khi hover */
+  color: white;              /* Chữ trắng */
+}

@@ -9,6 +9,7 @@ use App\Models\Photo;
 use App\Models\Province;
 use App\Models\Utility;
 use App\Models\Type;
+use App\Models\Review;
 
 class PageController extends Controller
 {
@@ -127,12 +128,12 @@ public function getDetailLocation($id) {
     // Ghép name và address
     $full_address = $detail_location->name . ', ' . $detail_location->address;
 
-
+    $reviews = Review::where('id_location', $id)->where('status', 0)->with('user')->get();
     // $utilities = Utility::where('id_typeofutility', 2)->get();
     // $utilities1 = Utility::where('id_typeofutility', 1)->get();
     $utilities = Utility::where('id_location', $id)->where('id_typeofutility', 2)->get();
     $utilities1 = Utility::where('id_location', $id)->where('id_typeofutility', 1)->get();
-    return view('user.layout.detail_location', compact('detail_location', 'main_photo', 'small_photos', 'utilities', 'utilities1', 'full_address'));
+    return view('user.layout.detail_location', compact('detail_location', 'main_photo', 'small_photos', 'utilities', 'utilities1', 'full_address', 'reviews'));
 }
 
 public function getGastronomy(Request $request)

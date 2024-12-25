@@ -1,15 +1,16 @@
 @extends('user.master')
 @section('content')
 @include('user.layout.search')
+
 <div class="container-fluid container-location">
-  <h2 class="text-content p-4 m-0">Kết quả tìm kiếm</h2>
+  <h2 class="text-content p-4 m-0">Kết quả tìm kiếm cho: "{{ $key }}"</h2>
   <div class="search-results">
     {{-- <h3>Kết quả tìm kiếm cho: "{{ $key }}"</h3> --}}
 
     @if($locations->isEmpty())
         <p>Không tìm thấy địa điểm nào.</p>
     @else
-        <div class="card-container">
+        <div class="card-container pb-4">
             @foreach($locations as $location)
                 <div class="card">
                     @php
