@@ -1,9 +1,9 @@
 @extends('admin.index')
 @section('title_name')
-    Tiện ích
+    Đánh giá người dùng
 @endsection
 @section('path')
-    Tiện ích
+    Đánh giá người dùng
 @endsection
 @section('content')
 <section class="content">

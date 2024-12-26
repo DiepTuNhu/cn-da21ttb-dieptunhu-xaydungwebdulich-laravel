@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\Page\PageController;
 use App\Http\Controllers\Page\ReviewController;
 use App\Http\Controllers\User\LoginController;
@@ -15,15 +14,16 @@ use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\PhotoController;
 use App\Http\Controllers\Admin\UtilityController;
 use App\Http\Controllers\Admin\SlideController;
+use App\Http\Controllers\Admin\ContactController as AdminContactController; // Đổi tên alias để tránh nhầm lẫn
+use App\Http\Controllers\Page\ContactController as PageContactController; // Đổi tên alias để tránh nhầm lẫn
 
-use App\Http\Controllers\CKEditorController ;
+use App\Http\Controllers\CKEditorController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Location;
 
 // Route::get('/', function () {
 //     return view('user.index');
 // });
-// Route::get('/', [PageController::class, 'index'])->name('page.index');
 Route::get('/', [PageController::class, 'index'])->name('page.index');
 // Route::get('/search', [PageController::class, 'getSearch'])->name('search');  
 Route::get('/search', [PageController::class, 'getSearch'])->name('search');
@@ -33,12 +33,14 @@ Route::get('/location', [PageController::class, 'getLocation'])->name('page.loca
 Route::get('detail_location/{id}',[PageController::class,'getDetailLocation'])->name('page.detail_location');
 Route::get('detail_utility/{id}',[PageController::class,'getDetailUtility'])->name('page.detail_utility');
 
-Route::get('/gastronomy', [PageController::class, 'getGastronomy'])->name('page.gastronomy');
-Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
-Route::get('/reviews/{id}/edit', [ReviewController::class, 'edit'])->name('reviews.edit');
-Route::put('/reviews/{id}', [ReviewController::class, 'update'])->name('reviews.update');
-Route::delete('/reviews/{id}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
+// Route cho trang liên hệ của người dùng
+Route::get('/contact', [PageContactController::class, 'index'])->name('contact.index');
+Route::post('/contact', [PageContactController::class, 'store'])->name('contact.store');
 
+// Route cho trang quản lý liên hệ của admin
+Route::get('/admin/contacts', [AdminContactController::class, 'index'])->name('admin.contacts.index');
+Route::post('/admin/contacts/toggle-status/{id}', [AdminContactController::class, 'toggleStatus'])->name('admin.contacts.toggleStatus');
+Route::delete('/admin/contacts/{id}', [AdminContactController::class, 'destroy'])->name('admin.contacts.destroy');
 
 //LOGIN
 Route::get('admin/login',[LoginController::class,'index'])->name('login');
@@ -54,8 +56,6 @@ Route::post('xulydangky',[SignupController::class,'postSignup'])->name('postSign
 
 // //LOGOUT
 Route::post('/page/logout', [AuthController::class, 'logout'])->name('page.logout');
-
-
 
 // ADMIN=========================================================================================================
 
@@ -139,3 +139,5 @@ Route::delete('reviews/{id}', [App\Http\Controllers\Admin\ReviewController::clas
 
 //LOGOUT
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
+
+

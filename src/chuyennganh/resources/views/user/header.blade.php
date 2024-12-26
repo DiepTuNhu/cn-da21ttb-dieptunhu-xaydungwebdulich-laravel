@@ -56,10 +56,10 @@
       
       
         
-        {{-- <li class="nav-item">
-          <a class="nav-link btn {{request() -> is('gastronomy') ? 'active' : ''}}" href="{{ route('page.gastronomy') }}">Ẩm thực</a>
-        </li>
         <li class="nav-item">
+          <a class="nav-link btn {{request() -> is('contact') ? 'active' : ''}}" href="{{ route('contact.index') }}">Liên hệ</a>
+        </li>
+         {{-- <li class="nav-item">
           <a class="nav-link btn" href="javascript:void(0)">Lưu trú</a>
         </li> --}}
       </ul>

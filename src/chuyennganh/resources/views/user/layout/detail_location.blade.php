@@ -240,31 +240,4 @@
             return true;
         }
     </script>
-
-    <style>
-        .star {
-            font-size: 1.5rem;
-            color: #ddd;
-            cursor: pointer;
-        }
-        .star.selected {
-            color: #f39c12;
-        }
-        .dropdown-comment {
-            position: absolute;
-            top: 0;
-            right: 0;
-            color: black;
-        }
-        .dropdown-comment button {
-    color: #000000; /* Màu xanh hoặc bất kỳ màu nào bạn muốn */
-    background-color: transparent; /* Đảm bảo nút không có nền */
-    border: none; /* Xóa viền nếu có */
-    cursor: pointer; /* Thêm hiệu ứng con trỏ */
-    font-size: 16px;
-}
-.dropdown-comment button:hover {
-    color: black; /* Màu khi hover */
-}
-    </style>
 @endsection
