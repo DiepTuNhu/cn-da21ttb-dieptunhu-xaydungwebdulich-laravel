@@ -94,7 +94,7 @@
 
   <div class="card-container">
     @foreach($randomLocations as $randomLocation)
-        <div class="card">
+        <div class="card mb-4">
             <!-- Lấy đường dẫn ảnh chính hoặc ảnh mặc định -->
             @php
                 $imagePath = $randomLocation->mainImage 

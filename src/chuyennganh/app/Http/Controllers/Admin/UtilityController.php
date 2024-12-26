@@ -31,7 +31,7 @@ class UtilityController extends Controller
 {
     // Validate dữ liệu từ form
     $this->validate($request, [
-        'name' => 'required|string|max:255|unique:utilities,name', // Kiểm tra tên địa điểm
+        'name' => 'string|max:255', // Kiểm tra tên địa điểm
         'price' => 'nullable', // Kiểm tra giá phải là số
         'address' => 'nullable|string|max:255', // Địa chỉ
         'phone' => 'nullable|string|phone_vn', // Sử dụng custom validation rule 'phone_vn'
@@ -45,8 +45,8 @@ class UtilityController extends Controller
         'id_typeofutility' => 'required|exists:typeofutilities,id', // Kiểm tra loại tiện ích có tồn tại
         'id_location' => 'required|exists:locations,id', // Kiểm tra tỉnh có tồn tại
     ], [
-        'name.required' => 'Bạn chưa nhập tên tiện ích.',
-        'name.unique' => 'Tên tiện ích đã tồn tại.',
+        // 'name.required' => 'Bạn chưa nhập tên tiện ích.',
+        // 'name.unique' => 'Tên tiện ích đã tồn tại.',
         'phone.regex' => 'Số điện thoại không hợp lệ.',
         'rank.numeric' => 'Xếp hạng phải là một số từ 0 đến 5.',
         'image.image' => 'Hình ảnh không hợp lệ.',

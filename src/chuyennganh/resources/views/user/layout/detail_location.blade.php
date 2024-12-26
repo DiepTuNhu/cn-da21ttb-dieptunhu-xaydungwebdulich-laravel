@@ -20,7 +20,8 @@
             <!-- Thông tin tóm tắt -->
             <div class="col-md-6">
               <div>
-                  <h2><strong>{{ $detail_location->name }}</strong></h2>
+                  <h2 style="display: inline-block; margin-right: 20px;"><strong>{{ $detail_location->name }}</strong></h2>
+                  <a href="{{ route('post.create', ['id_location' => $detail_location->id]) }}" class="btn mb-3" style="background-color: #65a30d; display: inline-block;">Đăng bài viết</a>
                   <ul class="list-unstyled mt-3">
                       <li class="summary"><strong>📍 Địa chỉ:</strong> {{ $detail_location->address }}</li>
                       <li class="summary"><strong>🗂 Loại hình du lịch:</strong> {{ $detail_location->types->name }}</li>
@@ -240,4 +241,25 @@
             return true;
         }
     </script>
+@endsection
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ $detail_location->name }}</div>
+
+                <div class="card-body">
+                    <!-- Nút đăng bài viết -->
+                    <a href="{{ route('post.create', ['id_location' => $detail_location->id]) }}" class="btn btn-primary mb-3">Đăng bài viết</a>
+
+                    <!-- Nội dung chi tiết địa điểm -->
+                    <p>{{ $detail_location->description }}</p>
+                    <!-- Các nội dung khác của địa điểm -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

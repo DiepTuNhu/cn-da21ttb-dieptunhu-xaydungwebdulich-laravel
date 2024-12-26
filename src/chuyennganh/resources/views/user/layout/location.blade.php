@@ -38,7 +38,7 @@
                                     <div class="card card-custom">
                                         <img class="card-img-top" src="${imageUrl}" alt="${location.name}" />
                                         <div class="card-body">
-                                            <h4 class="card-title">${location.name}</h4>
+                                            <h4  class="card-title">${location.name}</h4>
                                             <p class="card-text two-line-height">${location.address}</p>
                                             <a href="/detail_location/${location.id}" class="btn btn-primary">Xem chi tiết</a>
                                         </div>
