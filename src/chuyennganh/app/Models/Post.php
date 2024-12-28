@@ -17,4 +17,16 @@ class Post extends Model
         'id_user',
         'id_location',
     ];
+
+    // Define the relationship with the User model
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
+
+    // Define the relationship with the Location model
+    public function location()
+    {
+        return $this->belongsTo(Location::class, 'id_location');
+    }
 }

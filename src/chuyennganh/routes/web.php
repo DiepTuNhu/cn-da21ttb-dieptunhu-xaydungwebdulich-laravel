@@ -34,17 +34,23 @@ Route::get('/location', [PageController::class, 'getLocation'])->name('page.loca
 Route::get('detail_location/{id}',[PageController::class,'getDetailLocation'])->name('page.detail_location');
 Route::get('detail_utility/{id}',[PageController::class,'getDetailUtility'])->name('page.detail_utility');
 
-// Route cho trang liên hệ của người dùng
+//CONTACT
 Route::get('/contact', [PageContactController::class, 'index'])->name('contact.index');
 Route::post('/contact', [PageContactController::class, 'store'])->name('contact.store');
 
+Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
 Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 Route::get('/reviews/{id}/edit', [ReviewController::class, 'edit'])->name('reviews.edit');
 Route::put('/reviews/{id}', [ReviewController::class, 'update'])->name('reviews.update');
 Route::delete('/reviews/{id}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
 
-Route::get('/post/create', [UserPostController::class, 'create'])->name('post.create');
-Route::post('/post/store', [UserPostController::class, 'store'])->name('post.store');
+Route::get('/posts', [UserPostController::class, 'index'])->name('posts.index');
+Route::get('/posts/create', [UserPostController::class, 'create'])->name('post.create');
+Route::post('/posts', [UserPostController::class, 'store'])->name('post.store');
+Route::get('/posts/{id}/edit', [UserPostController::class, 'edit'])->name('post.edit');
+Route::put('/posts/{id}', [UserPostController::class, 'update'])->name('post.update');
+Route::delete('/posts/{id}', [UserPostController::class, 'destroy'])->name('post.destroy');
+
 //LOGIN
 Route::get('admin/login',[LoginController::class,'index'])->name('login');
 Route::post('admin/login/store',[LoginController::class,'store'])->name('login.store');
@@ -140,7 +146,7 @@ Route::get('reviews', [App\Http\Controllers\Admin\ReviewController::class, 'inde
 Route::post('reviews/toggle-status/{id}', [App\Http\Controllers\Admin\ReviewController::class, 'toggleStatus'])->name('reviews.toggleStatus');
 Route::delete('reviews/{id}', [App\Http\Controllers\Admin\ReviewController::class, 'destroy'])->name('reviews.destroy');
 
-// Route cho trang quản lý liên hệ của admin
+//CONTACT
 Route::get('/admin/contacts', [AdminContactController::class, 'index'])->name('admin.contacts.index');
 Route::post('/admin/contacts/toggle-status/{id}', [AdminContactController::class, 'toggleStatus'])->name('admin.contacts.toggleStatus');
 Route::delete('/admin/contacts/{id}', [AdminContactController::class, 'destroy'])->name('admin.contacts.destroy');

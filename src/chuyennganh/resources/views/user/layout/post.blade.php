@@ -4,50 +4,48 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            {{-- <div class="card"> --}}
-                <div class="card-header">Đăng bài viết</div>
+            <h1 class="card-header text-center mt-3">Đăng bài viết</h1>
 
-                <div class="card-body">
-                    @if (session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                    @endif
+            <div class="card-body">
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
 
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
-                    <form method="POST" action="{{ route('post.store') }}">
-                        @csrf
-                    
-                        <div class="form-group">
-                            <label for="title">Tiêu đề</label>
-                            <input type="text" class="form-control" id="title" name="title" required>
-                        </div>
-                    
-                        <div class="form-group">
-                            <label for="content">Nội dung</label>
-                            <textarea class="form-control" id="content"></textarea>
-                            <!-- Input ẩn để lưu dữ liệu từ CKEditor -->
-                            <input type="hidden" id="hidden-content" name="content">
-                        </div>
-                    
-                        <div class="form-group">
-                            <label for="id_location">Địa điểm</label>
-                            <input type="number" class="form-control" id="id_location" name="id_location" value="{{ $id_location }}" readonly>
-                        </div>
-                    
-                        <button type="submit" class="btn btn-primary">Đăng bài</button>
-                    </form>
-                    
-                </div>
+                <form method="POST" action="{{ route('post.store') }}">
+                    @csrf
+                
+                    <div class="form-group">
+                        <label for="title">Tiêu đề</label>
+                        <input type="text" class="form-control" id="title" name="title" required>
+                    </div>
+                
+                    <div class="form-group mt-5 mb-5">
+                        <label for="content">Nội dung</label>
+                        <textarea class="form-control" id="content"></textarea>
+                        <!-- Input ẩn để lưu dữ liệu từ CKEditor -->
+                        <input type="hidden" id="hidden-content" name="content">
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="id_location">Địa điểm</label>
+                        <input type="number" class="form-control" id="id_location" name="id_location" value="{{ $id_location }}" readonly>
+                    </div>
+                    <div class="d-flex justify-content-end mt-auto">
+                        <button type="submit" class="btn mt-3 mb-3" style="background-color: #65a30d">Đăng bài</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

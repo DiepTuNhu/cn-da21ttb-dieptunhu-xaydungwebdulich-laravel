@@ -39,22 +39,22 @@ class ReviewController extends Controller
 
     public function update(Request $request, $id)
     {
-        $review = Review::findOrFail($id);
-        if (Auth::id() != $review->id_user) {
-            return redirect()->back()->with('error', 'Bạn không có quyền chỉnh sửa đánh giá này.');
-        }
-
         $request->validate([
             'rating' => 'required|integer|min:1|max:5',
             'comment' => 'required|string|max:255',
         ]);
+
+        $review = Review::findOrFail($id);
+        if (Auth::id() != $review->id_user) {
+            return redirect()->back()->with('error', 'Bạn không có quyền chỉnh sửa đánh giá này.');
+        }
 
         $review->update([
             'point' => $request->rating,
             'comment' => $request->comment,
         ]);
 
-        return redirect()->route('page.detail_location', $review->id_location)->with('success', 'Đánh giá của bạn đã được cập nhật!');
+        return redirect()->back()->with('success', 'Đánh giá của bạn đã được cập nhật!');
     }
 
     public function destroy($id)
@@ -66,5 +66,12 @@ class ReviewController extends Controller
 
         $review->delete();
         return redirect()->back()->with('success', 'Đánh giá của bạn đã được xóa!');
+    }
+
+    public function index()
+    {
+        // Lấy các đánh giá có status bằng 0
+        $reviews = Review::with('user')->where('status', 0)->orderBy('created_at', 'desc')->get();
+        return view('reviews.index', compact('reviews'));
     }
 }

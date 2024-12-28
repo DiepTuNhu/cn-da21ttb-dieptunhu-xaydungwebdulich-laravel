@@ -54,7 +54,9 @@
       </li>
       
       
-      
+      <li class="nav-item">
+        <a class="nav-link btn {{request() -> is('posts') ? 'active' : ''}}" href="{{ route('posts.index') }}">Bài viết</a>
+      </li>
         
         <li class="nav-item">
           <a class="nav-link btn {{request() -> is('contact') ? 'active' : ''}}" href="{{ route('contact.index') }}">Liên hệ</a>
