@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\UtilityController;
 use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController; // Đổi tên alias để tránh nhầm lẫn
 use App\Http\Controllers\Page\ContactController as PageContactController; // Đổi tên alias để tránh nhầm lẫn
+use App\Http\Controllers\Admin\PostController;
 
 use App\Http\Controllers\CKEditorController;
 use Illuminate\Support\Facades\Route;
@@ -150,6 +151,15 @@ Route::delete('reviews/{id}', [App\Http\Controllers\Admin\ReviewController::clas
 Route::get('/admin/contacts', [AdminContactController::class, 'index'])->name('admin.contacts.index');
 Route::post('/admin/contacts/toggle-status/{id}', [AdminContactController::class, 'toggleStatus'])->name('admin.contacts.toggleStatus');
 Route::delete('/admin/contacts/{id}', [AdminContactController::class, 'destroy'])->name('admin.contacts.destroy');
+
+// Route::get('/admin/posts', [App\Http\Controllers\Admin\PostController::class, 'index'])->name('admin.posts.index');
+
+Route::prefix('admin')->group(function () {
+    Route::get('posts', [PostController::class, 'index'])->name('admin.posts.index');
+    Route::post('posts/{id}/toggle-status', [PostController::class, 'toggleStatus'])->name('admin.posts.toggleStatus');
+    Route::delete('posts/{id}', [PostController::class, 'destroy'])->name('admin.posts.destroy');
+});
+
 //LOGOUT
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 

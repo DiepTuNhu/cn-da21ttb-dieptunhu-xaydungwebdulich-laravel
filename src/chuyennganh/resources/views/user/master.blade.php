@@ -17,7 +17,7 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <link rel="stylesheet" href="css/style.css" />
-    <title>Document</title>
+    <title>Du lịch ĐBSCL</title>
   </head>
 <body>
 

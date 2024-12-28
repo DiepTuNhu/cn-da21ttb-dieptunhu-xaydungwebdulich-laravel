@@ -630,7 +630,13 @@ color: black; /* Màu khi hover */
   margin: 0 auto; /* Căn giữa theo chiều ngang */
   max-width: 100%; /* Đảm bảo ảnh không lớn hơn container */
   max-height: 500px; /* Đặt kích thước lớn nhất */
+  /* max-width: 600px; */
   object-fit: contain; /* Giữ nguyên tỉ lệ ảnh */
   border-radius: 8px; /* Bo góc (tùy chọn) */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng (tùy chọn) */
+}
+
+.custom-body-post {
+  max-width: 700px; /* Điều chỉnh chiều rộng tối đa theo ý bạn */
+  margin: 0 auto; /* Căn giữa phần tử */
 }
