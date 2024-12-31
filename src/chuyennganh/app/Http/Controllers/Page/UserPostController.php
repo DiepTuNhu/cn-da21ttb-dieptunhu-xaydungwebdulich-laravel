@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Page;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
 
 class UserPostController extends Controller
@@ -20,6 +21,10 @@ class UserPostController extends Controller
     // Hiển thị form tạo bài viết
     public function create(Request $request)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'Vui lòng đăng nhập để đăng bài viết.');
+        }
+
         $id_location = $request->query('id_location');
         return view('user.layout.post', compact('id_location'));
     }
@@ -85,5 +90,21 @@ class UserPostController extends Controller
 
         $post->delete();
         return redirect()->route('posts.index')->with('success', 'Bài viết đã được xóa thành công.');
+    }
+
+    // Hiển thị bài viết theo địa điểm
+    public function showByLocation($id_location)
+    {
+        $posts = Post::with(['user', 'location'])->where('id_location', $id_location)->where('status', 0)->orderBy('created_at', 'desc')->get();
+        return view('user.layout.show_post', compact('posts', 'id_location'));
+    }
+
+    // Hiển thị tất cả các review và bài viết của người dùng
+    public function showUserPostsReviews()
+    {
+        $user = Auth::user();
+        $posts = Post::where('id_user', $user->id)->orderBy('created_at', 'desc')->get();
+        $reviews = Review::where('id_user', $user->id)->with('location')->orderBy('created_at', 'desc')->get();
+        return view('user.layout.user_posts_reviews', compact('posts', 'reviews'));
     }
 }

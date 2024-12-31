@@ -51,6 +51,8 @@ Route::post('/posts', [UserPostController::class, 'store'])->name('post.store');
 Route::get('/posts/{id}/edit', [UserPostController::class, 'edit'])->name('post.edit');
 Route::put('/posts/{id}', [UserPostController::class, 'update'])->name('post.update');
 Route::delete('/posts/{id}', [UserPostController::class, 'destroy'])->name('post.destroy');
+Route::get('posts/location/{id_location}', [UserPostController::class, 'showByLocation'])->name('posts.byLocation');
+Route::get('user/posts-reviews', [UserPostController::class, 'showUserPostsReviews'])->name('user.posts-reviews');
 
 //LOGIN
 Route::get('admin/login',[LoginController::class,'index'])->name('login');
@@ -162,6 +164,3 @@ Route::prefix('admin')->group(function () {
 
 //LOGOUT
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
-
-
-
