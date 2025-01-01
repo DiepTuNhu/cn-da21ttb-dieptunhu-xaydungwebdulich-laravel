@@ -38,6 +38,12 @@
         contentImages.forEach(img => {
             img.classList.add('content-image'); // Thêm class bổ sung
         });
+
+        // Thêm lớp CSS tùy chỉnh cho các bảng
+        const contentTables = document.querySelectorAll('.card-text table');
+        contentTables.forEach(table => {
+            table.classList.add('table-custom');
+        });
     });
 </script>
 @endsection

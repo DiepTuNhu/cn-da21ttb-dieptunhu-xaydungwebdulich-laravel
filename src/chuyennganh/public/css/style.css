@@ -640,3 +640,18 @@ color: black; /* Màu khi hover */
   max-width: 700px; /* Điều chỉnh chiều rộng tối đa theo ý bạn */
   margin: 0 auto; /* Căn giữa phần tử */
 }
+
+.table-custom {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-custom th, .table-custom td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.table-custom th {
+  background-color: #f2f2f2;
+  text-align: left;
+}

@@ -18,6 +18,7 @@
                     <th>ID</th>
                     <th>Tiêu đề</th>
                     <th>Nội dung</th>
+                    <th>Người dùng</th>
                     <th>Thời gian</th>
                     <th>Trạng thái</th>
                     <th width="105px">Thao tác</th>
@@ -30,6 +31,7 @@
                     <td>{{ $post->id }}</td>
                     <td>{{ $post->title }}</td>
                     <td>{{ strip_tags($post->content) }}</td>
+                    <td>{{ $post->user->username }}</td>
                     <td>{{ $post->created_at }}</td>
                     <td>
                         <div style="display: flex; align-items: center;">
@@ -66,6 +68,7 @@
                         <th>ID</th>
                         <th>Tiêu đề</th>
                         <th>Nội dung</th>
+                        <th>Người dùng</th>
                         <th>Thời gian</th>
                         <th>Trạng thái</th>
                         <th width="105px">Thao tác</th>
