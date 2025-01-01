@@ -18,8 +18,8 @@
                 
                 @if(Auth::check() && Auth::id() == $post->id_user)
                 <div class="d-flex justify-content-end">
-                    <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm mr-2" style="background-color: orange">Sửa</a>
-                    <form action="{{ route('posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('Bạn có chắc chắn muốn xóa bài viết này không?');">
+                    <a href="{{ route('post.edit', $post->id) }}" class="btn btn-sm mr-2" style="background-color: orange">Sửa</a>
+                    <form action="{{ route('post.destroy', $post->id) }}" method="POST" onsubmit="return confirm('Bạn có chắc chắn muốn xóa bài viết này không?');">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-sm" style="background-color: red">Xóa</button>
