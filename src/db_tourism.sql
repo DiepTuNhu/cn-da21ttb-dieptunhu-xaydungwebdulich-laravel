@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th12 26, 2024 lúc 09:21 AM
+-- Thời gian đã tạo: Th1 06, 2025 lúc 11:18 AM
 -- Phiên bản máy phục vụ: 8.0.30
 -- Phiên bản PHP: 8.1.10
 
@@ -46,7 +46,7 @@ CREATE TABLE `contacts` (
 --
 
 INSERT INTO `contacts` (`id`, `sender`, `email`, `content`, `time`, `status`, `id_user`, `created_at`, `updated_at`) VALUES
-(2, 'nhu', 'nhudiep@gmail.com', 'fcfctf', '2024-12-26 09:21:18', 0, 4, '2024-12-26 02:21:18', '2024-12-26 02:21:18');
+(4, 'Tú Như', 'nhudiep@gmail.com', 'Nếu được hãy bổ sung thêm thật nhiều địa điểm nữa', '2025-01-05 08:42:03', 0, 4, '2025-01-05 01:42:03', '2025-01-05 01:42:03');
 
 -- --------------------------------------------------------
 
@@ -513,6 +513,13 @@ CREATE TABLE `posts` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `posts`
+--
+
+INSERT INTO `posts` (`id`, `title`, `content`, `time`, `status`, `id_user`, `id_location`, `created_at`, `updated_at`) VALUES
+(7, 'Ao Bà Om lúc tiết trời đầy nắng', '<p>Ao Bà Om vào thu mang một vẻ đẹp thanh bình và dịu dàng, như một bức tranh thiên nhiên hoàn mỹ. Trời trong xanh, cao vời vợi, những tia nắng chan hòa len lỏi qua tán cây dầu cổ thụ, tạo nên những vệt sáng lung linh trên mặt đất. Bóng cây thưa lá, để lộ những cành khẳng khiu in lên nền trời, như những nét vẽ đầy chất thơ. Mặt hồ phẳng lặng như gương, phản chiếu bầu trời xanh thẳm và những gợn mây trắng trôi hững hờ. Không gian yên ắng, chỉ có tiếng lá xào xạc nhẹ trong gió và tiếng chim ríu rít từ xa, tạo nên một cảm giác bình yên khó tả, khiến lòng người thư thái đến lạ thường.</p><figure class=\"image\"><img src=\"http://127.0.0.1:8000/ckeditor/uploads/1735886140_aobaom-3.jpg\"></figure><p>Men theo con đường đất quanh hồ, những gốc cây dầu cổ thụ với bộ rễ nổi lên ngoằn ngoèo như những tác phẩm điêu khắc tự nhiên, tạo nên một khung cảnh vừa kỳ bí, vừa gần gũi. Ánh nắng vàng dịu nhẹ xuyên qua từng kẽ lá, đan thành những hoa văn sống động trên lối đi. Xa xa, vài chiếc lá khô khẽ rơi, chạm vào mặt nước rồi nhẹ nhàng tan biến trong những vòng sóng nhỏ. Không gian tĩnh lặng như thể thời gian đang chậm lại, chỉ còn lại sự hòa quyện giữa con người và thiên nhiên. Đứng trước khung cảnh ấy, lòng người dường như lắng đọng, quên đi mọi lo toan thường nhật, chỉ muốn ở mãi đây để cảm nhận hơi thở dịu dàng của mùa thu.</p>', '2025-01-03 13:36:15', 0, 4, 2, '2025-01-03 06:36:15', '2025-01-04 13:04:27');
+
 -- --------------------------------------------------------
 
 --
@@ -570,7 +577,9 @@ CREATE TABLE `reviews` (
 --
 
 INSERT INTO `reviews` (`id`, `point`, `comment`, `time`, `status`, `id_user`, `id_location`, `created_at`, `updated_at`) VALUES
-(6, 5.00, 'a', '2024-12-25 23:38:46', 0, 4, 2, '2024-12-25 16:38:46', '2024-12-25 16:38:46');
+(11, 5.00, 'Phong cảnh hữu tình, mặt hồ êm ả xung quanh thì có những gốc cổ thụ lâu năm tạo nên khung cảnh tuyệt đẹp', '2025-01-05 08:38:50', 0, 4, 2, '2025-01-05 01:38:50', '2025-01-05 01:38:50'),
+(12, 5.00, 'Nên đến đây một lần vào mùa hoa, một không gian rộng lớn tràn ngập các loại màu sắc của những loài hoa', '2025-01-05 08:39:45', 0, 4, 17, '2025-01-05 01:39:45', '2025-01-05 01:39:45'),
+(13, 5.00, 'Mặt nước trong vắt kèm theo khung cảnh tuyệt đẹp', '2025-01-05 08:40:37', 0, 4, 35, '2025-01-05 01:40:37', '2025-01-05 01:40:37');
 
 -- --------------------------------------------------------
 
@@ -616,7 +625,7 @@ INSERT INTO `slides` (`id`, `image`, `status`, `created_at`, `updated_at`) VALUE
 (4, '1734266184.jpg', 0, '2024-12-15 05:36:24', '2024-12-15 05:36:24'),
 (7, '1734267518.jpg', 0, '2024-12-15 05:58:39', '2024-12-15 05:58:39'),
 (9, '1734267571.jpg', 0, '2024-12-15 05:59:31', '2024-12-15 05:59:31'),
-(10, '1734267656.jpg', 0, '2024-12-15 06:00:56', '2024-12-15 06:00:56');
+(14, '1735886571.jpg', 0, '2025-01-03 06:42:51', '2025-01-03 06:42:51');
 
 -- --------------------------------------------------------
 
@@ -864,7 +873,7 @@ ALTER TABLE `utilities`
 -- AUTO_INCREMENT cho bảng `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `failed_jobs`
@@ -900,19 +909,19 @@ ALTER TABLE `photos`
 -- AUTO_INCREMENT cho bảng `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `provinces`
 --
 ALTER TABLE `provinces`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT cho bảng `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `roles`
@@ -924,7 +933,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT cho bảng `slides`
 --
 ALTER TABLE `slides`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT cho bảng `typeofutilities`

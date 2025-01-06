@@ -28,25 +28,20 @@ class ProvinceController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,
-        [
-            'provinceName'=>'required|max:50|min:3|unique:provinces,name'
-        ],
-        [
-            'provinceName.required'=>'Bạn chưa nhập tên tỉnh/thành phố',
-            'provinceName.unique'=>'Tên tỉnh/thành phố đã tồn tại',
-            'provinceName.max'=>'Nhập tối đa 50 ký tự',
-            'provinceName.min'=>'Nhập tối thiểu 3 ký tự'
+        $request->validate([
+            'provinceName' => 'required|string|max:255',
+            'provinceCode' => 'required|numeric',
         ]);
 
-        $province = new Province;
-       
+        $province = new Province();
         $province->name = $request->provinceName;
-        $province->status = 0;  // Gán status là 0
-       
+        $province->code = $request->provinceCode;
+        $province->status = 0; // Default status
         $province->save();
-        return redirect()->route('provinces.index');
+
+        return redirect()->route('provinces.index')->with('success', 'Tỉnh/thành phố đã được thêm thành công.');
     }
+
     /**
      * Display the specified resource.
      */
@@ -61,19 +56,27 @@ class ProvinceController extends Controller
     public function edit(string $id)
     {
         $province = Province::find($id);
-        return view('admin.province.edit',compact('province'));
+        return view('admin.province.edit', compact('province'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        $province = Province::find($id);
+        $request->validate([
+            'provinceName' => 'required|string|max:255',
+            'provinceCode' => 'required|numeric',
+            'status' => 'required|integer',
+        ]);
+
+        $province = Province::findOrFail($id);
         $province->name = $request->provinceName;
+        $province->code = $request->provinceCode;
         $province->status = $request->status;
-        $province->update();
-        return redirect()->route('provinces.index');
+        $province->save();
+
+        return redirect()->route('provinces.index')->with('success', 'Tỉnh/thành phố đã được cập nhật thành công.');
     }
 
     /**

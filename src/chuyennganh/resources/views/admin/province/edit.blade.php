@@ -19,17 +19,23 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form id="quickForm" action="{{route('provinces.update',['id'=>$province->id])}}" method = "post">
+            <form id="quickForm" action="{{ route('provinces.update', ['id' => $province->id]) }}" method="post">
                 @csrf
+                <!-- Không sử dụng @method('PUT') -->
               <div class="card-body">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Id</label>
-                  <input type="text" name="provinceName" class="form-control" value="{{$province->id}}"id="provinceName" readonly>
+                  <label for="provinceId">Id</label>
+                  <input type="text" name="provinceId" class="form-control" value="{{ $province->id }}" id="provinceId" readonly>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Tên Tên tỉnh/thành phố</label>
-                  <input type="text" name="provinceName" class="form-control" value="{{$province->name}}"id="provinceName">
+                  <label for="provinceCode">Mã tỉnh</label>
+                  <input type="number" name="provinceCode" class="form-control" value="{{ $province->code }}" id="provinceCode">
                 </div>
+                <div class="form-group">
+                  <label for="provinceName">Tên tỉnh/thành phố</label>
+                  <input type="text" name="provinceName" class="form-control" value="{{ $province->name }}" id="provinceName">
+                </div>
+
                 <div class="form-group">
                   <label for="status">Trạng thái</label>
                   <select name="status" class="form-control" id="status">
@@ -57,5 +63,3 @@
     </div><!-- /.container-fluid -->
   </section> 
 @endsection
-
-

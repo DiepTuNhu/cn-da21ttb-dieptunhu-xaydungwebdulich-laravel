@@ -1,9 +1,9 @@
 @extends('admin.index')
 @section('title_name')
-    Sửa loại hình du lịch
+    Sửa loại tiện ích
 @endsection
 @section('path')
-    Sửa loại hình du lịch
+    Sửa loại tiện ích
 @endsection
 
 @section('content')

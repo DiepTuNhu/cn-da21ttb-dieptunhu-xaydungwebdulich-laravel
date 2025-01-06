@@ -49,7 +49,6 @@
                     <label for="imagePreview1">Ảnh xem trước:</label>
                     <div id="imagePreview1" style="margin-top: 10px;"></div>
                 </div>
-              </div>
                 <div class="form-group">
                   <label for="status">Trạng thái</label>
                   <select name="status" class="form-control" id="status">

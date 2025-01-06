@@ -655,3 +655,6 @@ color: black; /* Màu khi hover */
   background-color: #f2f2f2;
   text-align: left;
 }
+.text-justify {
+  text-align: justify;
+}

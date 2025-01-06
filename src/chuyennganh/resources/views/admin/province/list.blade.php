@@ -18,6 +18,7 @@
                 <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Mã tỉnh</th>
                     <th>Tên tỉnh/thành phố</th>
                     <th>Trạng thái</th>
                     <th width="105px" class="text-center">Thao tác</th>
@@ -28,6 +29,7 @@
                     @foreach ($provinces as $province)
                     <tr>   
                         <td>{{$province->id}}</td>
+                        <td>{{$province->code}}</td>
                         <td>{{$province->name}}</td>
                         <td>
                           @if($province->status == 0)
@@ -48,6 +50,7 @@
                 <tfoot>
                 <tr>
                     <th>Id</th>
+                    <th>Mã tỉnh</th>
                     <th>Tên tỉnh/thành phố</th>
                     <th>Trạng thái</th>
                     <th class="text-center">Thao tác</th>

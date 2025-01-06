@@ -19,13 +19,18 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form id="quickForm" action="{{route('provinces.store')}}" method = "post">
+            <form id="quickForm" action="{{route('provinces.store')}}" method="post">
                 @csrf
               <div class="card-body">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Tên tỉnh/thành phố</label>
+                  <label for="provinceCode">Mã tỉnh</label>
+                  <input type="number" name="provinceCode" class="form-control" id="provinceCode" placeholder="Nhập mã tỉnh">
+                </div>
+                <div class="form-group">
+                  <label for="provinceName">Tên tỉnh/thành phố</label>
                   <input type="text" name="provinceName" class="form-control" id="provinceName" placeholder="Nhập tên tỉnh/thành phố">
                 </div>
+
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
@@ -46,5 +51,3 @@
     </div><!-- /.container-fluid -->
   </section> 
 @endsection
-
-
