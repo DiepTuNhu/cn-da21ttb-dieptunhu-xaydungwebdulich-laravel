@@ -81,7 +81,8 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
             <li><a class="dropdown-item" href="mailto:{{ Auth::user()->email }}">Email: {{ Auth::user()->email }}</a></li>
-            <li><a class="dropdown-item" href="{{ route('user.posts-reviews') }}">Xem bài viết và đánh giá của bạn</a></li>
+            <li><a class="dropdown-item" href="{{ route('user.posts-reviews') }}">Bài viết và đánh giá của bạn</a></li>
+            <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Đổi mật khẩu</a></li>
             <li>
                 <!-- Form đăng xuất -->
                 <form id="logout-form" action="{{ route('page.logout') }}" method="POST" style="display: none;">
