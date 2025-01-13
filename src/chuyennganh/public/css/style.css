@@ -658,3 +658,9 @@ color: black; /* Màu khi hover */
 .text-justify {
   text-align: justify;
 }
+
+.fixed-size-image {
+  width: 700px; /* Đặt chiều rộng */
+  height: 460px; /* Đặt chiều cao */
+  object-fit: cover; /* Điều chỉnh cách ảnh được hiển thị trong khung */
+}

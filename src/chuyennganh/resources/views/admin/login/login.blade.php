@@ -28,8 +28,8 @@
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
                 </div>
-
-                {{-- <div class="d-flex justify-content-between align-items-center">
+{{-- 
+                <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <input type="checkbox" id="remember" name="remember">
                         <label for="remember" class="form-label">Remember me</label>

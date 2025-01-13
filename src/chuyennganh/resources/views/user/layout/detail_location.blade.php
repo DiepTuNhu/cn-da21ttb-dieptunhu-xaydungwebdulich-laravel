@@ -5,13 +5,13 @@
             <!-- Phần hình chính và thông tin tóm tắt -->
             <div class="col-md-6 d-flex flex-column">
               <!-- Hình lớn -->
-              <img src="{{ asset('storage/location_image/' . ($main_photo ? $main_photo->name : 'default_image.jpg')) }}" alt="Hình lớn" class="img-fluid rounded mb-3">
+              <img id="mainImage" src="{{ asset('storage/location_image/' . ($main_photo ? $main_photo->name : 'default_image.jpg')) }}" alt="Hình lớn" class="img-fluid rounded mb-3 fixed-size-image">
               
               <!-- 4 Hình nhỏ nằm ngang -->
               <div class="row g-2"> <!-- Dùng g-2 để giảm khoảng cách giữa các phần tử -->
                   @foreach ($small_photos as $photo)
                       <div class="col-3 d-flex justify-content-center">
-                          <img src="{{ asset('storage/location_image/' . $photo->name) }}" alt="Hình nhỏ" class="img-fluid rounded img-hover-zoom">
+                          <img src="{{ asset('storage/location_image/' . $photo->name) }}" alt="Hình nhỏ" class="img-fluid rounded img-hover-zoom" onclick="changeMainImage('{{ asset('storage/location_image/' . $photo->name) }}')">
                       </div>
                   @endforeach
               </div>
@@ -241,26 +241,9 @@
             }
             return true;
         }
+
+        function changeMainImage(src) {
+            document.getElementById('mainImage').src = src;
+        }
     </script>
-@endsection
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ $detail_location->name }}</div>
-
-                <div class="card-body">
-                    <!-- Nút đăng bài viết -->
-                    <a href="{{ route('post.create', ['id_location' => $detail_location->id]) }}" class="btn btn-primary mb-3">Đăng bài viết</a>
-
-                    <!-- Nội dung chi tiết địa điểm -->
-                    <p>{{ $detail_location->description }}</p>
-                    <!-- Các nội dung khác của địa điểm -->
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection

@@ -8,7 +8,7 @@
         @foreach($posts as $post)
         <div class="mb-4">
             <div class="card-body custom-body-post">
-                <h2 class="card-title mt-5" style="font-size: 30px">{{ $post->title }}</h2>
+                <h2 class="card-title mt-5 custom-title" style="font-size: 30px">{{ $post->title }}</h2>
                 <div class="card-text text-justify" style="font-size: 18px">{!! $post->content !!}</div>
                 <p>Địa điểm: <strong>{{ $post->location->name }}</strong></p>
                 <p>Đăng bởi: 
@@ -46,4 +46,10 @@
         });
     });
 </script>
+
+<style>
+    .custom-title {
+        height: 100px; /* Điều chỉnh chiều cao của tiêu đề */
+    }
+</style>
 @endsection

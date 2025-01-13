@@ -25,6 +25,8 @@ use App\Http\Controllers\Page\UserPostController;
 
 use App\Http\Controllers\Page\ProfileController;
 
+// Route::get('/detail_location/{id}', [PageController::class, 'detailLocation'])->name('page.detail_location');
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
