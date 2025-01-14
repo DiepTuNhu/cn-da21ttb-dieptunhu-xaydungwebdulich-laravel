@@ -131,8 +131,8 @@ public function getDetailLocation($id) {
     $reviews = Review::where('id_location', $id)->where('status', 0)->with('user')->get();
     // $utilities = Utility::where('id_typeofutility', 2)->get();
     // $utilities1 = Utility::where('id_typeofutility', 1)->get();
-    $utilities = Utility::where('id_location', $id)->where('id_typeofutility', 2)->get();
-    $utilities1 = Utility::where('id_location', $id)->where('id_typeofutility', 1)->get();
+    $utilities = Utility::where('id_location', $id)->where('id_typeofutility', 2)->where('status', 0)->get();
+    $utilities1 = Utility::where('id_location', $id)->where('id_typeofutility', 1)->where('status', 0)->get();
     return view('user.layout.detail_location', compact('detail_location', 'main_photo', 'small_photos', 'utilities', 'utilities1', 'full_address', 'reviews'));
 }
 

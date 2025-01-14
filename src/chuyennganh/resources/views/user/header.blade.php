@@ -25,14 +25,16 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               @foreach($types as $type)
+                @if($type->status == 0)
                   <li>
-                    <a class="dropdown-item" href="{{ route('page.location', ['type' => $type->id]) }}" data-type-id="{{ $type->id }}">
-                      {{ $type->name }}
-                  </a>
+                      <a class="dropdown-item" href="{{ route('page.location', ['type' => $type->id]) }}" data-type-id="{{ $type->id }}">
+                          {{ $type->name }}
+                      </a>
                   </li>
+                @endif
               @endforeach
           </ul>
-      </li>
+        </li>
 
       <li class="nav-item dropdown">
           <a class="nav-link btn dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -42,11 +44,13 @@
               <div class="container">
                   <div class="row">
                       @foreach($provinces as $province)
+                        @if($province->status == 0)
                           <div class="col-4 mb-2">
                               <a class="dropdown-item" href="{{ route('page.location', ['province' => $province->id]) }}" data-province-id="{{ $province->id }}">
                                   {{ $province->name }}
                               </a>
                           </div>
+                          @endif
                       @endforeach
                   </div>
               </div>
@@ -61,21 +65,11 @@
         <li class="nav-item">
           <a class="nav-link btn {{request() -> is('contact') ? 'active' : ''}}" href="{{ route('contact.index') }}">Liên hệ</a>
         </li>
-         {{-- <li class="nav-item">
-          <a class="nav-link btn" href="javascript:void(0)">Lưu trú</a>
-        </li> --}}
       </ul>
-
-      {{-- <div class="d-flex">
-        <a href="{{route('register')}}" class="btn">Đăng ký</a>
-        <a href="{{route('login')}}" class="btn">Đăng nhập</a>
-      </div> --}}
 
       @if(Auth::check() || Session::has('userEmail'))
     <div class="dropdown">
-        <!-- Hiển thị ảnh đại diện và tên người dùng -->
         <a href="#" class="btn dropdown-toggle" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <!-- Hiển thị ảnh đại diện nếu có, nếu không có thì hiển thị chữ cái đầu tiên của tên -->
             <img src="{{ Auth::user()->image ? asset('storage/images/' . Auth::user()->image) : asset('images/default.jpg') }}" alt="Avatar" class="rounded-circle" width="40" height="40">
             <span class="ms-2">{{ Auth::user()->username }}</span>
         </a>
@@ -84,7 +78,6 @@
             <li><a class="dropdown-item" href="{{ route('user.posts-reviews') }}">Bài viết và đánh giá của bạn</a></li>
             <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Đổi mật khẩu</a></li>
             <li>
-                <!-- Form đăng xuất -->
                 <form id="logout-form" action="{{ route('page.logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
@@ -96,7 +89,6 @@
     <div class="d-flex">
         <a href="{{ route('register') }}" class="btn">Đăng ký</a>
         <a href="{{ route('login') }}" class="btn">Đăng nhập</a>
-        {{-- <a href="{{ route('google.login') }}" class="btn">Google</a> --}}
     </div>
 @endif
 
