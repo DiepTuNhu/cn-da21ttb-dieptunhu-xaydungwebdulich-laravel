@@ -84,7 +84,7 @@
                 @if($reviews->isEmpty())
                     <p>Chưa có đánh giá nào.</p>
                 @else
-                    @foreach($reviews as $review)
+                    @foreach($reviews as $review)   
                         <div class="review mt-3 position-relative">
                             <div class="d-flex align-items-center">
                                 <img src="{{ asset('storage/images/' . ($review->user->image ?? 'default_avatar.jpg')) }}" alt="Avatar" class="rounded-circle" width="50" height="50">

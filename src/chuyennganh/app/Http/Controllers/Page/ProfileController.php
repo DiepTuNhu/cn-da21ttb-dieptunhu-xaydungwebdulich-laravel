@@ -23,8 +23,21 @@ class ProfileController extends Controller
             return redirect()->route('profile.edit')->with('error', 'User not found.');
         }
         $request->validate([
-            'password' => 'nullable|string|min:8|confirmed',
+            'password' => [
+                'required',
+                'string',
+                'min:8', // ít nhất 8 ký tự
+                'regex:/[a-z]/', // ít nhất một chữ cái viết thường
+                'regex:/[A-Z]/', // ít nhất một chữ cái viết hoa
+                'regex:/[0-9]/', // ít nhất một chữ số
+                'regex:/[@$!%*?&#]/' // ít nhất một ký tự đặc biệt
+            ],
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ],[       
+            'password.required' => 'Vui lòng nhập mật khẩu. ',
+            'password.min' => 'Mật khẩu phải chứa ít nhất 8 ký tự.',
+            'password.regex' => 'Mật khẩu phải chứa ít nhất một chữ cái viết thường, một chữ cái viết hoa, một chữ số và một ký tự đặc biệt.',
+
         ]);
 
         if ($request->filled('password')) {
