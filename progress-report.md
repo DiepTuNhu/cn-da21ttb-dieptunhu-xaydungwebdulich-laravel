@@ -42,3 +42,23 @@ Cài đặt thực nghiệm
 Cài đặt thực nghiệm
 
 - Cài đặt front-end: Trang chủ người dùng, chức năng tìm kiếm
+
+## Tuần 4: Từ ngày 23/12/2024 đến ngày 29/12/2024
+
+Cài đặt thực nghiệm
+
+- Cài đặt chức năng xem thông tin chi tiết điểm du lịch và các tiện ích lân cận
+- Cài đặt back-end: Xây dựng chức năng thống kê số lần địa danh hoặc dịch vụ được xem, đánh giá, hoặc bình luận để hiểu nhu cầu và sở thích của người dùng nếu em có phần đánh giá người dùng
+
+Cài đặt thực nghiệm
+
+- Cài đặt back-end: Chức năng phân quyền hệ thống
+
+Hoàn chỉnh báo cáo
+
+- Cập nhật mục lục, danh mục hình ảnh, bảng biểu, danh mục tài liệu tham khảo, đánh số trang và chỉnh sửa báo cáo hoàn chỉnh theo góp ý của giáo viên hướng dẫn Quyển báo cáo hoàn chỉnh
+
+## Tuần 5: Từ ngày 30/12/2024 đến ngày 05/01/2025
+
+Thiết kế poster và slide báo cáo
+Thiết kế file readme và tổ chức thư mục lưu trữ mã nguồn trên github theo đúng hướng dẫn
